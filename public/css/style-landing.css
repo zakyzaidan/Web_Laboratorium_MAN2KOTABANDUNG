@@ -1,0 +1,244 @@
+body {
+    height: 100vh;
+    font-family: "Montserrat", sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.dot {
+    height: 5px;
+    width: 5px;
+    margin-right: 2px;
+    background-color: #bbb;
+    border-radius: 15px;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    width: 30px;
+}
+
+@keyframes fade {
+    from {opacity: 0}
+    to {opacity: 1}
+}
+
+main .pilihan-pelajaran{
+    background: linear-gradient(to right, #3A3939, #000000, #2F2E2E);
+    color: white;
+    padding: 30px 10vw 40px 10vw;
+}
+
+main .pilihan-pelajaran h2{
+    margin: 0 0 25px 0;
+    font-size: 30px;
+}
+
+main .pilihan-pelajaran ul{
+    display: flex;
+    justify-content:space-between;
+}
+
+main .pilihan-pelajaran ul li img{
+    width: 170px;
+    height: auto;
+    padding: 10px;
+    border-radius: 16px;
+    background-color: white;
+}
+
+main .pilihan-pelajaran ul li img:hover{
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+main .pilihan-pelajaran ul li{
+    list-style-type: none;
+    padding: 5px;
+}
+
+main .pilihan-pelajaran ul li h3{
+    text-align: center;
+    margin: 0;
+    font-size: 30px;
+    padding-top: 15px;
+}
+
+main .profil {
+    background: linear-gradient(to right, #010c20, #053386);
+    display: flex;
+    color: white;
+    padding: 30px 3vw 40px 3vw;
+    align-items: center;
+}
+
+main .profil .deskripsi h2{
+    margin: 0;
+}
+
+main .profil .deskripsi{
+    padding-right: 40px;
+    font-size: 21px;
+}
+
+main .profil iframe{
+    height: 327px;
+    width: 1059px;
+    border-radius: 16px;
+}
+
+.test{
+    display: flex;
+}
+
+.slideshow-container2{
+    display: flex;
+    position: relative;
+    margin: 20px;
+}
+
+.slideshow-container2 div{
+    background-color: white;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.mySlides2 {
+    display: flex;
+    display: none;
+    position:relative;
+    animation-name: fade;
+    animation-duration: 6s;
+}
+
+.Tenaga-Laboratorium h2{
+    margin: 0;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.Tenaga-Laboratorium .detail h3,
+.Tenaga-Laboratorium .detail h4,
+.Tenaga-Laboratorium .detail h5{
+    margin: 0;
+    text-align: center;
+}
+
+.Tenaga-Laboratorium .detail{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Tenaga-Laboratorium .detail .next,
+.Tenaga-Laboratorium .detail .prev{
+    background: linear-gradient(to right, #053386, #010c20);
+    border-radius: 999px;
+}
+
+.Tenaga-Laboratorium img{
+    width: 170px;
+}
+
+
+.Galeri-Laboratorium {
+    background: linear-gradient(to right, #000000, #2F2E2E);
+    color: white;
+    padding: 30px 10vw;
+}
+
+.Galeri-Laboratorium h2 {
+    text-align: center;
+    color: #ffffff;
+}
+
+.container-galeri-lab {
+    display: flex;
+    flex-direction: column;
+}
+
+.isi-lab {
+   margin-bottom: 20px;
+   display: flex;
+}
+
+.isi-lab img {
+   width: 85%;
+   border-radius: 10px;
+}
+
+.penjelasan-galeri-lab {
+   background-color: none;
+   padding: 10px;
+   border-radius: 10px;
+   width: 20%;
+}
+
+.penjelasan-galeri-lab h3,
+.penjelasan-galeri-lab p {
+   color:white;
+}
+
+.container-peraturan {
+    width: 40%;
+    margin-right: 10%;
+    margin-left: 23.4%;
+}
+
+.peraturan {
+    background: linear-gradient(to right, #010c20, #053386);
+    display: flex;
+    color: white;
+    padding: 30px 3vw 40px 3vw;
+    align-items: center;
+    justify-content: center; /* Tambahkan ini untuk memusatkan konten */
+    flex-direction: column; /* Tambahkan ini untuk menata konten secara vertikal */
+}
+
+.peraturan h2 {
+    text-align: center;
+    color: #ffffff;
+    width: 100%; /* Tambahkan ini agar teks berada di tengah */
+}
+
+.peraturan .isi-peraturan ul{
+    list-style-type: none;
+    width:  140%;
+}
+
+.peraturan .isi-peraturan ul li {
+    font-size: 16px; /* Ubah angka ini sesuai dengan ukuran yang Anda inginkan */
+}
+
+.struktur-organisasi{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    justify-content: center; /* Tambahkan ini untuk memusatkan konten */
+    flex-direction: column; /* Tambahkan ini untuk menata konten secara vertikal */
+}
+
+.struktur-organisasi h2{
+    text-align: center;
+    color: black;
+    width: 100%;
+}
+
+/* .struktur-organisasi .gambar-struktur{
+    width: auto;
+    height: auto;
+} */
+
+.struktur-organisasi img{
+    width: 50%;
+    height: 130%;
+}
+
+.carousel-item img {
+    width: 85%; /* Mengatur lebar gambar menjadi 100% dari lebar elemen induknya */
+    height: auto; /* Mengatur tinggi gambar secara otomatis berdasarkan lebar gambar */
+    border-radius: 10px;
+  }

@@ -1,6 +1,4 @@
-
-
-.profil{
+.profil-login{
     position: relative;
     display: flex;
     flex-direction: column;
@@ -12,7 +10,7 @@
     width: 60vw;
 }
 
-.profil::before{
+.profil-login::before{
     content: "";
     position: absolute;
     top: 0;
@@ -25,7 +23,7 @@
     z-index: -1;
 }
 
-.profil::after{
+.profil-login::after{
     content: "";
     position: absolute;
     top: 0;
@@ -37,40 +35,36 @@
     z-index: -1;
 }
 
-.profil h1{
+.profil-login h1{
     margin-top: -20px;
     width: 50%;
-
-
 }
-body{
+
+body-login{
     height: 100vh;
     font-family: "Montserrat", sans-serif;
     padding: 0;
     margin: 0;
 }
+
 .login-container {
     background-color: white;
     align-items: center;
     padding: 40px;
     width: 20vw;
-
     margin: 10vw;
     justify-content: center;
     border-radius: 50px;
     box-shadow: 3px 3px 4px 1px rgba(0, 0, 0, 0.2);
 }
 
-
 .login-container input[type=text], .login-container input[type=password] {
     width: 100%;
     padding: 12px 0px;
     margin: 8px 0;
-
     border: none;
     border-bottom: 2px solid black;
     box-sizing: border-box;
-
     background-color: transparent;
 }
 
@@ -80,7 +74,6 @@ body{
 }
 
 .login-container label[for="uname"], .login-container label[for="psw"] {
-
     font-size: 12px;
     font-weight:500;
 }
@@ -100,36 +93,34 @@ body{
     background: linear-gradient(to right, #053386, #010C20);
     color: white;
     padding: 14px 20px;
-
     border: none;
     cursor: pointer;
     font-weight: bold;
     font-size: 21px;
-
     width: 100%;
     border-radius: 999px;
     margin-top: 40px;
 }
 
-main{
+main-login{
     display: flex;
 }
 
-.judul-form h2, .judul-form p{
+.judul-form-login h2, .judul-form-login p{
     text-align: center;
     line-height: 0.5;
 }
 
-.judul-form h2{
+.judul-form-login h2{
     font-size: 21px;
     font-weight: bold;
 }
 
-.judul-form p{
+.judul-form-login p{
     font-size: 12px;
     font-weight: 500;
 }
 
-.judul-form{
+.judul-form-login{
     margin-bottom: 30px;
 }
