@@ -108,35 +108,64 @@ function showSlides(n) {
 
 createSlideshow(foto, 'slideshow-container2','mySlides2',false,"Iwan Rosadi, M.Pd","197003042005011004","iwan@gmail.com");
 
-var slideIndex2 = 1;
+var slide1Index2 = 0;
+var slide2Index2 = 1;
+var slide3Index2 = 2;
 showSlides2();
 setInterval(function () {
-    plusSlides2(3);
+    plusSlides2(1);
 }, 30000); // Ubah gambar setiap 60 detik
 function plusSlides2(n) {
-    showSlides2((slideIndex2 += (n - 3)));
+    if (n == 1) {
+        slide1Index2++;
+        slide2Index2++;
+        slide3Index2++;
+    }else{
+        slide1Index2--;
+        slide2Index2--;
+        slide3Index2--;
+    }
+    showSlides2(n);
 }
 function currentSlide(n) {
-    showSlides2((slideIndex2 = (n - 3)));
+    showSlides2(n);
 }
 function showSlides2(n) {
     var i;
     var slides = document.getElementsByClassName("mySlides2");
-    if ((n - 3) > slides.length) {
-        slideIndex2 = 1;
-    }
-    if ((n - 3) < 1) {
-        slideIndex2 = (slides.length - 3);
-    }
-    for (i = 0; i < slides.length; i++) {
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].classList.remove('prevpage', 'nextpage');
         slides[i].style.display = "none";
     }
-    console.log(slideIndex2 - 1);
-    console.log(slideIndex2);
-    console.log(slideIndex2 + 1);
-    slides[slideIndex2 - 1].style.display = "block";
-    slides[slideIndex2].style.display = "block";
-    slides[slideIndex2 + 1].style.display = "block";
+
+    updateSlideIndex(slides);
+
+    if(n == 1){
+        slides[slide1Index2].classList.add('nextpage');
+        slides[slide2Index2].classList.add('nextpage');
+        slides[slide3Index2].classList.add('nextpage');
+    }else{
+        slides[slide1Index2].classList.add('prevpage');
+        slides[slide2Index2].classList.add('prevpage');
+        slides[slide3Index2].classList.add('prevpage');
+    }
+    slides[slide1Index2].style.display = "block";
+    slides[slide2Index2].style.display = "block";
+    slides[slide3Index2].style.display = "block";
+
+}
+function updateSlideIndex( slides) {
+    if (slide3Index2 > (slides.length - 1)) {
+        slide1Index2 = 0;
+        slide2Index2 = 1;
+        slide3Index2 = 2;
+    }
+
+    if (slide1Index2 < 0) {
+        slide3Index2 = slides.length - 1;
+        slide2Index2 = slides.length - 2;
+        slide1Index2 = slides.length - 3;
+    }
 
 }
 

@@ -167,33 +167,126 @@
             <h2>TATA TERTIB LABORATORIUM <br>MAN 2 KOTA BANDUNG</h2>
             <div class="isi-peraturan">
                     <div class="container-peraturan">
-                    <ul>
-                        <li>1. Siswa yang memasuki laboratorium harus seizin dan dalam pengawasan guru atau petugas laboratorium </li>
-                        <li>2. Siswa harus memakai jas praktikum selama berada di dalam laboratorium</li>
-                        <li>3. Sebelum praktikum, siswa harus mengisi daftar hadir terlebih dahulu</li>
-                        <li>4. Siswa melaksanakan percobaan sesuai dengan jadwal yang telah ditetapkan</li>
-                        <li>5. Siswa yang melakukan praktikum harus sudah mempelajari lebih dahulu petunjuk praktikumnya (teori dan langkah-langkah praktik)</li>
-                        <li>6. Siswa wajib menjaga kebersihan laboratorium</li>
-                        <li>7. Selama melakukan percobaan dilarang:</li>
-                        <li>a. Melakukan kegiatan-kegiatan di luar petunjuk praktikum.</li>
-                        <li>b. Bergurau, ngobrol, makan, dan minum di ruang praktikum.</li>
-                        <li>c. Menggunakan alat-alat atau bahan-bahan di luar petunjuk dan tanpa izin guru atau petugas praktikum.</li>
-                        <li>d. Mencoba-coba mencampurkan zat-zat yang tersedia tanpa seizin guru, petugas laboratorium atau petunjuk praktikum.</li>
-                        <li>e. Membuang sampah yang tidak larut di bak cuci sebab akan menyumbat saluran.</li>
-                        <li>8. Tidak membawa alat/bahan praktikum ke luar laboratorium, kecuali sudah memenuhi ketentuan peminjaman-keluar yang berlaku.</li>
-                        <li>9. Jika dalam praktikum terjadi kecelakaan (kena pecahan kaca, terbakar, tertusuk, tertelan bahan kimia) harap segera melapor kepada guru atau petugas laboratorium.</li>
-                        <li>10. Untuk percobaan yang menggunakan sumber listrik PLN harus meminta diperiksa kepada pengawas praktikum (guru/petugas laboratorium) sebelum disambungkan.</li>
-                        <li>11. Mengembalikan alat-alat ke tempat semula serta melaporkan kepada pengawas praktikum (guru/petugas laboratorium)</li>
-                        <li>12. Siswa yang melanggar tata tertib dapat dikenakan sanksi</li>
+                    <ol type="1">
+                        <li>Siswa yang memasuki laboratorium harus seizin dan dalam pengawasan guru atau petugas laboratorium </li>
+                        <li>Siswa harus memakai jas praktikum selama berada di dalam laboratorium</li>
+                        <li>Sebelum praktikum, siswa harus mengisi daftar hadir terlebih dahulu</li>
+                        <li>Siswa melaksanakan percobaan sesuai dengan jadwal yang telah ditetapkan</li>
+                        <li>Siswa yang melakukan praktikum harus sudah mempelajari lebih dahulu petunjuk praktikumnya (teori dan langkah-langkah praktik)</li>
+                        <li>Siswa wajib menjaga kebersihan laboratorium</li>
+                        <li>Selama melakukan percobaan dilarang:</li>
+                        <ol type="a">
+                            <li>Melakukan kegiatan-kegiatan di luar petunjuk praktikum</li>
+                            <li>Bergurau, ngobrol, makan, dan minum di ruang praktikum</li>
+                            <li>Menggunakan alat-alat atau bahan-bahan di luar petunjuk dan tanpa izin guru atau petugas praktikum.</li>
+                            <li>Mencoba-coba mencampurkan zat-zat yang tersedia tanpa seizin guru, petugas laboratorium atau petunjuk praktikum.</li>
+                            <li>Membuang sampah yang tidak larut di bak cuci sebab akan menyumbat saluran.</li>
+                        </ol>
+                        <li>Tidak membawa alat/bahan praktikum ke luar laboratorium, kecuali sudah memenuhi ketentuan peminjaman-keluar yang berlaku.</li>
+                        <li>Jika dalam praktikum terjadi kecelakaan (kena pecahan kaca, terbakar, tertusuk, tertelan bahan kimia) harap segera melapor kepada guru atau petugas laboratorium.</li>
+                        <li>Untuk percobaan yang menggunakan sumber listrik PLN harus meminta diperiksa kepada pengawas praktikum (guru/petugas laboratorium) sebelum disambungkan.</li>
+                        <li>Mengembalikan alat-alat ke tempat semula serta melaporkan kepada pengawas praktikum (guru/petugas laboratorium)</li>
+                        <li>Siswa yang melanggar tata tertib dapat dikenakan sanksi</li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="struktur-organisasi">
             <h2>
-                STRUKTUR ORGANISAS
+                STRUKTUR ORGANISASI
             </h2>
-            <img src="/image/struktur-organisasi.png" alt="gambar-stuktur">
+            <div class="baris1">
+                <div class="box1">
+                    <img src="/image/Intersect.png" alt="gambar-stuktur">
+                    <p>Penanggung Jawab</p>
+                    <div class="line"></div>
+                    <h5>Plt. KEPALA MADRASAH<br>Dr. H. Awaludin Hamzah, M.Ag</h5>
+                </div>
+                <div class="line1"></div>
+            </div>
+            <div class="baris2">
+                <div class="box1">
+                    <img src="/image/Intersect.png" alt="gambar-stuktur">
+                    <p>Wakamad Kurikulum</p>
+                    <div class="line"></div>
+                    <h5>Ikeu Kartika, M.P.Kim</h5>
+                </div>
+                <div class="line3"></div>
+                <div class="line2">
+                    <div class="subline1"></div>
+                    <div class="subline2"></div>
+                </div>
+                <div class="line3"></div>
+                <div class="box1">
+                    <img src="/image/Intersect.png" alt="gambar-stuktur">
+                    <p>Wakamad Sarana dan Prasarana</p>
+                    <div class="line"></div>
+                    <h5>Yayan Ristamanjaya, S.Pd., S.E, M.M</h5>
+                </div>
+            </div>
+            <div class="baris3">
+                <div class="line4"></div>
+                <div class="arrow">
+                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="baris2">
+                <div class="box1">
+                    <img src="/image/Intersect.png" alt="gambar-stuktur">
+                    <p>Kepala Lab Fisika</p>
+                    <div class="line"></div>
+                    <h5>Dra. Dewi Kartilah</h5>
+                </div>
+                <div class="line3"></div>
+                <div class="box1">
+                    <img src="/image/Intersect.png" alt="gambar-stuktur">
+                    <p>Kepala Lab Kimia</p>
+                    <div class="line"></div>
+                    <h5>Iwan Rosadi, M.Pd</h5>
+                </div>
+                <div class="line3"></div>
+                <div class="box1">
+                    <img src="/image/Intersect.png" alt="gambar-stuktur">
+                    <p>Kepala Lab Biologi</p>
+                    <div class="line"></div>
+                    <h5>Dra. Nenen Shanti W</h5>
+                </div>
+            </div>
+            <div class="baris3">
+                <div class="line4"></div>
+                <div class="arrow">
+                    <i class="fas fa-chevron-down"></i>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            <div class="kontainer-struktur1">
+                <h2>Guru Mata Pelajaran</h2>
+            </div>
+            <div class="baris3">
+                <div class="line5"></div>
+                <div class="config">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+
+            </div>
+            <div class="kontainer-struktur2">
+                <h2>Siswa</h2>
+            </div>
+
+            <div class="ketorgChart">
+                <div class="satu">
+                    <div class="garis1"></div>
+                    <i class="fas fa-chevron-right"></i>
+                    <p>Garis Koordinasi</p>
+                </div>
+                <div class="satu">
+                    <div class="garis2"></div>
+                    <i class="fas fa-chevron-right"></i>
+                    <p>Garis Komando</p>
+                </div>
+            </div>
+            <!-- <img src="/image/struktur-organisasi.png" alt="gambar-stuktur"> -->
             {{-- <div class="gambar-struktur">
             </div> --}}
         </div>
