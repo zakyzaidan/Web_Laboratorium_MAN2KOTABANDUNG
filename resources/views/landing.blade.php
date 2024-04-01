@@ -68,6 +68,7 @@
             </ul>
         </div>
         <div class="profil">
+            <iframe class="video" src="https://www.youtube.com/embed/qdMzvF3vANA?si=Y-qgHaV71Obb7SEy?modestbranding=1&showinfo=0&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <div class="deskripsi">
                 <h2>
                     Selamat Datang Di Laboratorium<br>
@@ -120,6 +121,10 @@
             </h2>
             <div class="container-galeri-isi-lab">
                 <div class="isi-lab" >
+                    <div class="penjelasan-galeri-lab-posisi1">
+                        <h3>Lab Kimia</h3>
+                        <p>MAN 2 Kota Bandung memiliki sebuah Laboratorium Kimia yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
+                    </div>
                     <div class="slidegambar">
                         <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">
@@ -144,13 +149,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="penjelasan-galeri-lab">
+                    <div class="penjelasan-galeri-lab-posisi2">
                         <h3>Lab Kimia</h3>
                         <p>MAN 2 Kota Bandung memiliki sebuah Laboratorium Kimia yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
                     </div>
                 </div>
                 <div class="isi-lab">
-                    <div class="penjelasan-galeri-lab">
+                    <div class="penjelasan-galeri-lab-posisi1">
+                        <h3>Lab Fisika</h3>
+                        <p>MAN 2 Kota Bandung memiliki sebuah Laboratorium Fisika yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
+                    </div>
+                    <div class="penjelasan-galeri-lab-posisi2">
                         <h3 style="text-align:right">Lab Fisika</h3>
                         <p style="text-align:right">MAN 2 Kota Bandung memiliki sebuah Laboratorium Fisika yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
                     </div>
@@ -180,6 +189,10 @@
                     </div>
                 </div>
                 <div class="isi-lab">
+                    <div class="penjelasan-galeri-lab-posisi1">
+                        <h3>Lab Kimia</h3>
+                        <p>MAN 2 Kota Bandung memiliki sebuah Laboratorium Kimia yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
+                    </div>
                     <div class="slidegambar">
                         <div id="carouselExampleIndicators3" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-indicators">
@@ -204,7 +217,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="penjelasan-galeri-lab">
+                    <div class="penjelasan-galeri-lab-posisi2">
                         <h3>Lab Biologi</h3>
                         <p>MAN 2 Kota Bandung memiliki sebuah Laboratorium Biologi yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
                     </div>
