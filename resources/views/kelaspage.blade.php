@@ -7,7 +7,7 @@
             </h2>
             <ul>
                 <li>
-                    <a href="">
+                    <a href="/materi-kelas-page">
                         <img src="image/kelas10.png" alt="kelas10">
                     </a>
                     <h3>

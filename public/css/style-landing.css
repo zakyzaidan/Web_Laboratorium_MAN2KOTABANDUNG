@@ -37,7 +37,11 @@ main .pilihan-pelajaran ul li img{
     padding: 10px;
     border-radius: 16px;
     background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
+
 
 main .pilihan-pelajaran ul li img:hover{
     transform: scale(1.1);
@@ -48,7 +52,6 @@ main .pilihan-pelajaran ul li{
     display: block;
     list-style-type: none;
     /* padding: 5px; */
-
 }
 
 main .pilihan-pelajaran ul li h3{
@@ -280,14 +283,14 @@ main .peraturan .isi-peraturan{
     height: 130%;
 } */
 
-.carousel-item img {
-    width: 85%; /* Mengatur lebar gambar menjadi 100% dari lebar elemen induknya */
-    height: auto; /* Mengatur tinggi gambar secara otomatis berdasarkan lebar gambar */
+/* .carousel-item img {
+    width: 85%;
+    height: auto;
     border-radius: 10px;
-}
+} */
 
 .struktur-organisasi h2{
-
+    font-size: 2.8vw;
     font-weight: bold;
     padding: 2vw 0;
 }
@@ -359,7 +362,8 @@ main .peraturan .isi-peraturan{
 }
 
 .struktur-organisasi .box1 img{
-    width: 100%;
+    width: 20vw;
+    border-radius: 1.6vw;
     border-radius: 16px;
 
 }
@@ -421,7 +425,7 @@ main .peraturan .isi-peraturan{
 
 .struktur-organisasi .baris3 .arrow .fas{
     position: relative;
-    top: -10px;
+    top: -0.8px;
     padding: 0 5.4%;
     font-size: 1.2vw;
 }
@@ -437,7 +441,7 @@ main .peraturan .isi-peraturan{
     color: white;
     border-radius: 3vw;
     position: relative;
-    top: -10px;
+    top: -0.8px;
 }
 
 .struktur-organisasi .baris3  .line5 {

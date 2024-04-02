@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+}
+
 .profil-login{
     position: relative;
     display: flex;
@@ -6,7 +10,7 @@
     align-items: center;
     color: white;
     text-align: center;
-    height: 99vh;
+    height: 100vh;
     width: 60vw;
 }
 
@@ -20,6 +24,7 @@
     background-image: url("../image/Subtract.jpg");
     background-size: cover;
     opacity: 0.8;
+    background-position: center; /* Tambahkan ini */
     z-index: -1;
 }
 
@@ -50,7 +55,7 @@ body-login{
 .login-container {
     background-color: white;
     align-items: center;
-    padding: 40px;
+    padding: 4vw;
     width: 20vw;
     margin: 10vw;
     justify-content: center;
@@ -104,6 +109,8 @@ body-login{
 
 main-login{
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .judul-form-login h2, .judul-form-login p{
@@ -123,4 +130,47 @@ main-login{
 
 .judul-form-login{
     margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1100px){
+    main-login{
+        flex-direction: column;
+    }
+    .profil-login{
+        width: 100%;
+        height: 100vh;
+    }
+    .login-container{
+        width: 60%;
+    }
+
+    .judul-form-login h2{
+        font-size: 3.3vw;
+
+    }
+
+    .judul-form-login p{
+        font-size: 1.5vw;
+
+    }
+
+    .judul-form-login{
+        margin-bottom: 3vw;
+    }
+    .login-container label[for="uname"], .login-container label[for="psw"] {
+        font-size: 2.2vw;
+        font-weight:500;
+    }
+    .login-container button {
+
+        font-size: 2.1vw;
+
+        margin-top: 4vw;
+    }
+    .halamanLogin{
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+    }
 }

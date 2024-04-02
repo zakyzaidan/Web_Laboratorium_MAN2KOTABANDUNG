@@ -2,33 +2,47 @@
 @section('page')
     <main>
         <div class="pilihan-pelajaran">
+
             <h2>
                 MATERI PEMBELAJARAN
             </h2>
             <ul>
                 <li>
+                    @if (session()->has('username'))
                     <a href="">
                         <img src="image/Lab-Kimia.png" alt="Lab Kimia">
                     </a>
-                    <h3>
-                        Lab Kimia
-                    </h3>
+                    <h3>Kimia</h3>
+                    @else
+                    <img src="image/Lab-Kimia.png" alt="Lab Kimia">
+                    <h3>Lab Kimia</h3>
+                    @endif
                 </li>
                 <li>
+                    @if (session()->has('username'))
                     <a href="/pilih-kelas">
                         <img src="image/Lab-Fisika.png" alt="Lab Fisika">
                     </a>
-                    <h3>
-                        Lab Fisika
-                    </h3>
+                    <h3>Fisika</h3>
+                    @else
+
+                    <img src="image/Lab-Fisika.png" alt="Lab Fisika">
+
+                    <h3>Lab Fisika</h3>
+                    @endif
                 </li>
                 <li>
+                    @if (session()->has('username'))
                     <a href="">
-                        <img src="image/Lab-Biologi.png" alt="Lab Biologi">
+                        <img src="image/Lab-Biologi.png" alt="Lab Biologi" >
                     </a>
-                    <h3>
-                        Lab Biologi
-                    </h3>
+                    <h3>Biologi</h3>
+                    @else
+
+                    <img src="image/Lab-Biologi.png" alt="Lab Biologi" >
+
+                    <h3>Lab Biologi</h3>
+                    @endif
                 </li>
             </ul>
         </div>

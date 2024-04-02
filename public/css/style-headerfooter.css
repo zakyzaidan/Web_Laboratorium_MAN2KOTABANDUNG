@@ -24,6 +24,10 @@ header.navbar-container .nav-list li a {
     transition: all 0.2s ease-in-out;
 }
 
+header.navbar-container .nav-list li a:hover {
+    color: white;
+}
+
 header.navbar-container .nav-list li img {
     width: 3vw;
     margin-right: 2vw;

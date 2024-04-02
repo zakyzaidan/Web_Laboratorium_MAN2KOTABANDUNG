@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,18 +18,48 @@ Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('/home', function () {
+    $username = session('username');
+    $user_type = session('user_type');
+
+    // Sekarang Anda bisa menggunakan $username dan $user_type
+    // Misalnya, Anda bisa mengirimkannya ke view
+    return view('landing', compact('username', 'user_type'));
+});
+
 Route::get('/login', function () {
     return view('login');
 });
 
 Route::get('/pilih-kelas', function () {
-    return view('kelaspage');
-});
+    $username = session('username');
+    $user_type = session('user_type');
+    return view('kelaspage', compact('username', 'user_type'));
+})->middleware('auth');
 
-Route::get('/materi-kelas-page-siswa', function () {
-    return view('materikelaspagesiswa');
-});
+Route::get('/materi-kelas-page', function () {
+    $username = session('username');
+    $user_type = session('user_type');
 
-Route::get('/materi-kelas-page-guru', function () {
-    return view('materikelaspageguru');
+    if ($user_type == 'admin') {
+        return view('materikelaspageguru',compact('username', 'user_type'));
+    } else if ($user_type == 'siswa') {
+        return view('materikelaspagesiswa',compact('username', 'user_type'));
+    }
+
+    // Anda bisa menambahkan logika lainnya di sini, misalnya jika user_type tidak ada di session
+    return redirect('/login');
+})->middleware('auth');
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/pilih-kelas', function () {
+        $username = session('username');
+        $user_type = session('user_type');
+        return view('kelaspage', compact('username', 'user_type'));
+    });
+
+    // tambahkan route lain yang memerlukan autentikasi di sini
 });

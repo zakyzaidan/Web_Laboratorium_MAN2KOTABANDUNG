@@ -32,7 +32,13 @@
                 <li><a href="">LAB BIOLOGI</a></li>
                 <li><a href="">STRUKTUR ORGANISASI</a></li>
                 <li><a href="">TENTANG</a></li>
-                <li class="login"><a href="login">LOG-IN</a></li>
+                @if (session()->has('username'))
+                    <li class="login"><a>Hi {{ session('username') }}</a></li>
+                @else
+                    <li class="login"><a href="login">LOG-IN</a></li>
+                @endif
+
+
                 <div class="menu-button">
                     <i class="fas fa-bars"></i> <!-- Ikon menu (hamburger icon) -->
                 </div>
@@ -44,7 +50,12 @@
                         <li><a href="">LAB BIOLOGI</a></li>
                         <li><a href="">STRUKTUR ORGANISASI</a></li>
                         <li><a href="">TENTANG</a></li>
-                        <li><a href="login">LOG-IN</a></li>
+                        @if (session()->has('username'))
+                            <li><a>{{ session('username') }}</a></li>
+                        @else
+                            <li><a href="login">LOG-IN</a></li>
+                        @endif
+
                     </ul>
                 </nav>
             </ul>
@@ -79,6 +90,7 @@
                 <p>Jl. Raya Cipadung No.57, Cipadung, Kec. Cibiru, Kota Bandung, Jawa Barat 40615</p>
             </div>
             <div class="col2">
+
                 <h2>Kontak kami</h2>
                 <ul>
                     <li>
@@ -100,6 +112,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     @yield('js')
-
+    <script src="JavaScript/script-header.js"></script>
 </body>
 </html>
