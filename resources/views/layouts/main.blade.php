@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/style-landing.css">
     {{-- <link rel="stylesheet" href="css/style.css"> --}}
     <link rel="stylesheet" href="css/style-headerfooter.css">
+    <link rel="stylesheet" href="css/style-kelas.css">
 <!-- Font Awesome 5.15.4 -->
     <link
         rel="stylesheet"
@@ -25,7 +26,7 @@
         <nav class="nav-list">
             <ul>
                 <li><img src="image/logo-man2.png" alt="logo"></li>
-                <li><a href="landing">BERANDA</a></li>
+                <li><a href="/">BERANDA</a></li>
                 <li><a href="">LAB KIMIA</a></li>
                 <li><a href="">LAB FISIKA</a></li>
                 <li><a href="">LAB BIOLOGI</a></li>

@@ -1,0 +1,130 @@
+main .pilihan-kelas{
+    background: linear-gradient(to right, #3A3939, #000000, #2F2E2E);
+    color: white;
+    padding: 30px 10vw 40px 10vw;
+}
+
+main .pilihan-kelas h2{
+    margin: 0 0 25px 0;
+    font-size: 3vw;
+}
+
+main .pilihan-kelas ul{
+    display: flex;
+    justify-content:space-between;
+}
+
+main .pilihan-kelas ul li img{
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    border-radius: 16px;
+    background-color: white;
+}
+
+main .pilihan-kelas ul li img:hover{
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
+
+main .pilihan-kelas ul li{
+    list-style-type: none;
+    padding: 5px;
+}
+
+main .pilihan-kelas ul li h3{
+    text-align: center;
+    margin: 0;
+    font-size: 50px;
+    padding-top: 15px;
+}
+
+
+.materi-pembelajaran h2 {
+    margin: 0;
+    text-align: left; /* Changed from left to center */
+    padding-left: 75px;
+    padding-top: 40px;
+    font-weight: bold;
+}
+
+.materi-pembelajaran .detail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.materi-pembelajaran img {
+    width: 70%;
+    height: 80%;
+    object-fit: contain; /* This line makes the images fit their containers */
+    border-radius: 10px;
+    margin: auto;
+    box-shadow: 12px 8px 8px rgba(0,0,0,0.2);
+}
+
+.materi-pembelajaran .detail h3,
+.materi-pembelajaran .detail h4,
+.materi-pembelajaran .detail h5 {
+    margin-bottom: 10px;
+}
+
+.materi-pembelajaran .detail figcaption {
+    text-align: center;
+    padding-top: 10px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.materi-pembelajaran .detail div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.materi-pembelajaran .detail a {
+    text-decoration: none;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.pagination a {
+    color: blue;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+}
+
+.pagination a.active {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-button {
+    text-align: center;
+    margin-right: 5%;
+    background-color: #054488;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+}

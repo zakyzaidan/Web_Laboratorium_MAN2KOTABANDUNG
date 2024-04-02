@@ -146,8 +146,6 @@ main .profil iframe{
     to {transform: translateX(0); opacity: 1;}
 }
 
-
-
 .Tenaga-Laboratorium h2{
     margin: 0;
     text-align: center;
@@ -166,7 +164,6 @@ main .profil iframe{
     font-weight: normal;
 }
 
-
 .Tenaga-Laboratorium .detail{
     display: flex;
     justify-content: center;
@@ -182,7 +179,6 @@ main .profil iframe{
 .Tenaga-Laboratorium img{
     width: 330px;
 }
-
 
 .Galeri-Laboratorium {
     background: linear-gradient(to right, #000000, #2F2E2E);
@@ -206,7 +202,6 @@ main .profil iframe{
     height: 100%;
 } */
 
-
 .isi-lab {
    width: 100%;
    margin-bottom: 2vw;
@@ -222,7 +217,6 @@ main .profil iframe{
     padding: 1vw;
     border-radius: 1vw;
 }
-
 
 /* .isi-lab img {
    width: 85%;
@@ -264,7 +258,6 @@ main .profil iframe{
     width: 100%; /* Tambahkan ini agar teks berada di tengah */
 }
 
-
 .peraturan .isi-peraturan ul li {
     font-size: 1.6vw; /* Ubah angka ini sesuai dengan ukuran yang Anda inginkan */
 }
@@ -294,32 +287,34 @@ main .profil iframe{
     height: 130%;
 } */
 
-/* .carousel-item img {
-    width: 85%;
-    height: auto;
-    border-radius: 1vw;
-  } */
+.carousel-item img {
+    width: 85%; /* Mengatur lebar gambar menjadi 100% dari lebar elemen induknya */
+    height: auto; /* Mengatur tinggi gambar secara otomatis berdasarkan lebar gambar */
+    border-radius: 10px;
+}
+
 .struktur-organisasi h2{
-    font-size: 2.8vw;
+
     font-weight: bold;
     padding: 2vw 0;
 }
+
 .struktur-organisasi{
     width: 100%;
     display: flex;
     align-items: center;
-
     justify-content: center;
     flex-direction: column;
 }
+
 .struktur-organisasi .baris1{
     width: 100%;
-
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
+
 .struktur-organisasi .baris2{
     width: 100%;
     height: 26vw;
@@ -328,6 +323,7 @@ main .profil iframe{
     justify-content: center;
     flex-direction: row;
 }
+
 .struktur-organisasi .baris3{
     width: 100%;
     display: flex;
@@ -356,12 +352,11 @@ main .profil iframe{
     transform: translateY(-50%);
 }
 
-
-
 .struktur-organisasi p,
 .struktur-organisasi h5{
     font-size: 1.5vw;
 }
+
 .struktur-organisasi h5{
     padding-bottom: 2vw;
 }
@@ -371,10 +366,11 @@ main .profil iframe{
 }
 
 .struktur-organisasi .box1 img{
-    width: 20vw;
-    border-radius: 1.6vw;
+    width: 100%;
+    border-radius: 16px;
 
 }
+
 .struktur-organisasi .baris1  .line1 {
     border-left: 0.1vw solid black;
     border-right: 0.1vw dashed black;
@@ -400,8 +396,8 @@ main .profil iframe{
 }
 
 .struktur-organisasi .baris2 .line2 .subline2 {
-    border-left: 0.1vw solid black;
-    border-right: 0.1vw dashed black;
+    border-left: 2px solid black;
+    border-right: 2px dashed black;
 
     height: 100%;
     width: 100%;
@@ -424,17 +420,17 @@ main .profil iframe{
     justify-content: center;
     flex-direction: row;
 }
+
 .struktur-organisasi .baris3 .arrow{
     display: flex;
     width: 100%;
 }
+
 .struktur-organisasi .baris3 .arrow .fas{
     position: relative;
-    top: -0.8vw;
-    padding: 0 5.4%;
-    font-size: 1.2vw;
-}
+    top: -10px;
 
+}
 
 .struktur-organisasi .kontainer-struktur1{
     width: 85vw;
@@ -447,8 +443,7 @@ main .profil iframe{
     color: white;
     border-radius: 3vw;
     position: relative;
-    top: -0.8vw;
-
+    top: -10px;
 }
 
 .struktur-organisasi .baris3  .line5 {
@@ -508,9 +503,7 @@ main .profil iframe{
 .struktur-organisasi .ketorgChart .satu .garis2{
     border-top: 0.1vw dashed black;
     width: 20vw;
-
 }
-
 
 @media screen and (max-width: 800px) {
     main .pilihan-pelajaran ul{
@@ -532,7 +525,6 @@ main .profil iframe{
         height: auto;
         width: 80%;
         padding: 1vw 0 1vw 20%;
-
     }
 
     main .profil iframe{
@@ -542,16 +534,20 @@ main .profil iframe{
     .isi-lab {
         display: block;
     }
+
     .isi-lab .slidegambar{
         width: 100%;
     }
+
     .penjelasan-galeri-lab{
         width: 100%;
         text-align: left;
     }
+
     .isi-lab .penjelasan-galeri-lab-posisi2{
         display: none;
     }
+    
     .isi-lab .penjelasan-galeri-lab-posisi1{
         display: block;
     }
