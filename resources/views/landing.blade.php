@@ -3,7 +3,7 @@
     <main>
         <div class="pilihan-pelajaran">
             <h2>
-                MATERI<br>PEMBELAJARAN
+                MATERI PEMBELAJARAN
             </h2>
             <ul>
                 <li>
@@ -33,7 +33,7 @@
             </ul>
         </div>
         <div class="profil">
-            <iframe class="video" src="https://www.youtube.com/embed/qdMzvF3vANA?si=Y-qgHaV71Obb7SEy?modestbranding=1&showinfo=0&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
             <div class="deskripsi">
                 <h2>
                     Selamat Datang Di Laboratorium<br>

@@ -5,19 +5,7 @@ body {
     margin: 0;
 }
 
-.dot {
-    height: 5px;
-    width: 5px;
-    margin-right: 2px;
-    background-color: #bbb;
-    border-radius: 15px;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
 
-.active {
-    width: 30px;
-}
 
 @keyframes fade {
     from {opacity: 0}
@@ -64,9 +52,9 @@ main .pilihan-pelajaran ul li{
 }
 
 main .pilihan-pelajaran ul li h3{
-
+    text-align: center;
     margin: 0;
-    font-size: 30px;
+    font-size: 3vw;
     padding-top: 15px;
 }
 
@@ -103,19 +91,18 @@ main .profil iframe{
 .slideshow-container2{
     display: flex;
     position: relative;
-    margin: 20px;
+    margin: 2vw;
 }
 
 .slideshow-container2 div{
     background-color: white;
-    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    padding: 10px;
+    box-shadow: 0px 0px 1vw 1px rgba(0, 0, 0, 0.2);
+    border-radius: 2vw;
+    padding: 1vw;
 }
 
 .mySlides2 {
     display: flex;
-
     position:relative;
     /* animation-name: fade; */
     /* animation-duration: 6s; */
@@ -149,7 +136,7 @@ main .profil iframe{
 .Tenaga-Laboratorium h2{
     margin: 0;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 4vw;
 }
 
 .Tenaga-Laboratorium .detail h3,
@@ -157,6 +144,7 @@ main .profil iframe{
 .Tenaga-Laboratorium .detail h5{
     margin: 0;
     text-align: center;
+    font-size: 2vw;
 }
 
 .Tenaga-Laboratorium .detail h4,
@@ -177,7 +165,8 @@ main .profil iframe{
 }
 
 .Tenaga-Laboratorium img{
-    width: 330px;
+    height: auto;
+    width: 20vw;
 }
 
 .Galeri-Laboratorium {
@@ -238,8 +227,12 @@ main .profil iframe{
 
 .container-peraturan {
     width: 60%;
-    margin-right: 10%;
-    margin-left: 23.4%;
+}
+
+main .peraturan .isi-peraturan{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .peraturan {
@@ -396,8 +389,8 @@ main .profil iframe{
 }
 
 .struktur-organisasi .baris2 .line2 .subline2 {
-    border-left: 2px solid black;
-    border-right: 2px dashed black;
+    border-left: 0.1vw solid black;
+    border-right: 0.1vw dashed black;
 
     height: 100%;
     width: 100%;
@@ -429,7 +422,8 @@ main .profil iframe{
 .struktur-organisasi .baris3 .arrow .fas{
     position: relative;
     top: -10px;
-
+    padding: 0 5.4%;
+    font-size: 1.2vw;
 }
 
 .struktur-organisasi .kontainer-struktur1{
@@ -469,7 +463,7 @@ main .profil iframe{
     align-items: center;
     justify-content: center;
     color: white;
-    border-radius: 30px;
+    border-radius: 3vw;
     position: relative;
     top: -1.8vw;
 }
@@ -479,20 +473,27 @@ main .profil iframe{
     display: flex;
     flex-direction: column;
     padding: 5vw 0 10vw 15vw;
+
+}
+.struktur-organisasi .ketorgChart .satu i{
+    font-size: 1vw;
+    display: inline-block;
 }
 
 .struktur-organisasi .ketorgChart .satu{
     display: flex;
     align-items: center;
-    flex-direction:row;
+    flex-direction: row;
     padding-bottom: 2vw;
+
+
 }
 
 .struktur-organisasi .ketorgChart .satu p{
     text-align: center;
     padding-left: 2vw;
-    position: relative;
     bottom: -0.5vw;
+    margin: 0;
 }
 
 .struktur-organisasi .ketorgChart .satu .garis1{
@@ -504,7 +505,28 @@ main .profil iframe{
     border-top: 0.1vw dashed black;
     width: 20vw;
 }
+body.sidebar-open {
+    overflow: hidden;
+  }
 
+  @media screen and (max-width: 900px){
+    .Tenaga-Laboratorium img{
+        height: auto;
+        width: 80vw;
+    }
+  }
+  @media screen and (max-width: 1300px){
+    .Tenaga-Laboratorium img{
+        height: auto;
+        width: 30vw;
+    }
+    .Tenaga-Laboratorium .detail h3,
+    .Tenaga-Laboratorium .detail h4,
+    .Tenaga-Laboratorium .detail h5{
+
+        font-size: 3vw;
+    }
+  }
 @media screen and (max-width: 800px) {
     main .pilihan-pelajaran ul{
         flex-direction: column;
@@ -520,15 +542,13 @@ main .profil iframe{
     main .profil{
         display: block;
     }
-    main .profil .video{
+
+
+    main .profil iframe{
         display: flex;
         height: auto;
         width: 80%;
         padding: 1vw 0 1vw 20%;
-    }
-
-    main .profil iframe{
-        display: none;
     }
 
     .isi-lab {
@@ -547,8 +567,28 @@ main .profil iframe{
     .isi-lab .penjelasan-galeri-lab-posisi2{
         display: none;
     }
-    
+
     .isi-lab .penjelasan-galeri-lab-posisi1{
         display: block;
+    }
+    main .profil .deskripsi h2{
+        text-align: center;
+        padding-bottom: 3vh;
+    }
+    main .profil .deskripsi{
+        padding: 0;
+    }
+    main .pilihan-pelajaran h2{
+
+        font-size: 4vw;
+    }
+    main .pilihan-pelajaran ul li h3{
+        padding-top: 0;
+        padding-bottom: 1vh;
+        font-size: 4vw;
+
+    }
+    .container-peraturan {
+        width: 80%;
     }
 }

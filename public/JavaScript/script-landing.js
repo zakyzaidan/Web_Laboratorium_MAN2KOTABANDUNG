@@ -185,10 +185,10 @@ window.addEventListener('scroll', function() {
     var sitebar = document.querySelector('header.navbar-container .nav-list #sidebar');
 
     var windowPosition = window.scrollY > 0;
-
     header.classList.toggle('scrolling-active', windowPosition);
     sitebar.classList.toggle('scrolling-active', windowPosition);
 })
+
 
 
 var menuButton = document.querySelector('.menu-button');

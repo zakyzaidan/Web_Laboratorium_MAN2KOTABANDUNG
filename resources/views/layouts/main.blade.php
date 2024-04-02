@@ -33,9 +33,9 @@
                 <li><a href="">STRUKTUR ORGANISASI</a></li>
                 <li><a href="">TENTANG</a></li>
                 <li class="login"><a href="login">LOG-IN</a></li>
-                <button class="menu-button">
+                <div class="menu-button">
                     <i class="fas fa-bars"></i> <!-- Ikon menu (hamburger icon) -->
-                </button>
+                </div>
                 <nav id="sidebar">
                     <ul>
                         <li><a href="landing">BERANDA</a></li>
@@ -72,8 +72,8 @@
             <div class="col1">
                 <div class="row3">
                     <img src="image/logo-man2.png" alt="logo">
-                    <h2>LABORATORIUM<br>
-                        MAN 2<br>
+                    <h2>LABORATORIUM
+                        MAN 2
                         KOTA BANDUNG</h2>
                 </div>
                 <p>Jl. Raya Cipadung No.57, Cipadung, Kec. Cibiru, Kota Bandung, Jawa Barat 40615</p>
