@@ -21,6 +21,14 @@ Route::get('/login', function () {
     return view('login');
 });
 
-// Route::get('/landing-page', function () {
-//     return view('landing');
-// });
+Route::get('/pilih-kelas', function () {
+    return view('kelaspage');
+});
+
+Route::get('/materi-kelas-page-siswa', function () {
+    return view('materikelaspagesiswa');
+});
+
+Route::get('/materi-kelas-page-guru', function () {
+    return view('materikelaspageguru');
+});
