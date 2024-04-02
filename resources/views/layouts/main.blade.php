@@ -32,8 +32,21 @@
                 <li><a href="">STRUKTUR ORGANISASI</a></li>
                 <li><a href="">TENTANG</a></li>
                 <li class="login"><a href="login">LOG-IN</a></li>
+                <div class="dropdown">
+                    <button class="dropbtn">Menu</button>
+                    <div class="dropdown-content">
+                        <a href="landing">BERANDA</a>
+                        <a href="">LAB KIMIA</a>
+                        <a href="">LAB FISIKA</a>
+                        <a href="">LAB BIOLOGI</a>
+                        <a href="">STRUKTUR ORGANISASI</a>
+                        <a href="">TENTANG</a>
+                        <a href="login">LOG-IN</a>
+                    </div>
+                </div>
             </ul>
         </nav>
+
         <div class="keterangan">
             <p>
                 LABORATORIUM MAN 2 KOTA BANDUNG

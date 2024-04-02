@@ -116,6 +116,7 @@ setInterval(function () {
     plusSlides2(1);
 }, 30000); // Ubah gambar setiap 60 detik
 function plusSlides2(n) {
+
     if (n == 1) {
         slide1Index2++;
         slide2Index2++;
@@ -125,6 +126,7 @@ function plusSlides2(n) {
         slide2Index2--;
         slide3Index2--;
     }
+
     showSlides2(n);
 }
 function currentSlide(n) {
@@ -149,9 +151,15 @@ function showSlides2(n) {
         slides[slide2Index2].classList.add('prevpage');
         slides[slide3Index2].classList.add('prevpage');
     }
+    var lebarLayar = window.innerWidth;
+    console.log(lebarLayar);
     slides[slide1Index2].style.display = "block";
-    slides[slide2Index2].style.display = "block";
-    slides[slide3Index2].style.display = "block";
+    if (lebarLayar > 900) {
+        slides[slide2Index2].style.display = "block";
+    }
+    if (lebarLayar > 1300) {
+        slides[slide3Index2].style.display = "block";
+    }
 
 }
 function updateSlideIndex( slides) {

@@ -68,6 +68,7 @@
             </ul>
         </div>
         <div class="profil">
+            <iframe class="video" src="https://www.youtube.com/embed/qdMzvF3vANA?si=Y-qgHaV71Obb7SEy?modestbranding=1&showinfo=0&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             <div class="deskripsi">
                 <h2>
                     Selamat Datang Di Laboratorium<br>
@@ -120,43 +121,103 @@
             </h2>
             <div class="container-galeri-isi-lab">
                 <div class="isi-lab" >
-                    <img src="image/galeri.png" alt="Lab Fisika">
-                    {{-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            <img src="image/galeri.png" class="d-block w-100" alt="Lab Kimia">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="image/galeri.png" class="d-block w-100" alt="Lab Fisika">
-                          </div>
-                          <div class="carousel-item">
-                            <img src="image/galeri.png" class="d-block w-100" alt="Lab Biologi">
-                          </div>
+                    <div class="penjelasan-galeri-lab-posisi1">
+                        <h3>Lab Kimia</h3>
+                        <p>MAN 2 Kota Bandung memiliki sebuah Laboratorium Kimia yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
+                    </div>
+                    <div class="slidegambar">
+                        <div id="carouselExampleIndicators1" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators1" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                            </div>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
-                      </div> --}}
-                    <div class="penjelasan-galeri-lab">
+                    </div>
+                    <div class="penjelasan-galeri-lab-posisi2">
                         <h3>Lab Kimia</h3>
                         <p>MAN 2 Kota Bandung memiliki sebuah Laboratorium Kimia yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
                     </div>
                 </div>
                 <div class="isi-lab">
-                    <div class="penjelasan-galeri-lab">
+                    <div class="penjelasan-galeri-lab-posisi1">
+                        <h3>Lab Fisika</h3>
+                        <p>MAN 2 Kota Bandung memiliki sebuah Laboratorium Fisika yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
+                    </div>
+                    <div class="penjelasan-galeri-lab-posisi2">
                         <h3 style="text-align:right">Lab Fisika</h3>
                         <p style="text-align:right">MAN 2 Kota Bandung memiliki sebuah Laboratorium Fisika yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
                     </div>
-                    <img src="image/galeri.png" alt="Lab Fisika">
+                    <div class="slidegambar">
+                        <div id="carouselExampleIndicators2" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators2" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="isi-lab">
-                    <img src="image/galeri.png" alt="Lab Fisika">
-                    <div class="penjelasan-galeri-lab">
+                    <div class="penjelasan-galeri-lab-posisi1">
+                        <h3>Lab Kimia</h3>
+                        <p>MAN 2 Kota Bandung memiliki sebuah Laboratorium Kimia yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
+                    </div>
+                    <div class="slidegambar">
+                        <div id="carouselExampleIndicators3" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators3" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            </div>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                <img src="image/image_lab.png" class="d-block w-100" alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="penjelasan-galeri-lab-posisi2">
                         <h3>Lab Biologi</h3>
                         <p>MAN 2 Kota Bandung memiliki sebuah Laboratorium Biologi yang dapat digunakan siswa untuk keberlangsungan belajar mengajar.</p>
                     </div>
