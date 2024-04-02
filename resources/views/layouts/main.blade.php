@@ -32,18 +32,20 @@
                 <li><a href="">STRUKTUR ORGANISASI</a></li>
                 <li><a href="">TENTANG</a></li>
                 <li class="login"><a href="login">LOG-IN</a></li>
-                <div class="dropdown">
-                    <button class="dropbtn">Menu</button>
-                    <div class="dropdown-content">
-                        <a href="landing">BERANDA</a>
-                        <a href="">LAB KIMIA</a>
-                        <a href="">LAB FISIKA</a>
-                        <a href="">LAB BIOLOGI</a>
-                        <a href="">STRUKTUR ORGANISASI</a>
-                        <a href="">TENTANG</a>
-                        <a href="login">LOG-IN</a>
-                    </div>
-                </div>
+                <button class="menu-button">
+                    <i class="fas fa-bars"></i> <!-- Ikon menu (hamburger icon) -->
+                </button>
+                <nav id="sidebar">
+                    <ul>
+                        <li><a href="landing">BERANDA</a></li>
+                        <li><a href="">LAB KIMIA</a></li>
+                        <li><a href="">LAB FISIKA</a></li>
+                        <li><a href="">LAB BIOLOGI</a></li>
+                        <li><a href="">STRUKTUR ORGANISASI</a></li>
+                        <li><a href="">TENTANG</a></li>
+                        <li><a href="login">LOG-IN</a></li>
+                    </ul>
+                </nav>
             </ul>
         </nav>
 

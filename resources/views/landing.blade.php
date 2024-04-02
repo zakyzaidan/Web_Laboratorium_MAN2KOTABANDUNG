@@ -46,7 +46,7 @@
                         <img src="image/Lab-Kimia.png" alt="Lab Kimia">
                     </a>
                     <h3>
-                        Lab<br>Kimia
+                        Lab Kimia
                     </h3>
                 </li>
                 <li>
@@ -54,7 +54,7 @@
                         <img src="image/Lab-Fisika.png" alt="Lab Fisika">
                     </a>
                     <h3>
-                        Lab<br>Fisika
+                        Lab Fisika
                     </h3>
                 </li>
                 <li>
@@ -62,7 +62,7 @@
                         <img src="image/Lab-Biologi.png" alt="Lab Biologi">
                     </a>
                     <h3>
-                        Lab<br>Biologi
+                        Lab Biologi
                     </h3>
                 </li>
             </ul>
