@@ -9,13 +9,11 @@ use App\Models\Siswa;
 class AuthController extends Controller
 {
     // AuthController.php
-    public function showLoginForm()
-    {
+    public function showLoginForm(){
         return view('login');
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request){
         $username = $request->input('username');
         $password = $request->input('password');
         // dd($username);
@@ -64,18 +62,26 @@ class AuthController extends Controller
         // Jika autentikasi gagal
         return redirect()->back()->with('error', 'Username atau password salah');
     }
-    public function attemptLogin(Request $request)
-{
-    // Check if 'username' and 'password' exist in the session
-    if ($request->session()->has('username') === true) {
-        // 'username' and 'password' exist in the session
-        $username = $request->session()->get('username');
-        return true;
-    } else {
 
-        // 'username' or 'password' does not exist in the session
-        return false;
+    public function attemptLogin(Request $request){
+    // Check if 'username' and 'password' exist in the session
+        if ($request->session()->has('username') === true) {
+            // 'username' and 'password' exist in the session
+            $username = $request->session()->get('username');
+            return true;
+        } else {
+
+            // 'username' or 'password' does not exist in the session
+            return false;
+        }
     }
-}
+
+    public function logout(Request $request){
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/');
+    }
 
 }

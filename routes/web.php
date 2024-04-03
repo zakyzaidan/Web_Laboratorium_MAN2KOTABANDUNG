@@ -63,3 +63,5 @@ Route::middleware(['auth'])->group(function () {
 
     // tambahkan route lain yang memerlukan autentikasi di sini
 });
+
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
