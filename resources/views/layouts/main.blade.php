@@ -34,10 +34,12 @@
                 <li><a href="">TENTANG</a></li>
                 @if (session()->has('username'))
                     <li class="login"><a>Hi {{ session('username') }}</a></li>
-                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                        @csrf
-                        <button type="submit" class="btn btn-outline-primary" style="margin-top: 10px; margin-right: 5px">LOG-OUT</button>
-                    </form>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-primary" style="margin-top: 10px; margin-right: 5px">LOG-OUT</button>
+                        </form>
+                    </li>
                 @else
                     <li class="login"><a href="login">LOG-IN</a></li>
                 @endif
@@ -55,7 +57,13 @@
                         <li><a href="">STRUKTUR ORGANISASI</a></li>
                         <li><a href="">TENTANG</a></li>
                         @if (session()->has('username'))
-                            <li><a>{{ session('username') }}</a></li>
+                            <li><a>Hi {{ session('username') }}</a></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-primary" style="margin-top: 5px; margin-right: 2.5px">LOG-OUT</button>
+                                </form>
+                            </li>
                         @else
                             <li><a href="login">LOG-IN</a></li>
                         @endif

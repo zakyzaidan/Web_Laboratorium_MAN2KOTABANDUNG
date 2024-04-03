@@ -24,6 +24,17 @@ header.navbar-container .nav-list li a {
     transition: all 0.2s ease-in-out;
 }
 
+/* header.navbar-container .nav-list li form button {
+    display: flex;
+    position: relative;
+    padding: 1rem 0.5rem;
+    text-decoration: none;
+    font-size: 1vw;
+    font-weight: bold;
+    color: white;
+    transition: all 0.2s ease-in-out;
+} */
+
 header.navbar-container .nav-list li a:hover {
     color: white;
 }
@@ -225,7 +236,16 @@ header .keterangan p {
     transition: all 0.2s ease-in-out;
 }
 
-
+/* #sidebar ul li form button {
+    display: flex;
+    position: relative;
+    padding: 0 0.5rem;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    transition: all 0.2s ease-in-out;
+} */
 
 #sidebar ul {
     display: flex;
@@ -254,9 +274,19 @@ header.navbar-container .nav-list .menu-button i{
     #sidebar ul li a {
         display: block;
     }
+
+    #sidebar ul li form button {
+        display: block;
+    }
+
     header.navbar-container .nav-list li a {
         display: none;
     }
+
+    header.navbar-container .nav-list li form button {
+        display: none;
+    }
+
     .nav-list .login {
         display: none;
     }
