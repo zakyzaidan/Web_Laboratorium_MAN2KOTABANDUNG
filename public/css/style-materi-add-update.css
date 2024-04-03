@@ -1,0 +1,63 @@
+main .materi-pembelajaran .header .modal-dialog .modal-header{
+    display: flex;
+}
+
+main .materi-pembelajaran .header .modal-dialog .modal-header .btn-secondary{
+    margin-left: auto;
+    border-radius: 0;
+    background-color: white;
+    border: 1px solid #03378A;
+    color: #03378A;
+}
+
+main .materi-pembelajaran .header .modal-dialog .modal-header .btn-primary{
+    margin-left: 1%;
+    border-radius: 0;
+}
+
+main .materi-pembelajaran .header .modal-dialog .modal-body .form-group{
+    display: block;
+}
+main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail img{
+    width: 40%;
+    box-shadow: 0px 0px 0px rgba(0,0,0,0.2);
+    height: auto;
+    margin: 0 1% 0 0;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #03378A; /* Warna background */
+    color: white; /* Warna teks */
+    border: none; /* Menghilangkan border */
+}
+
+.custom-file-upload:hover {
+    background-color: #03378A; /* Warna background saat di-hover */
+}
+
+main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail input{
+    display: none;
+}
+
+main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail{
+    font-size: 0.76vw;
+}
+main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail #html-preview{
+    width: 40%;
+    box-shadow: 0px 0px 0px rgba(0,0,0,0.2);
+
+    margin: 0 1% 0 0;
+}
+main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail #html-preview img{
+    width: 100%;
+}
+
