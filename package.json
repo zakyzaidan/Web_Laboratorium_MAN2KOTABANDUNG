@@ -16,10 +16,8 @@
     "vite": "^5.0.0"
   },
   "dependencies": {
-    "@ckeditor/ckeditor5-alignment": "^41.2.1",
     "@ckeditor/ckeditor5-autoformat": "^41.2.1",
-    "@ckeditor/ckeditor5-build-classic": "^41.2.1",
-    "@ckeditor/ckeditor5-image": "^41.2.1",
-    "@ckeditor/ckeditor5-typing": "^41.2.1"
+    "bootstrap": "^5.2.3",
+    "tinymce": "^7.0.0"
   }
 }

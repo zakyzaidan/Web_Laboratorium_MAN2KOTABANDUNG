@@ -1,8 +1,6 @@
-main .materi-pembelajaran .header .modal-dialog .modal-header{
-    display: flex;
-}
 
-main .materi-pembelajaran .header .modal-dialog .modal-header .btn-secondary{
+
+ .btn-secondary{
     margin-left: auto;
     border-radius: 0;
     background-color: white;
@@ -10,25 +8,25 @@ main .materi-pembelajaran .header .modal-dialog .modal-header .btn-secondary{
     color: #03378A;
 }
 
-main .materi-pembelajaran .header .modal-dialog .modal-header .btn-primary{
+ .btn-primary{
     margin-left: 1%;
     border-radius: 0;
 }
 
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group{
+ .form-group{
     display: block;
 }
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail{
+ .form-group .thumbnail{
     display: block;
 }
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail .input{
+ .form-group .thumbnail .input{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
 }
 
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail img{
+ .form-group .thumbnail img{
     width: 40%;
     box-shadow: 0px 0px 0px rgba(0,0,0,0.2);
     height: auto;
@@ -48,34 +46,34 @@ main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbna
     background-color: #03378A; /* Warna background saat di-hover */
 }
 
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail input{
+ .form-group .thumbnail input{
     display: none;
 }
 
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail{
+ .form-group .thumbnail{
     font-size: 0.76vw;
 }
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail #html-preview{
+ .form-group .thumbnail #html-preview{
     width: 40%;
     box-shadow: 0px 0px 0px rgba(0,0,0,0.2);
 
     margin: 0 1% 0 0;
 }
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .thumbnail #html-preview img{
+ .form-group .thumbnail #html-preview img{
     width: 100%;
 }
 
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .gabung-input-text{
+ .form-group .gabung-input-text{
     display: flex;
     align-items: center;
     position: relative;
 }
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .gabung-input-text small{
+ .form-group .gabung-input-text small{
     position: absolute;
     right: 2%;
 
 }
-main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .gabung-input-text input{
+ .form-group .gabung-input-text input{
     width: 100%;
 }
 
@@ -118,3 +116,6 @@ main .materi-pembelajaran .header .modal-dialog .modal-body .form-group .gabung-
     cursor: pointer;
   } */
 
+  button.close {
+    display: none;
+}

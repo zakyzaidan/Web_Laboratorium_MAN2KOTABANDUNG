@@ -1,17 +1,6 @@
 const mix = require('laravel-mix')
 
-mix.js('node_modules/@ckeditor/ckeditor5-alignment/src/index.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css');
+mix.js('resources/js/ckeditor.js', 'public/js');
 
 mix.disableNotifications();
-
-mix.webpackConfig({
-    resolve: {
-      alias: {
-        '@ckeditor': path.resolve(__dirname, './node_modules/@ckeditor'),
-
-      },
-    },
-});
-
 

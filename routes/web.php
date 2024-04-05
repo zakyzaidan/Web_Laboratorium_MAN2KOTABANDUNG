@@ -51,6 +51,18 @@ Route::get('/materi-kelas-page', function () {
     return redirect('/login');
 })->middleware('auth');
 
+Route::get('/materi', function () {
+    $username = session('username');
+    $user_type = session('user_type');
+
+
+    return view('materi',compact('username', 'user_type'));
+
+
+    // Anda bisa menambahkan logika lainnya di sini, misalnya jika user_type tidak ada di session
+    return redirect('/login');
+})->middleware('auth');
+
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
