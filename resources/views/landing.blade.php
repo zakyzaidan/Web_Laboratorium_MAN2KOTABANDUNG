@@ -329,6 +329,7 @@
         </div>
     </main>
 @section('js')
+
 <script src="JavaScript/script-landing.js"></script>
 @endsection
 @endsection
