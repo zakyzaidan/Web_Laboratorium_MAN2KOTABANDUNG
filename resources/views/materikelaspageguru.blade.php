@@ -82,7 +82,14 @@
                 </div>
             </div>
             <div class="detail">
-                <div>
+                @foreach ($materi as $item)
+                    <div>
+                        <img src="{{ asset(Storage::url($item->thubnail_materi)) }}" alt="gerakmelingkar">
+                        <figcaption>{{ $item->judul_materi }}</figcaption>
+                        <a href="">Lihat Detail -></a>
+                    </div>
+                @endforeach
+                <!-- <div>
                     <img src="image/gerakmelingkar.png" alt="gerakmelingkar">
                     <figcaption>Gerak Melingkar</figcaption>
                     <a href="">Lihat Detail -></a>
@@ -96,7 +103,7 @@
                     <img src="image/energipotensial.png" alt="energipotensial">
                     <figcaption>Energi Potensial</figcaption>
                     <a href="">Lihat Detail -></a>
-                </div>
+                </div> -->
             </div>
             <br><br><br><br><br><br>
             <div class="detail">

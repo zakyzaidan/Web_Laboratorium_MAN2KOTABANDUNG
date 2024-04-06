@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KelasController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Models\Materi;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,11 +50,12 @@ Route::match(['get', 'post'], '/materi-kelas-page', function (Request $request) 
 
     $username = session('username');
     $user_type = session('user_type');
+    $materi = Materi::all();
 
     if ($user_type == 'admin') {
-        return view('materikelaspageguru',compact('username', 'user_type'));
+        return view('materikelaspageguru',compact('username', 'user_type','materi'));
     } else if ($user_type == 'siswa') {
-        return view('materikelaspagesiswa',compact('username', 'user_type'));
+        return view('materikelaspagesiswa',compact('username', 'user_type','materi'));
     }
 
     // Anda bisa menambahkan logika lainnya di sini, misalnya jika user_type tidak ada di session

@@ -36,6 +36,11 @@ class MateriController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'image-upload' => 'required|file',
+            'html-upload' => 'required|file',
+        ]);
+
         $pathGambar = $request->file('image-upload')->store('public/images');
         $pathDokumen = $request->file('html-upload')->store('public/documents');
         $judul = $request->input('judul');

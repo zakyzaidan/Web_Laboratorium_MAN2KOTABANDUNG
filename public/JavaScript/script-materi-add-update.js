@@ -89,6 +89,37 @@ function getTextWidth(text, fontSize) {
     return context.measureText(text).width;
 }
 
+// Menyimpan data form ke localStorage setiap kali pengguna mengubah nilai input atau textarea
+document.querySelectorAll('input, textarea:not(#edit1, #edit2, #edit3)').forEach(function(element) {
+    element.addEventListener('input', function() {
+        localStorage.setItem(element.name, element.value);
+    });
+});
+
+// Khusus untuk Summernote
+['edit1', 'edit2', 'edit3'].forEach(function(id) {
+    $('#' + id).on('summernote.change', function() {
+        localStorage.setItem(id, $(this).summernote('code'));
+    });
+});
+
+// Memuat kembali data form dari localStorage saat halaman dimuat
+window.addEventListener('load', function() {
+    document.querySelectorAll('input, textarea:not(#edit1, #edit2, #edit3)').forEach(function(element) {
+        if (localStorage.getItem(element.name)) {
+            element.value = localStorage.getItem(element.name);
+        }
+    });
+
+    // Khusus untuk Summernote
+    ['edit1', 'edit2', 'edit3'].forEach(function(id) {
+        if (localStorage.getItem(id)) {
+            $('#' + id).summernote('code', localStorage.getItem(id));
+        }
+    });
+});
+
+
 
 
 
