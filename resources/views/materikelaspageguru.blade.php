@@ -10,24 +10,50 @@
         <div class="materi-pembelajaran">
             <div class="header">
                 <h2>MATERI PEMBELAJARAN <br> PRAKTIKUM</h2>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">+</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="clearForm()">+</button>
 
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            </div>
+            <div class="detail">
+                <?php $i = 0; ?>
+                @foreach ($materi as $item)
+                    <div class="tampilan-materi">
+                        <div class="tampilan-foto">
+                            <a href="">
+                                <img src="{{ asset(Storage::url($item->thubnail_materi)) }}" alt="gerakmelingkar">
+                            </a>
+                            <div class="tampilan-fitur">
+                                <div class="pilihan">
+                                <button type="button" data-toggle="modal" data-target="#exampleModal" onclick="editData({{ $item->id_materi }})" ><i class="fas fa-pen" style="background-color: yellow;"></i></button>
+                                <form action="/materi-kelas-page/delete" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{ $item->id_materi }}">
+                                    <button type="submit"><i class="fas fa-times-circle" style="background-color: red;"></i></button>
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                        <figcaption>{{ $item->judul_materi }}</figcaption>
+                    </div>
+                    <?php $i++; ?>
+                    @if ($i % 3 == 0)
+                        </div><div class="detail">
+                    @endif
+                @endforeach
+            </div>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                     <div class="modal-dialog modal-xl" role="document" >
                         <div class="modal-content" >
-                            <form action="/materi-kelas-page" method="post" enctype="multipart/form-data">
+                            <form action="/materi-kelas-page" id="form" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="_method" value="PUT">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 @csrf
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Tambah Materi</h5>
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batalkan</button>
+                                    <button type="batal" class="btn btn-secondary" data-dismiss="modal">Batalkan</button>
                                     <button type="submit" value="Submit" class="btn btn-primary">Simpan</button>
                                 </div>
                                 <div class="modal-body">
-
-
                                     <div class="form-group">
-
                                         <label for="thumbnail">tampilan materi & modul pembelajaran</label>
                                         <div class="thumbnail">
                                             <div class="input">
@@ -80,15 +106,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="detail">
-                @foreach ($materi as $item)
-                    <div>
-                        <img src="{{ asset(Storage::url($item->thubnail_materi)) }}" alt="gerakmelingkar">
-                        <figcaption>{{ $item->judul_materi }}</figcaption>
-                        <a href="">Lihat Detail -></a>
-                    </div>
-                @endforeach
                 <!-- <div>
                     <img src="image/gerakmelingkar.png" alt="gerakmelingkar">
                     <figcaption>Gerak Melingkar</figcaption>
@@ -104,8 +121,8 @@
                     <figcaption>Energi Potensial</figcaption>
                     <a href="">Lihat Detail -></a>
                 </div> -->
-            </div>
-            <br><br><br><br><br><br>
+
+            <!-- <br><br><br><br><br><br>
             <div class="detail">
                 <div>
                     <img src="image/gerakmelingkar.png" alt="gerakmelingkar">
@@ -122,22 +139,12 @@
                     <figcaption>Energi Potensial</figcaption>
                     <a href="">Lihat Detail -></a>
                 </div>
-            </div>
+            </div> -->
         </div>
-
-
-
-        <br><br><br><br>
         <div class="pagination">
-            <a href="#">«</a>
-            <a href="#">1</a>
-            <a href="#" class="">2</a>
-            <a href="#">3</a>
-            <a href="#">4</a>
-            <a href="#">5</a>
-            <a href="#">»</a>
+            {{ $materi->links('vendor.pagination.custom') }}
         </div>
-        <br><br><br><br>
+
     </main>
 @endsection
 @section('js')

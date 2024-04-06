@@ -21,7 +21,7 @@ function previewHTMLFile() {
     var file = document.querySelector('#html-upload').files[0];
     var reader = new FileReader();
     var preview = document.querySelector('#html-preview');
-
+    console.log(file);
     reader.onloadend = function () {
         preview.srcdoc = reader.result;
     }
@@ -91,6 +91,7 @@ function getTextWidth(text, fontSize) {
 
 // Menyimpan data form ke localStorage setiap kali pengguna mengubah nilai input atau textarea
 document.querySelectorAll('input, textarea:not(#edit1, #edit2, #edit3)').forEach(function(element) {
+    console.log("data1");
     element.addEventListener('input', function() {
         localStorage.setItem(element.name, element.value);
     });
@@ -105,8 +106,9 @@ document.querySelectorAll('input, textarea:not(#edit1, #edit2, #edit3)').forEach
 
 // Memuat kembali data form dari localStorage saat halaman dimuat
 window.addEventListener('load', function() {
+    console.log("data3");
     document.querySelectorAll('input, textarea:not(#edit1, #edit2, #edit3)').forEach(function(element) {
-        if (localStorage.getItem(element.name)) {
+        if (element.type !== 'file' && localStorage.getItem(element.name)) {
             element.value = localStorage.getItem(element.name);
         }
     });
@@ -120,6 +122,60 @@ window.addEventListener('load', function() {
 });
 
 
+document.querySelector('#exampleModal button').addEventListener('click', function() {
+    // Hapus data form dari localStorage dan reset nilai input dan textarea
+    document.querySelectorAll('input, textarea:not(#edit1, #edit2, #edit3)').forEach(function(element) {
+        localStorage.removeItem(element.name);
+        element.value = ''; // Reset nilai input dan textarea
+    });
+
+    // Khusus untuk Summernote
+    ['edit1', 'edit2', 'edit3'].forEach(function(id) {
+        localStorage.removeItem(id);
+        $('#' + id).summernote('code', ''); // Reset nilai Summernote
+    });
+});
+
+
+function clearForm() {
+    console.log('push data');
+    document.getElementById('form').action = '/materi-kelas-page';
+    document.getElementById('form').method = 'POST';
+    document.querySelector('input[name="_method"]').value = 'POST';
+}
+
+// JavaScript
+function editData(id) {
+    console.log('/materi-kelas-page/update/' + id);
+    // Ubah action dan method form
+    document.getElementById('form').action = '/materi-kelas-page/update/' + id;
+    document.getElementById('form').method = 'POST'; // Ubah ini menjadi POST
+    document.querySelector('input[name="_method"]').value = 'PUT'; // Tambahkan ini
+
+    // Ambil data dari server
+    fetch('/mengambil-data/' + id)
+    .then(response => response.json())
+    .then(data => {
+        // Tampilkan data di form
+        console.log(data.modul_pembelajaran_materi);
+        document.getElementById('image-preview').src =  data.thubnail_materi;
+        previewHTMLFileFromServer(data.modul_pembelajaran_materi);
+        document.getElementById('judul').value = data.judul_materi;
+        $('#edit1').summernote('code', data.isi_materi);
+        $('#edit2').summernote('code', data.tujuan_dan_alat_materi);
+        $('#edit3').summernote('code', data.tambahan_materi);
+    });
+}
+
+
+function previewHTMLFileFromServer(url) {
+    fetch(url)
+        .then(response => response.text())
+        .then(data => {
+            var preview = document.querySelector('#html-preview');
+            preview.srcdoc = data;
+        });
+}
 
 
 

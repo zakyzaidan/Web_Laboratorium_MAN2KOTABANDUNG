@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KelasController;
+use App\Http\Controllers\MateriController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Materi;
@@ -40,6 +41,10 @@ Route::get('/pilih-kelas', function () {
 })->middleware('auth');
 
 Route::get('/pilih-kelas/{kelas}', [KelasController::class,'setKelasSession'])->middleware('auth');
+Route::post('/materi-kelas-page/delete', [MateriController::class,'destroy'])->middleware('auth');
+Route::get('/mengambil-data/{id}', [MateriController::class,'show'])->middleware('auth');
+Route::put('/materi-kelas-page/update/{id}', [MateriController::class,'update'])->middleware('auth');
+
 
 Route::match(['get', 'post'], '/materi-kelas-page', function (Request $request) {
     if ($request->isMethod('post')) {
@@ -50,7 +55,7 @@ Route::match(['get', 'post'], '/materi-kelas-page', function (Request $request) 
 
     $username = session('username');
     $user_type = session('user_type');
-    $materi = Materi::all();
+    $materi = Materi::paginate(6);
 
     if ($user_type == 'admin') {
         return view('materikelaspageguru',compact('username', 'user_type','materi'));

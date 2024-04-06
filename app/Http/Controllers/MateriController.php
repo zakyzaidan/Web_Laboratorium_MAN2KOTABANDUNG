@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Materi; // Pastikan Anda telah membuat model Materi
+use Illuminate\Support\Facades\Storage;
 
 class MateriController extends Controller
 {
@@ -14,7 +15,7 @@ class MateriController extends Controller
      */
     public function index()
     {
-        $materi = Materi::all();
+        $materi = Materi::paginate(6);
         return view('materi.index', compact('materi'));
     }
 
@@ -70,10 +71,19 @@ class MateriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
+
         $materi = Materi::find($id);
-        return view('materi.show', compact('materi'));
+
+        return response()->json([
+            'thubnail_materi' => Storage::url($materi->thubnail_materi),
+            'modul_pembelajaran_materi' => Storage::url($materi->modul_pembelajaran_materi),
+            'judul_materi' => $materi->judul_materi,
+            'isi_materi' => $materi->isi_materi,
+            'tujuan_dan_alat_materi' => $materi->tujuan_dan_alat_materi,
+            'tambahan_materi' => $materi->tambahan_materi,
+        ]);
     }
 
     /**
@@ -98,9 +108,38 @@ class MateriController extends Controller
     public function update(Request $request, $id)
     {
         $materi = Materi::find($id);
-        $materi->update($request->all());
-        return redirect('/materi');
+
+        // Update data materi
+        $materi->judul_materi = $request->input('judul');
+        $materi->isi_materi = $request->input('edit1');
+        $materi->tujuan_dan_alat_materi = $request->input('edit2');
+        $materi->tambahan_materi = $request->input('edit3');
+
+        // Cek apakah file baru diunggah
+        if ($request->hasFile('image-upload')) {
+            // Hapus file lama
+            Storage::delete($materi->thubnail_materi);
+
+            // Simpan file baru
+            $pathGambar = $request->file('image-upload')->store('public/images');
+            $materi->thubnail_materi = $pathGambar;
+        }
+
+        if ($request->hasFile('html-upload')) {
+            // Hapus file lama
+            Storage::delete($materi->modul_pembelajaran_materi);
+
+            // Simpan file baru
+            $pathDokumen = $request->file('html-upload')->store('public/documents');
+            $materi->modul_pembelajaran_materi = $pathDokumen;
+        }
+
+        // Simpan perubahan
+        $materi->save();
+
+        return redirect('/materi-kelas-page');
     }
+
 
     /**
      * Menghapus materi tertentu dari database.
@@ -108,10 +147,14 @@ class MateriController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $id = $request->input('id');
         $materi = Materi::find($id);
+        // Hapus file dari storage
+        Storage::delete($materi->thubnail_materi);
+        Storage::delete($materi->modul_pembelajaran_materi);
         $materi->delete();
-        return redirect('/materi');
+        return redirect('/materi-kelas-page');
     }
 }
