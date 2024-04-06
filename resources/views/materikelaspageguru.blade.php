@@ -16,64 +16,67 @@
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
                     <div class="modal-dialog modal-xl" role="document" >
                         <div class="modal-content" >
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Materi</h5>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batalkan</button>
-                            <button type="button" class="btn btn-primary">Simpan</button>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                            <div class="form-group">
+                            <form action="/materi-kelas-page" method="post" enctype="multipart/form-data">
+                                @csrf
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Materi</h5>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batalkan</button>
+                                    <button type="submit" value="Submit" class="btn btn-primary">Simpan</button>
+                                </div>
+                                <div class="modal-body">
 
-                                <label for="thumbnail">tampilan materi & modul pembelajaran</label>
-                                <div class="thumbnail">
-                                    <div class="input">
-                                        <img id="image-preview" src="image/image-default.png" alt="Preview Image">
-                                        <div class="foto">
-                                            <p>Unggah Thumbnail materi 1 Anda di sini. <b>Pedoman penting</b>: 347x288 piksel. <b>Format yang didukung</b>: .jpg, .jpeg, atau .png</p>
-                                            <label for="image-upload" class="custom-file-upload">
-                                                Unggah foto  <i class="fas fa-upload"></i>
-                                            </label>
-                                            <input id="image-upload" type="file" accept=".jpg, .jpeg, .png" onchange="previewImage()"/>
+
+                                    <div class="form-group">
+
+                                        <label for="thumbnail">tampilan materi & modul pembelajaran</label>
+                                        <div class="thumbnail">
+                                            <div class="input">
+                                                <img id="image-preview" src="image/image-default.png" alt="Preview Image">
+                                                <div class="foto">
+                                                    <p>Unggah Thumbnail materi 1 Anda di sini. <b>Pedoman penting</b>: 347x288 piksel. <b>Format yang didukung</b>: .jpg, .jpeg, atau .png</p>
+                                                    <label for="image-upload" class="custom-file-upload">
+                                                        Unggah foto  <i class="fas fa-upload"></i>
+                                                    </label>
+                                                    <input id="image-upload" name="image-upload" type="file" accept=".jpg, .jpeg, .png" onchange="previewImage()"/>
+                                                </div>
+                                            </div>
+                                            <div class="input">
+                                                <iframe id="html-preview"></iframe>
+                                                <div class="html">
+                                                    <p>Unggah Simulasi pada materi yang akan anda unggah. </p>
+                                                    <label for="html-upload" class="custom-file-upload">
+                                                        Unggah Laman  <i class="fas fa-upload"></i>
+                                                    </label>
+                                                    <input id="html-upload" name="html-upload" type="file" accept=".html" onchange="previewHTMLFile()">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="judul">Judul</label>
+                                        <div class="gabung-input-text">
+                                            <input type="text" class="form-control" id="judul" name="judul" maxlength="80" placeholder="Silahkan Tuliskan Judul Materi" oninput="updateCount()">
+                                            <small id="judulHelp" class="form-text text-muted">0/80</small>
                                         </div>
                                     </div>
-                                    <div class="input">
-                                        <iframe id="html-preview"></iframe>
-                                        <div class="html">
-                                            <p>Unggah Simulasi pada materi yang akan anda unggah. </p>
-                                            <label for="html-upload" class="custom-file-upload">
-                                                Unggah Laman  <i class="fas fa-upload"></i>
-                                            </label>
-                                            <input id="html-upload" type="file" accept=".html" onchange="previewHTMLFile()">
-                                        </div>
+                                    <div class="form-group" >
+                                        <label for="isi-materi">isi materi</label>
+                                        <textarea id="edit1" name="edit1"></textarea>
+
+                                    </div>
+                                    <div class="form-group" >
+                                        <label for="tujuan-dan-alat">tujuan & alat</label>
+                                        <textarea id="edit2" name="edit2"></textarea>
+
+                                    </div>
+                                    <div class="form-group" >
+                                        <label for="tambahan">tambahan</label>
+                                        <textarea id="edit3" name="edit3"></textarea>
+
                                     </div>
                                 </div>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="judul">Judul</label>
-                                <div class="gabung-input-text">
-                                    <input type="text" class="form-control" id="judul" maxlength="80" placeholder="Silahkan Tuliskan Judul Materi" oninput="updateCount()">
-                                    <small id="judulHelp" class="form-text text-muted">0/80</small>
-                                </div>
-                            </div>
-                            <div class="form-group" >
-                                <label for="isi-materi">isi materi</label>
-                                <textarea id="edit1" name="editordata"></textarea>
-
-                            </div>
-                            <div class="form-group" >
-                                <label for="tujuan-dan-alat">tujuan & alat</label>
-                                <textarea id="edit2" name="editordata"></textarea>
-
-                            </div>
-                            <div class="form-group" >
-                                <label for="tambahan">tambahan</label>
-                                <textarea id="edit3" name="editordata"></textarea>
-
-                            </div>
                             </form>
-                        </div>
                         </div>
                     </div>
                 </div>

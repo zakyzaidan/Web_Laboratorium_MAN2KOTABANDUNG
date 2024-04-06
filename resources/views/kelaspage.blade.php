@@ -7,24 +7,24 @@
             </h2>
             <ul>
                 <li>
-                    <a href="/materi-kelas-page">
-                        <img src="image/kelas10.png" alt="kelas10">
+                    <a href="/pilih-kelas/10" >
+                        <img src="image/kelas10.png" >
                     </a>
                     <h3>
                         Kelas<br>10
                     </h3>
                 </li>
                 <li>
-                    <a href="">
-                        <img src="image/kelas11.png" alt="kelas11">
+                    <a href="/pilih-kelas/11">
+                        <img src="image/kelas11.png" >
                     </a>
                     <h3>
                         Kelas<br>11
                     </h3>
                 </li>
                 <li>
-                    <a href="">
-                        <img src="image/kelas12.png" alt="kelas12">
+                    <a href="/pilih-kelas/12">
+                        <img src="image/kelas12.png" >
                     </a>
                     <h3>
                         Kelas<br>12
@@ -33,7 +33,9 @@
             </ul>
         </div>
     </main>
-@section('js')
 @endsection
+@section('js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="JavaScript/script-kelas.js"></script>
 @endsection
 

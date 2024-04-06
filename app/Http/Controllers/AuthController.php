@@ -20,7 +20,9 @@ class AuthController extends Controller
         // Cek di tabel t_admin
         $admin = Admin::where('username', $username)->first();
         // if ($admin && Hash::check($password, $admin->password)) {
+
         if ($admin && $password == $admin->password) {
+            $id_admin = $admin->id_admin;
             // Jika autentikasi berhasil
             Auth::login($admin);
 
@@ -29,7 +31,7 @@ class AuthController extends Controller
             // } else {
             //     dd('Pengguna gagal diautentikasi');
             // }
-            session(['username' => $username, 'user_type' => 'admin']);
+            session(['username' => $username, 'user_type' => 'admin', 'id_admin' => $id_admin]);
             // dd(session()->all());
             // dd(Auth::check());
 
