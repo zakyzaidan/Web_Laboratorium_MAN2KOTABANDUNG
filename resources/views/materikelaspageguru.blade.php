@@ -44,13 +44,14 @@
                     <div class="modal-dialog modal-xl" role="document" >
                         <div class="modal-content" >
                             <form action="/materi-kelas-page" id="form" method="post" enctype="multipart/form-data">
-                                    <input type="hidden" name="_method" value="PUT">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="_method" value="PUT">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 @csrf
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Tambah Materi</h5>
                                     <button type="batal" class="btn btn-secondary" data-dismiss="modal">Batalkan</button>
-                                    <button type="submit" value="Submit" class="btn btn-primary">Simpan</button>
+                                    <button type="submit" value="Submit" class="btn btn-primary">Tambahkan</button>
+
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
@@ -106,6 +107,13 @@
                         </div>
                     </div>
                 </div>
+                @if ($errors->any())
+                    <script>
+                        alert('{{$errors->first()}}');
+                    </script>
+                @endif
+
+
                 <!-- <div>
                     <img src="image/gerakmelingkar.png" alt="gerakmelingkar">
                     <figcaption>Gerak Melingkar</figcaption>
@@ -155,7 +163,14 @@
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/super-build/ckeditor.js"></script> -->
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script> -->
 <script src="JavaScript/script-materi-add-update.js"></script>
+@if (session('success'))
+    <script>
+        console.log('test successful');
+        alert('{{ session('success') }}');
+        resetForm();
 
+    </script>
+@endif
 <!-- <script src="https://cdn.ckeditor.com/4.22.1/full-all/ckeditor.js"></script> -->
 
 <script type="module" src="js/test.js"></script>

@@ -122,7 +122,13 @@ window.addEventListener('load', function() {
 });
 
 
-document.querySelector('#exampleModal button').addEventListener('click', function() {
+// Event listener untuk tombol "Batalkan"
+document.querySelector('button[type="batal"]').addEventListener('click', function() {
+    resetForm();
+});
+
+
+function resetForm() {
     // Hapus data form dari localStorage dan reset nilai input dan textarea
     document.querySelectorAll('input, textarea:not(#edit1, #edit2, #edit3)').forEach(function(element) {
         localStorage.removeItem(element.name);
@@ -134,7 +140,8 @@ document.querySelector('#exampleModal button').addEventListener('click', functio
         localStorage.removeItem(id);
         $('#' + id).summernote('code', ''); // Reset nilai Summernote
     });
-});
+}
+
 
 
 function clearForm() {
@@ -142,6 +149,8 @@ function clearForm() {
     document.getElementById('form').action = '/materi-kelas-page';
     document.getElementById('form').method = 'POST';
     document.querySelector('input[name="_method"]').value = 'POST';
+    var btn = document.querySelector("button[value='Submit']");
+    btn.innerHTML = "Tambahan";
 }
 
 // JavaScript
@@ -150,7 +159,13 @@ function editData(id) {
     // Ubah action dan method form
     document.getElementById('form').action = '/materi-kelas-page/update/' + id;
     document.getElementById('form').method = 'POST'; // Ubah ini menjadi POST
-    document.querySelector('input[name="_method"]').value = 'PUT'; // Tambahkan ini
+    document.querySelector('input[name="_method"]').value = 'PUT';
+
+    var btn = document.querySelector("button[value='Submit']");
+    btn.innerHTML = "Update";
+
+
+
 
     // Ambil data dari server
     fetch('/mengambil-data/' + id)

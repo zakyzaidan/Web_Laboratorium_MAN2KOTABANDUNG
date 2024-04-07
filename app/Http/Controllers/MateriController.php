@@ -38,8 +38,12 @@ class MateriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image-upload' => 'required|file',
-            'html-upload' => 'required|file',
+            'image-upload' => 'required|file|mimes:jpg,jpeg,png',
+            'html-upload' => 'required|file|mimes:html',
+            'judul' => 'required',
+            'edit1' => 'required',
+            'edit2' => 'required',
+            'edit3' => 'required',
         ]);
 
         $pathGambar = $request->file('image-upload')->store('public/images');
@@ -62,7 +66,7 @@ class MateriController extends Controller
             'id_admin' => $id_admin, // Menambahkan id_admin ke database
             // Tambahkan data lainnya di sini
         ]);
-        return redirect('/materi-kelas-page');
+        return redirect('/materi-kelas-page')->with('success', 'Data berhasil disimpan');
     }
 
     /**
