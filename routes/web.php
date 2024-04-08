@@ -88,3 +88,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
