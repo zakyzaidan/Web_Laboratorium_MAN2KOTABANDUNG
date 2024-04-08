@@ -6,11 +6,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>MAN 2 KOTA BANDUNG</title>
-    <link rel="stylesheet" href="css/style-landing.css">
-    {{-- <link rel="stylesheet" href="css/style.css"> --}}
-    <link rel="stylesheet" href="css/style-headerfooter.css">
-    <link rel="stylesheet" href="css/style-kelas.css">
+    <link rel="stylesheet" href="{{ asset('css/style-landing.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-headerfooter.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style-kelas.css') }}">
     <!-- Font Awesome 5.15.4 -->
+
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
@@ -28,7 +28,7 @@
     <header class="navbar-container">
         <nav class="nav-list">
             <ul>
-                <li><img src="image/logo-man2.png" alt="logo"></li>
+                <li><img src="{{ asset('image/logo-man2.png') }}" alt="logo"></li>
                 <li><a href="/">BERANDA</a></li>
                 <li><a href="">LAB KIMIA</a></li>
                 <li><a href="">LAB FISIKA</a></li>
@@ -96,7 +96,7 @@
         <div class="row1">
             <div class="col1">
                 <div class="row3">
-                    <img src="image/logo-man2.png" alt="logo">
+                    <img src="{{ asset('image/logo-man2.png') }}" alt="logo">
                     <h2>LABORATORIUM MAN 2
                         KOTA BANDUNG</h2>
                 </div>
@@ -122,7 +122,24 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="JavaScript/script-header.js"></script>
+    <script>
+        var images = [
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract.jpg') }}",
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract2.png') }}",
+            "{{ asset('image/Subtract2.png') }}",
+        ];
+    </script>
+    <script src="{{ asset('JavaScript/script-header.js') }}"></script>
     @yield('js')
 </body>
 </html>

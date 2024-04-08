@@ -1,76 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Input materi</title>
-    <!-- Font Awesome 5.15.4 -->
-    <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+@extends('layouts.main')
+@section('css')
+ <link rel="stylesheet" href="{{ asset('css/style-materi.css') }}">
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+@endsection
+@section('page')
+<main>
+    <div class="konten-keseluruhan">
 
-    <link rel="stylesheet" href="css/style-materi-add-update.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-</head>
-<body>
-    <h1>Form Input Data</h1>
-    <form>
-        <div class="form-group">
-            <label for="thumbnail">Thumbnail Materi</label>
-            <div class="thumbnail">
-                <div class="input">
-                    <img id="image-preview" src="image/image-default.png" alt="Preview Image">
-                    <div class="foto">
-                        <p>Unggah Thumbnail materi 1 Anda di sini. <b>Pedoman penting</b>: 347x288 piksel. <b>Format yang didukung</b>: .jpg, .jpeg, atau .png</p>
-                        <label for="image-upload" class="custom-file-upload">
-                            Unggah foto  <i class="fas fa-upload"></i>
-                        </label>
-                        <input id="image-upload" type="file" accept=".jpg, .jpeg, .png" onchange="previewImage()"/>
-                    </div>
-                </div>
-                <div class="input">
-                    <iframe id="html-preview"></iframe>
-                    <div class="html">
-                        <p>Unggah Simulasi pada materi yang akan anda unggah. </p>
-                        <label for="html-upload" class="custom-file-upload">
-                            Unggah Laman  <i class="fas fa-upload"></i>
-                        </label>
-                        <input id="html-upload" type="file" accept=".html" onchange="previewHTMLFile()">
-                    </div>
-                </div>
+        <div class="konten-utama">
+            <h2>{{ $materi->judul_materi }}</h2>
+            <!-- <img src="{{ asset(Storage::url($materi->thubnail_materi)) }}" alt="gerakmelingkar"> -->
+            <div class="materi-pemberajaran-html">
+                <iframe id="html-preview" style="position: relative;"></iframe>
+                <button id="fullscreen-button" >⛶</button>
+
+
             </div>
 
-        </div>
-        <div class="form-group">
-            <label for="judul">Judul</label>
-            <div class="gabung-input-text">
-                <input type="text" class="form-control" id="judul" maxlength="80" placeholder="Silahkan Tuliskan Judul Materi" oninput="updateCount()">
-                <small id="judulHelp" class="form-text text-muted">0/80</small>
+            <script>
+                function previewHTMLFileFromServer(url) {
+                    fetch(url)
+                        .then(response => response.text())
+                        .then(data => {
+                            var preview = document.querySelector('#html-preview');
+                            preview.srcdoc = data;
+                        });
+                }
+
+                previewHTMLFileFromServer("{{ asset(Storage::url($materi->modul_pembelajaran_materi)) }}");
+
+                document.querySelector('#fullscreen-button').addEventListener('click', function() {
+                    var preview = document.querySelector('#html-preview');
+                    if (preview.requestFullscreen) {
+                        preview.requestFullscreen();
+                    } else if (preview.mozRequestFullScreen) { // Firefox
+                        preview.mozRequestFullScreen();
+                    } else if (preview.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                        preview.webkitRequestFullscreen();
+                    } else if (preview.msRequestFullscreen) { // IE/Edge
+                        preview.msRequestFullscreen();
+                    }
+                });
+            </script>
+            <div id="summernote">
+                {!! $materi->isi_materi !!}
             </div>
-        </div>
-        <div class="form-group">
-        <textarea id="summernote" name="editordata"></textarea>
+
 
         </div>
-        <div class="form-group">
-            <label for="detailEksperimen">Detail Eksperimen:</label>
-            <textarea class="form-control" id="detailEksperimen"></textarea>
+        <div class="tambahan">
+            <div class="satu">
+                <div id="tujuan-dan-alat-materi">
+                    {!! $materi->tujuan_dan_alat_materi !!}
+                </div>
+            </div>
+            <div class="dua">
+                <div id="tambahan-materi">
+                    {!! $materi->tambahan_materi !!}
+                </div>
+            </div>
         </div>
-        </form>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="JavaScript/script-header.js"></script>
+    </div>
+</main>
+<script>
+    $(document).ready(function() {
+        $('#isi-materi').summernote({
+            toolbar: false,
+            disableDragAndDrop: true,
+            disableResizeEditor: true
+        });
+
+        $('#tujuan-dan-alat-materi').summernote({
+            toolbar: false,
+            disableDragAndDrop: true,
+            disableResizeEditor: true
+        });
+
+        $('#tambahan-materi').summernote({
+            toolbar: false,
+            disableDragAndDrop: true,
+            disableResizeEditor: true
+        });
+
+    });
+</script>
+@section('js')
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-<script src="JavaScript/materi.js"></script>
-</body>
-</html>
+<script src="JavaScript/script-materi-add-update.js"></script>
+<!-- {{ asset('css/style-materi.css') }} -->
+<!-- <script type="module" src="{{ asset('js/test.js') }}"></script> -->
+
+@endsection
+@endsection
+
+
+
+
+
+

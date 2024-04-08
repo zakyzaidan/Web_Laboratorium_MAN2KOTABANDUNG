@@ -1,18 +1,4 @@
-var images = [
-    "image/Subtract2.png",
-    "image/Subtract.jpg",
-    "image/Subtract2.png",
-    "image/Subtract2.png",
-    "image/Subtract2.png",
-    "image/Subtract2.png",
-    "image/Subtract2.png",
-    "image/Subtract2.png",
-    "image/Subtract2.png",
-    "image/Subtract2.png",
-    "image/Subtract2.png",
-    "image/Subtract2.png",
-    "image/Subtract2.png",
-];
+
 function createSlideshow(images, containerId, myslide,cekdot,names, codes, emails) {
     var container = document.getElementById(containerId);
     if(cekdot){

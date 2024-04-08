@@ -18,7 +18,7 @@
                 @foreach ($materi as $item)
                     <div class="tampilan-materi">
                         <div class="tampilan-foto">
-                            <a href="">
+                            <a href="/materi/{{$item->id_materi}}">
                                 <img src="{{ asset(Storage::url($item->thubnail_materi)) }}" alt="gerakmelingkar">
                             </a>
                             <div class="tampilan-fitur">
@@ -100,7 +100,6 @@
                                     <div class="form-group" >
                                         <label for="tambahan">tambahan</label>
                                         <textarea id="edit3" name="edit3"></textarea>
-
                                     </div>
                                 </div>
                             </form>

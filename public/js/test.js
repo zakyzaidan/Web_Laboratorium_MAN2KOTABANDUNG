@@ -5,14 +5,20 @@ $(document).ready(function() {
     $('#edit1').summernote({
         toolbar: [
             ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
             ['fontname', ['fontname']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
             ['table', ['table']],
             ['insert', ['link', 'picture', 'video']],
             ['view', ['fullscreen', 'codeview']],
+            ['history', ['undo', 'redo']],
           ],
+
+
           popover: {
             image: [
               ['image', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
@@ -46,11 +52,15 @@ $(document).ready(function() {
       $('#edit2').summernote({
         toolbar: [
             ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
             ['fontname', ['fontname']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
             ['view', ['fullscreen', 'codeview']],
+            ['history', ['undo', 'redo']],
           ],
           popover: {
             image: [
@@ -85,13 +95,17 @@ $(document).ready(function() {
       $('#edit3').summernote({
         toolbar: [
             ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
             ['fontname', ['fontname']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
             ['table', ['table']],
             ['insert', ['link', 'picture', 'video']],
             ['view', ['fullscreen', 'codeview']],
+            ['history', ['undo', 'redo']],
           ],
           popover: {
             image: [

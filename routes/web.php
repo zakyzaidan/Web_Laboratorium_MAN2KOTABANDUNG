@@ -45,6 +45,10 @@ Route::post('/materi-kelas-page/delete', [MateriController::class,'destroy'])->m
 Route::get('/mengambil-data/{id}', [MateriController::class,'show'])->middleware('auth');
 Route::put('/materi-kelas-page/update/{id}', [MateriController::class,'update'])->middleware('auth');
 
+Route::get('/materi/{id}', function ($id) {
+    $materi = Materi::find($id);
+    return view('materi', compact('materi'));
+});
 
 Route::match(['get', 'post'], '/materi-kelas-page', function (Request $request) {
     if ($request->isMethod('post')) {
