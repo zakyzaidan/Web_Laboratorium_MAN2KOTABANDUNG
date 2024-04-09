@@ -48,14 +48,9 @@ Route::put('/materi-kelas-page/update/{id}', [MateriController::class,'update'])
 Route::get('/materi/{id}', function ($id) {
     $materi = Materi::find($id);
     return view('materi', compact('materi'));
-});
-
-Route::match(['get', 'post'], '/materi-kelas-page', function (Request $request) {
-    if ($request->isMethod('post')) {
-        // Logika untuk menangani permintaan POST
-        // Misalnya, Anda dapat memanggil fungsi store() di MateriController
-        app('App\Http\Controllers\MateriController')->store($request);
-    }
+})->middleware('auth');
+Route::post('/materi-kelas-page/add', [MateriController::class,'store'])->middleware('auth');
+Route::get('/materi-kelas-page', function (Request $request) {
 
     $username = session('username');
     $user_type = session('user_type');
@@ -85,11 +80,11 @@ Route::middleware(['auth'])->group(function () {
     });
 
     // tambahkan route lain yang memerlukan autentikasi di sini
-});
+})->middleware('auth');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::get('/foo', function () {
     Artisan::call('storage:link');
-});
+})->middleware('auth');

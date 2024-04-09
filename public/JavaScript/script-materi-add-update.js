@@ -131,14 +131,16 @@ document.querySelector('button[type="batal"]').addEventListener('click', functio
 function resetForm() {
     // Hapus data form dari localStorage dan reset nilai input dan textarea
     document.querySelectorAll('input, textarea:not(#edit1, #edit2, #edit3)').forEach(function(element) {
-        localStorage.removeItem(element.name);
-        element.value = ''; // Reset nilai input dan textarea
+        if (element.type !== 'file' && localStorage.getItem(element.name)){
+            element.value = ''; // Reset nilai input dan textarea
+        }
     });
 
     // Khusus untuk Summernote
     ['edit1', 'edit2', 'edit3'].forEach(function(id) {
-        localStorage.removeItem(id);
-        $('#' + id).summernote('code', ''); // Reset nilai Summernote
+        if (localStorage.getItem(id)){
+            $('#' + id).summernote('code', ''); // Reset nilai Summernote
+        }
     });
 }
 
@@ -146,7 +148,7 @@ function resetForm() {
 
 function clearForm() {
     console.log('push data');
-    document.getElementById('form').action = '/materi-kelas-page';
+    document.getElementById('form').action = '/materi-kelas-page/add';
     document.getElementById('form').method = 'POST';
     document.querySelector('input[name="_method"]').value = 'POST';
     var btn = document.querySelector("button[value='Submit']");

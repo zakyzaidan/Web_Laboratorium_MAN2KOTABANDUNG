@@ -66,6 +66,9 @@ class MateriController extends Controller
             'id_admin' => $id_admin, // Menambahkan id_admin ke database
             // Tambahkan data lainnya di sini
         ]);
+        // Reset sesi
+        // Dapatkan semua data dari sesi
+
         return redirect('/materi-kelas-page')->with('success', 'Data berhasil disimpan');
     }
 
@@ -153,6 +156,7 @@ class MateriController extends Controller
      */
     public function destroy(Request $request)
     {
+
         $id = $request->input('id');
         $materi = Materi::find($id);
         // Hapus file dari storage

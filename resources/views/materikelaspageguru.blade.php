@@ -25,10 +25,12 @@
                                 <div class="pilihan">
                                 <button type="button" data-toggle="modal" data-target="#exampleModal" onclick="editData({{ $item->id_materi }})" ><i class="fas fa-pen" style="background-color: yellow;"></i></button>
                                 <form action="/materi-kelas-page/delete" method="post">
+                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $item->id_materi }}">
                                     <button type="submit"><i class="fas fa-times-circle" style="background-color: red;"></i></button>
                                 </form>
+
                                 </div>
                             </div>
                         </div>
