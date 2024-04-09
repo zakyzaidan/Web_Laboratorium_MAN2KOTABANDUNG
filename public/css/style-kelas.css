@@ -1,22 +1,27 @@
 main .pilihan-kelas{
     background: linear-gradient(to right, #3A3939, #000000, #2F2E2E);
     color: white;
-    padding: 30px 10vw 40px 10vw;
+
 }
 
 main .pilihan-kelas h2{
-    margin: 0 0 25px 0;
+    font-weight: bold;
     font-size: 3vw;
+    padding: 1vw 0 2vw 3vw;
 }
 
 main .pilihan-kelas ul{
     display: flex;
-    justify-content:space-between;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-bottom: 2vw;
 }
 
 main .pilihan-kelas ul li img{
-    width: 300px;
-    height: 300px;
+    width: 20vw;
+    height: 20vw;
     padding: 10px;
     border-radius: 16px;
     background-color: white;
@@ -35,7 +40,7 @@ main .pilihan-kelas ul li{
 main .pilihan-kelas ul li h3{
     text-align: center;
     margin: 0;
-    font-size: 50px;
+    font-size: 5vw;
     padding-top: 15px;
 }
 
@@ -54,14 +59,14 @@ main .pilihan-kelas ul li h3{
     gap: 40px;
 }
 
-.materi-pembelajaran img {
-    width: 70%;
-    height: 80%;
-    object-fit: contain; /* This line makes the images fit their containers */
+/* .materi-pembelajaran img {
+    width: 30%;
+    height: auto;
+    object-fit: contain;
     border-radius: 10px;
     margin: auto;
     box-shadow: 12px 8px 8px rgba(0,0,0,0.2);
-}
+} */
 
 .materi-pembelajaran .detail h3,
 .materi-pembelajaran .detail h4,
@@ -87,7 +92,7 @@ main .pilihan-kelas ul li h3{
     text-decoration: none;
 }
 
-.pagination {
+/* .pagination {
     display: flex;
     justify-content: center;
     padding: 20px 0;
@@ -109,13 +114,13 @@ main .pilihan-kelas ul li h3{
 
 .pagination a:hover:not(.active) {
     background-color: #ddd;
-}
+} */
 
-.header {
+/* .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
 .add-button {
     text-align: center;
@@ -127,4 +132,31 @@ main .pilihan-kelas ul li h3{
     width: 50px;
     height: 50px;
     font-size: 30px;
+}
+
+@media screen and (max-width: 900px){
+
+    main .pilihan-kelas h2{
+        padding-top: 2vw;
+        font-size: 5vw;
+
+    }
+    main .pilihan-kelas ul{
+        display: flex;
+        flex-direction: column;
+    }
+    main .pilihan-kelas ul li{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    main .pilihan-kelas ul li img{
+        width: 300px;
+        height: 300px;
+    }
+    main .pilihan-kelas ul li h3{
+        font-size: 10vw;
+        padding-bottom: 3vw;
+    }
 }

@@ -8,7 +8,7 @@
     <title>MAN 2 KOTA BANDUNG</title>
     <link rel="stylesheet" href="{{ asset('css/style-landing.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style-headerfooter.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/style-kelas.css') }}">
+
     <!-- Font Awesome 5.15.4 -->
 
     <link

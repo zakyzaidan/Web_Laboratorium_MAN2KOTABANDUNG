@@ -33,7 +33,6 @@ main .konten-keseluruhan .tambahan{
     width: 20%;
     display: flex;
     flex-direction: column;
-
 }
 
 main .konten-keseluruhan .tambahan .satu{
@@ -68,4 +67,56 @@ main .konten-keseluruhan .konten-utama .materi-pemberajaran-html button{
     border: none;
     color: white;
     font-weight: bold;
+}
+.note-editor.note-airframe,.note-editor.note-frame {
+    border: none !important;
+}
+.note-editor.note-airframe .note-statusbar .note-resizebar,.note-editor.note-frame .note-statusbar .note-resizebar {
+    background: white !important;
+
+}
+
+.note-editor.note-airframe .note-statusbar,.note-editor.note-frame .note-statusbar {
+    background-color: none !important;
+    border-bottom-left-radius: none !important;
+    border-bottom-right-radius: none !important;
+    border-top: none !important;
+}
+
+@media screen and (max-width: 1050px){
+    main .konten-keseluruhan .konten-utama{
+        width: 70%;
+
+    }
+
+    main .konten-keseluruhan .tambahan{
+        width: 30%;
+    }
+
+}
+
+@media screen and (max-width: 800px){
+    main .konten-keseluruhan{
+
+        flex-direction: column;
+
+    }
+    main .konten-keseluruhan .konten-utama{
+        padding-right: 0px;
+        width: 100%;
+    }
+
+    main .konten-keseluruhan .tambahan{
+
+        width: 100%;
+    }
+    main .konten-keseluruhan .tambahan .satu{
+        box-shadow: none;
+    }
+    main .konten-keseluruhan .tambahan .dua{
+        box-shadow: none;
+        margin-top: 5%;
+
+
+    }
 }

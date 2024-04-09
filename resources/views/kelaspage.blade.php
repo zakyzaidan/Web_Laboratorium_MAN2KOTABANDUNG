@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/style-kelas.css') }}">
+@endsection
 @section('page')
     <main>
         <div class="pilihan-kelas">
@@ -11,7 +14,7 @@
                         <img src="image/kelas10.png" >
                     </a>
                     <h3>
-                        Kelas<br>10
+                        Kelas 10
                     </h3>
                 </li>
                 <li>
@@ -19,7 +22,7 @@
                         <img src="image/kelas11.png" >
                     </a>
                     <h3>
-                        Kelas<br>11
+                        Kelas 11
                     </h3>
                 </li>
                 <li>
@@ -27,7 +30,7 @@
                         <img src="image/kelas12.png" >
                     </a>
                     <h3>
-                        Kelas<br>12
+                        Kelas 12
                     </h3>
                 </li>
             </ul>
