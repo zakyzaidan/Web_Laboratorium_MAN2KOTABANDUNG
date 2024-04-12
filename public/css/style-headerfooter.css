@@ -55,7 +55,6 @@ header.navbar-container .nav-list {
     top: 0;
     background-color: rgba(0, 0, 0, 0);
     z-index: 100;
-
 }
 
 header.navbar-container .nav-list.scrolling-active {
@@ -64,7 +63,6 @@ header.navbar-container .nav-list.scrolling-active {
     background-color: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(5px);
 }
-
 
 footer {
     font-size: 20px;
@@ -257,17 +255,14 @@ body.sidebar-open {
     overflow: hidden;
 }
 
-
 header.navbar-container .nav-list #sidebar.scrolling-active {
-
     height: 100vh;
-
 }
-header.navbar-container .nav-list .menu-button{
+header.navbar-container .nav-list .menu-button {
     display: none;
 }
-header.navbar-container .nav-list .menu-button i{
-   color: white;
+header.navbar-container .nav-list .menu-button i {
+    color: white;
 }
 /* Hide the link that should open and close the topnav on small screens */
 @media screen and (max-width: 1000px) {
@@ -290,7 +285,7 @@ header.navbar-container .nav-list .menu-button i{
     .nav-list .login {
         display: none;
     }
-    header.navbar-container .nav-list .menu-button{
+    header.navbar-container .nav-list .menu-button {
         margin-left: auto;
         padding-right: 20px;
         display: block;
@@ -299,22 +294,19 @@ header.navbar-container .nav-list .menu-button i{
         width: 5vw;
     }
     header .keterangan p {
-
         font-size: 3vw;
 
         width: 30vw;
-
     }
     header .keterangan {
         padding: 55px 0px 5px 0px;
     }
-    footer .row1{
-
+    footer .row1 {
         background: linear-gradient(to right, #010c20, #053386);
         padding: 25px 0;
     }
     footer h2,
-    footer p{
+    footer p {
         font-size: 2.2vw;
     }
 
@@ -325,10 +317,10 @@ header.navbar-container .nav-list .menu-button i{
         width: 50vw;
     }
 
-    footer .row1 .col1 .row3{
+    footer .row1 .col1 .row3 {
         padding-bottom: 10px;
     }
-    footer .row1 .col2 .fab{
+    footer .row1 .col2 .fab {
         font-size: 2.2vw;
     }
     footer .row1 .col2 ul li {

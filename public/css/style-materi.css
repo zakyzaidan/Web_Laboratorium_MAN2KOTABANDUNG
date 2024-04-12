@@ -1,65 +1,61 @@
 footer .row1,
 footer .row2,
-header .keterangan{
+header .keterangan {
     display: none;
 }
 
-
 header.navbar-container .nav-list {
-
     background-image: linear-gradient(to right, #010c20, #053386);
 }
 
-main{
+main {
     padding: 6.4vw 0px 0px 0px;
-
 }
-main .konten-keseluruhan{
+main .konten-keseluruhan {
     width: 100%;
     display: flex;
     flex-direction: row;
     padding: 3% 5% 3% 5%;
 }
 
-main .konten-keseluruhan .konten-utama h2{
+main .konten-keseluruhan .konten-utama h2 {
     margin-bottom: 2vw;
 }
-main .konten-keseluruhan .konten-utama{
+main .konten-keseluruhan .konten-utama {
     width: 80%;
     padding-right: 5%;
 }
 
-main .konten-keseluruhan .tambahan{
+main .konten-keseluruhan .tambahan {
     width: 20%;
     display: flex;
     flex-direction: column;
 }
 
-main .konten-keseluruhan .tambahan .satu{
+main .konten-keseluruhan .tambahan .satu {
     box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.2);
     /* margin: 0 15%; */
     padding: 5%;
     border-radius: 30px;
 }
 
-main .konten-keseluruhan .tambahan .dua{
+main .konten-keseluruhan .tambahan .dua {
     box-shadow: 10px 10px 4px 0px rgba(0, 0, 0, 0.2);
     /* margin: 0 15%; */
     margin-top: 10%;
     padding: 5%;
     border-radius: 30px;
-
 }
 
-main .konten-keseluruhan .konten-utama .materi-pemberajaran-html{
+main .konten-keseluruhan .konten-utama .materi-pemberajaran-html {
     position: relative;
     width: 100%;
 }
-main .konten-keseluruhan .konten-utama .materi-pemberajaran-html iframe{
+main .konten-keseluruhan .konten-utama .materi-pemberajaran-html iframe {
     width: 100%;
     height: 20vw;
 }
-main .konten-keseluruhan .konten-utama .materi-pemberajaran-html button{
+main .konten-keseluruhan .konten-utama .materi-pemberajaran-html button {
     position: absolute;
     bottom: 0.8vw;
     right: 0.1vw;
@@ -68,55 +64,50 @@ main .konten-keseluruhan .konten-utama .materi-pemberajaran-html button{
     color: white;
     font-weight: bold;
 }
-.note-editor.note-airframe,.note-editor.note-frame {
+.note-editor.note-airframe,
+.note-editor.note-frame {
     border: none !important;
 }
-.note-editor.note-airframe .note-statusbar .note-resizebar,.note-editor.note-frame .note-statusbar .note-resizebar {
+.note-editor.note-airframe .note-statusbar .note-resizebar,
+.note-editor.note-frame .note-statusbar .note-resizebar {
     background: white !important;
-
 }
 
-.note-editor.note-airframe .note-statusbar,.note-editor.note-frame .note-statusbar {
+.note-editor.note-airframe .note-statusbar,
+.note-editor.note-frame .note-statusbar {
     background-color: none !important;
     border-bottom-left-radius: none !important;
     border-bottom-right-radius: none !important;
     border-top: none !important;
 }
 
-@media screen and (max-width: 1050px){
-    main .konten-keseluruhan .konten-utama{
+@media screen and (max-width: 1050px) {
+    main .konten-keseluruhan .konten-utama {
         width: 70%;
-
     }
 
-    main .konten-keseluruhan .tambahan{
+    main .konten-keseluruhan .tambahan {
         width: 30%;
     }
-
 }
 
-@media screen and (max-width: 800px){
-    main .konten-keseluruhan{
-
+@media screen and (max-width: 800px) {
+    main .konten-keseluruhan {
         flex-direction: column;
-
     }
-    main .konten-keseluruhan .konten-utama{
+    main .konten-keseluruhan .konten-utama {
         padding-right: 0px;
         width: 100%;
     }
 
-    main .konten-keseluruhan .tambahan{
-
+    main .konten-keseluruhan .tambahan {
         width: 100%;
     }
-    main .konten-keseluruhan .tambahan .satu{
+    main .konten-keseluruhan .tambahan .satu {
         box-shadow: none;
     }
-    main .konten-keseluruhan .tambahan .dua{
+    main .konten-keseluruhan .tambahan .dua {
         box-shadow: none;
         margin-top: 5%;
-
-
     }
 }

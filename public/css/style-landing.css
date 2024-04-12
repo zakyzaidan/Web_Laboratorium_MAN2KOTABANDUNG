@@ -5,33 +5,34 @@ body {
     margin: 0;
 }
 
-
-
 @keyframes fade {
-    from {opacity: 0}
-    to {opacity: 1}
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-main .pilihan-pelajaran{
-    background: linear-gradient(to right, #3A3939, #000000, #2F2E2E);
+main .pilihan-pelajaran {
+    background: linear-gradient(to right, #3a3939, #000000, #2f2e2e);
     color: white;
     padding: 5vw 10vw;
 }
 
-main .pilihan-pelajaran h2{
+main .pilihan-pelajaran h2 {
     margin: 0 0 25px 0;
     font-size: 3vw;
 }
 
-main .pilihan-pelajaran ul{
+main .pilihan-pelajaran ul {
     padding: 0;
     margin: 0;
     display: flex;
-    justify-content:space-between;
-
+    justify-content: space-between;
 }
 
-main .pilihan-pelajaran ul li img{
+main .pilihan-pelajaran ul li img {
     width: 170px;
     height: auto;
     padding: 10px;
@@ -42,19 +43,18 @@ main .pilihan-pelajaran ul li img{
     margin-right: auto;
 }
 
-
-main .pilihan-pelajaran ul li img:hover{
+main .pilihan-pelajaran ul li img:hover {
     transform: scale(1.1);
     transition: transform 0.2s;
 }
 
-main .pilihan-pelajaran ul li{
+main .pilihan-pelajaran ul li {
     display: block;
     list-style-type: none;
     /* padding: 5px; */
 }
 
-main .pilihan-pelajaran ul li h3{
+main .pilihan-pelajaran ul li h3 {
     text-align: center;
     margin: 0;
     font-size: 3vw;
@@ -70,34 +70,32 @@ main .profil {
     width: 100%;
 }
 
-main .profil .deskripsi h2{
+main .profil .deskripsi h2 {
     margin: 0;
 }
 
-main .profil .deskripsi{
+main .profil .deskripsi {
     padding-right: 40px;
     font-size: 21px;
 }
 
-main .profil .video{
+main .profil .video {
     display: none;
 }
 
-main .profil iframe{
+main .profil iframe {
     height: 32vw;
     width: 105vw;
     border-radius: 1.6vw;
 }
 
-
-
-.slideshow-container2{
+.slideshow-container2 {
     display: flex;
     position: relative;
     margin: 2vw;
 }
 
-.slideshow-container2 div{
+.slideshow-container2 div {
     background-color: white;
     box-shadow: 0px 0px 1vw 1px rgba(0, 0, 0, 0.2);
     border-radius: 2vw;
@@ -106,11 +104,10 @@ main .profil iframe{
 
 .mySlides2 {
     display: flex;
-    position:relative;
+    position: relative;
     /* animation-name: fade; */
     /* animation-duration: 6s; */
     /* transition: transform 0.5s ease; */
-
 }
 /* .mySlides2:hover{
     transform: translateX(100%);
@@ -125,18 +122,28 @@ main .profil iframe{
     animation-duration: 0.5s;
 }
 
-
-
 @keyframes animation1 {
-    from {transform: translateX(100%); opacity: 0;}
-    to {transform: translateX(0); opacity: 1;}
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 @keyframes animation2 {
-    from {transform: translateX(-100%); opacity: 0;}
-    to {transform: translateX(0); opacity: 1;}
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
-.Tenaga-Laboratorium h2{
+.Tenaga-Laboratorium h2 {
     margin: 0;
     text-align: center;
     padding-top: 4vw;
@@ -144,36 +151,36 @@ main .profil iframe{
 
 .Tenaga-Laboratorium .detail h3,
 .Tenaga-Laboratorium .detail h4,
-.Tenaga-Laboratorium .detail h5{
+.Tenaga-Laboratorium .detail h5 {
     margin: 0;
     text-align: center;
     font-size: 2vw;
 }
 
 .Tenaga-Laboratorium .detail h4,
-.Tenaga-Laboratorium .detail h5{
+.Tenaga-Laboratorium .detail h5 {
     font-weight: normal;
 }
 
-.Tenaga-Laboratorium .detail{
+.Tenaga-Laboratorium .detail {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .Tenaga-Laboratorium .detail .next,
-.Tenaga-Laboratorium .detail .prev{
+.Tenaga-Laboratorium .detail .prev {
     background: linear-gradient(to right, #053386, #010c20);
     border-radius: 999px;
 }
 
-.Tenaga-Laboratorium img{
+.Tenaga-Laboratorium img {
     height: auto;
     width: 20vw;
 }
 
 .Galeri-Laboratorium {
-    background: linear-gradient(to right, #000000, #2F2E2E);
+    background: linear-gradient(to right, #000000, #2f2e2e);
     color: white;
     padding: 3vw 10vw;
 }
@@ -195,16 +202,16 @@ main .profil iframe{
 } */
 
 .isi-lab {
-   width: 100%;
-   margin-bottom: 2vw;
-   display: flex;
+    width: 100%;
+    margin-bottom: 2vw;
+    display: flex;
 }
-.isi-lab .slidegambar{
-   width: 85%;
-   border-radius: 1vw;
+.isi-lab .slidegambar {
+    width: 85%;
+    border-radius: 1vw;
 }
 
-.isi-lab .penjelasan-galeri-lab-posisi1{
+.isi-lab .penjelasan-galeri-lab-posisi1 {
     display: none;
     padding: 1vw;
     border-radius: 1vw;
@@ -217,22 +224,22 @@ main .profil iframe{
 
 .penjelasan-galeri-lab,
 .isi-lab .penjelasan-galeri-lab-posisi2 {
-   background-color: none;
-   padding: 1vw;
-   border-radius: 1vw;
-   width: 20%;
+    background-color: none;
+    padding: 1vw;
+    border-radius: 1vw;
+    width: 20%;
 }
 
 .penjelasan-galeri-lab h3,
 .penjelasan-galeri-lab p {
-   color:white;
+    color: white;
 }
 
 .container-peraturan {
     width: 60%;
 }
 
-main .peraturan .isi-peraturan{
+main .peraturan .isi-peraturan {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -289,13 +296,13 @@ main .peraturan .isi-peraturan{
     border-radius: 10px;
 } */
 
-.struktur-organisasi h2{
+.struktur-organisasi h2 {
     font-size: 2.8vw;
     font-weight: bold;
     padding: 2vw 0;
 }
 
-.struktur-organisasi{
+.struktur-organisasi {
     width: 100%;
     display: flex;
     align-items: center;
@@ -303,7 +310,7 @@ main .peraturan .isi-peraturan{
     flex-direction: column;
 }
 
-.struktur-organisasi .baris1{
+.struktur-organisasi .baris1 {
     width: 100%;
     display: flex;
     align-items: center;
@@ -311,7 +318,7 @@ main .peraturan .isi-peraturan{
     flex-direction: column;
 }
 
-.struktur-organisasi .baris2{
+.struktur-organisasi .baris2 {
     width: 100%;
     height: 26vw;
     display: flex;
@@ -320,7 +327,7 @@ main .peraturan .isi-peraturan{
     flex-direction: row;
 }
 
-.struktur-organisasi .baris3{
+.struktur-organisasi .baris3 {
     width: 100%;
     display: flex;
     align-items: center;
@@ -338,9 +345,9 @@ main .peraturan .isi-peraturan{
     color: white;
     font-size: 1vw;
     border-radius: 1.6vw;
-  }
+}
 
-.struktur-organisasi .box1 .line{
+.struktur-organisasi .box1 .line {
     border-top: 0.1vw solid white;
     width: 80%;
     position: absolute;
@@ -349,37 +356,36 @@ main .peraturan .isi-peraturan{
 }
 
 .struktur-organisasi p,
-.struktur-organisasi h5{
+.struktur-organisasi h5 {
     font-size: 1.5vw;
 }
 
-.struktur-organisasi h5{
+.struktur-organisasi h5 {
     padding-bottom: 2vw;
 }
 
-.struktur-organisasi p{
+.struktur-organisasi p {
     font-weight: bold;
 }
 
-.struktur-organisasi .box1 img{
+.struktur-organisasi .box1 img {
     width: 20vw;
     border-radius: 1.6vw;
     border-radius: 16px;
-
 }
 
-.struktur-organisasi .baris1  .line1 {
+.struktur-organisasi .baris1 .line1 {
     border-left: 0.1vw solid black;
     border-right: 0.1vw dashed black;
     width: 12%;
     height: 10vw;
-  }
+}
 
 .struktur-organisasi .baris2 .line2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction:column;
+    flex-direction: column;
     height: 100%;
     width: 12%;
 }
@@ -399,38 +405,38 @@ main .peraturan .isi-peraturan{
     height: 100%;
     width: 100%;
 }
-.struktur-organisasi .baris2  .line3 {
+.struktur-organisasi .baris2 .line3 {
     border-bottom: 0.1vw solid black;
     width: 5%;
 }
 
-.struktur-organisasi .baris3  .line4 {
+.struktur-organisasi .baris3 .line4 {
     border-left: 0.1vw solid black;
     border-right: 0.1vw dashed black;
     width: 12%;
     height: 15vw;
 }
 
-.struktur-organisasi .baris3 .arrow{
+.struktur-organisasi .baris3 .arrow {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: row;
 }
 
-.struktur-organisasi .baris3 .arrow{
+.struktur-organisasi .baris3 .arrow {
     display: flex;
     width: 100%;
 }
 
-.struktur-organisasi .baris3 .arrow .fas{
+.struktur-organisasi .baris3 .arrow .fas {
     position: relative;
     top: -0.8px;
     padding: 0 5.4%;
     font-size: 1.2vw;
 }
 
-.struktur-organisasi .kontainer-struktur1{
+.struktur-organisasi .kontainer-struktur1 {
     width: 85vw;
     height: 30vw;
     background: linear-gradient(to right, #010c20, #053386);
@@ -444,21 +450,20 @@ main .peraturan .isi-peraturan{
     top: -0.8px;
 }
 
-.struktur-organisasi .baris3  .line5 {
+.struktur-organisasi .baris3 .line5 {
     border-left: 0.1vw solid black;
     height: 10vw;
     position: relative;
     top: -0.8vw;
 }
 
-.struktur-organisasi .baris3  .config {
-
+.struktur-organisasi .baris3 .config {
     position: relative;
     top: -2vw;
     font-size: 1.2vw;
 }
 
-.struktur-organisasi .kontainer-struktur2{
+.struktur-organisasi .kontainer-struktur2 {
     width: 85vw;
     height: 30vw;
     background: linear-gradient(to right, #010c20, #053386);
@@ -472,83 +477,78 @@ main .peraturan .isi-peraturan{
     top: -1.8vw;
 }
 
-.struktur-organisasi .ketorgChart{
+.struktur-organisasi .ketorgChart {
     width: 100%;
     display: flex;
     flex-direction: column;
     padding: 5vw 0 10vw 15vw;
-
 }
-.struktur-organisasi .ketorgChart .satu i{
+.struktur-organisasi .ketorgChart .satu i {
     font-size: 1vw;
     display: inline-block;
 }
 
-.struktur-organisasi .ketorgChart .satu{
+.struktur-organisasi .ketorgChart .satu {
     display: flex;
     align-items: center;
     flex-direction: row;
     padding-bottom: 2vw;
-
-
 }
 
-.struktur-organisasi .ketorgChart .satu p{
+.struktur-organisasi .ketorgChart .satu p {
     text-align: center;
     padding-left: 2vw;
     bottom: -0.5vw;
     margin: 0;
 }
 
-.struktur-organisasi .ketorgChart .satu .garis1{
+.struktur-organisasi .ketorgChart .satu .garis1 {
     border-top: 0.1vw solid black;
     width: 20vw;
 }
 
-.struktur-organisasi .ketorgChart .satu .garis2{
+.struktur-organisasi .ketorgChart .satu .garis2 {
     border-top: 0.1vw dashed black;
     width: 20vw;
 }
 body.sidebar-open {
     overflow: hidden;
-  }
+}
 
-  @media screen and (max-width: 900px){
-    .Tenaga-Laboratorium img{
+@media screen and (max-width: 900px) {
+    .Tenaga-Laboratorium img {
         height: auto;
         width: 80vw;
     }
-  }
-  @media screen and (max-width: 1300px){
-    .Tenaga-Laboratorium img{
+}
+@media screen and (max-width: 1300px) {
+    .Tenaga-Laboratorium img {
         height: auto;
         width: 30vw;
     }
     .Tenaga-Laboratorium .detail h3,
     .Tenaga-Laboratorium .detail h4,
-    .Tenaga-Laboratorium .detail h5{
-
+    .Tenaga-Laboratorium .detail h5 {
         font-size: 3vw;
     }
-  }
+}
 @media screen and (max-width: 800px) {
-    main .pilihan-pelajaran ul{
+    main .pilihan-pelajaran ul {
         flex-direction: column;
         align-items: center;
         text-align: center;
     }
 
-    main .pilihan-pelajaran ul li img{
+    main .pilihan-pelajaran ul li img {
         width: 40vw;
         height: auto;
         padding: 1vw;
     }
-    main .profil{
+    main .profil {
         display: block;
     }
 
-
-    main .profil iframe{
+    main .profil iframe {
         display: flex;
         height: auto;
         width: 80%;
@@ -559,38 +559,36 @@ body.sidebar-open {
         display: block;
     }
 
-    .isi-lab .slidegambar{
+    .isi-lab .slidegambar {
         width: 100%;
     }
 
-    .penjelasan-galeri-lab{
+    .penjelasan-galeri-lab {
         width: 100%;
         text-align: left;
     }
 
-    .isi-lab .penjelasan-galeri-lab-posisi2{
+    .isi-lab .penjelasan-galeri-lab-posisi2 {
         display: none;
     }
 
-    .isi-lab .penjelasan-galeri-lab-posisi1{
+    .isi-lab .penjelasan-galeri-lab-posisi1 {
         display: block;
     }
-    main .profil .deskripsi h2{
+    main .profil .deskripsi h2 {
         text-align: center;
         padding-bottom: 3vh;
     }
-    main .profil .deskripsi{
+    main .profil .deskripsi {
         padding: 0;
     }
-    main .pilihan-pelajaran h2{
-
+    main .pilihan-pelajaran h2 {
         font-size: 4vw;
     }
-    main .pilihan-pelajaran ul li h3{
+    main .pilihan-pelajaran ul li h3 {
         padding-top: 0;
         padding-bottom: 1vh;
         font-size: 4vw;
-
     }
     .container-peraturan {
         width: 80%;
