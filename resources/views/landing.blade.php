@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('page')
     <main>
-        <div class="pilihan-pelajaran">
+        <div class="pilihan-pelajaran" id="pilihan-pelajaran">
 
             <h2>
                 MATERI PEMBELAJARAN
@@ -46,7 +46,7 @@
                 </li>
             </ul>
         </div>
-        <div class="profil">
+        <div class="profil" id="profil">
 
             <div class="deskripsi">
                 <h2>
@@ -231,7 +231,7 @@
                 </div>
             </div>
         </div>
-        <div class="struktur-organisasi">
+        <div class="struktur-organisasi" id="struktur-organisasi">
             <h2>
                 STRUKTUR ORGANISASI
             </h2>

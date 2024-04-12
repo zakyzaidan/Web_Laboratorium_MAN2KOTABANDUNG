@@ -30,11 +30,11 @@
             <ul>
                 <li><img src="{{ asset('image/logo-man2.png') }}" alt="logo"></li>
                 <li><a href="/">BERANDA</a></li>
-                <li><a href="">LAB KIMIA</a></li>
-                <li><a href="">LAB FISIKA</a></li>
-                <li><a href="">LAB BIOLOGI</a></li>
-                <li><a href="">STRUKTUR ORGANISASI</a></li>
-                <li><a href="">TENTANG</a></li>
+                <li><a href="/#pilihan-pelajaran">LAB KIMIA</a></li>
+                <li><a href="/#pilihan-pelajaran">LAB FISIKA</a></li>
+                <li><a href="/#pilihan-pelajaran">LAB BIOLOGI</a></li>
+                <li><a href="/#struktur-organisasi">STRUKTUR ORGANISASI</a></li>
+                <li><a href="/#profil">TENTANG</a></li>
                 @if (session()->has('username'))
                     <li class="login"><a>Hi {{ session('username') }}</a></li>
                     <li>
@@ -53,12 +53,12 @@
                 </div>
                 <nav id="sidebar">
                     <ul>
-                        <li><a href="landing">BERANDA</a></li>
-                        <li><a href="">LAB KIMIA</a></li>
-                        <li><a href="">LAB FISIKA</a></li>
-                        <li><a href="">LAB BIOLOGI</a></li>
-                        <li><a href="">STRUKTUR ORGANISASI</a></li>
-                        <li><a href="">TENTANG</a></li>
+                        <li><a href="/">BERANDA</a></li>
+                        <li><a href="/#pilihan-pelajaran">LAB KIMIA</a></li>
+                        <li><a href="/#pilihan-pelajaran">LAB FISIKA</a></li>
+                        <li><a href="/#pilihan-pelajaran">LAB BIOLOGI</a></li>
+                        <li><a href="/#struktur-organisasi">STRUKTUR ORGANISASI</a></li>
+                        <li><a href="/#profil">TENTANG</a></li>
                         @if (session()->has('username'))
                             <li><a>Hi {{ session('username') }}</a></li>
                             <li>
