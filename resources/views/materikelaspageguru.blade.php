@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <label for="thumbnail">tampilan materi & modul pembelajaran</label>
+                                        <figcaption>tampilan materi & modul pembelajaran</figcaption>
                                         <div class="thumbnail">
                                             <div class="input">
                                                 <img id="image-preview" src="image/image-default.png" alt="Preview Image">
@@ -91,17 +91,17 @@
                                     </div>
                                     <div class="form-group" >
                                         <label for="isi-materi">isi materi</label>
-                                        <textarea id="edit1" name="edit1"></textarea>
+                                        <textarea id="isi-materi" name="isi-materi"></textarea>
 
                                     </div>
                                     <div class="form-group" >
                                         <label for="tujuan-dan-alat">tujuan & alat</label>
-                                        <textarea id="edit2" name="edit2"></textarea>
+                                        <textarea id="tujuan-dan-alat" name="tujuan-dan-alat"></textarea>
 
                                     </div>
                                     <div class="form-group" >
                                         <label for="tambahan">tambahan</label>
-                                        <textarea id="edit3" name="edit3"></textarea>
+                                        <textarea id="tambahan" name="tambahan"></textarea>
                                     </div>
                                 </div>
                             </form>

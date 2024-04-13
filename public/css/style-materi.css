@@ -81,6 +81,7 @@ main .konten-keseluruhan .konten-utama .materi-pemberajaran-html button {
     border-top: none !important;
 }
 
+
 @media screen and (max-width: 1050px) {
     main .konten-keseluruhan .konten-utama {
         width: 70%;
@@ -89,6 +90,11 @@ main .konten-keseluruhan .konten-utama .materi-pemberajaran-html button {
     main .konten-keseluruhan .tambahan {
         width: 30%;
     }
+    main .konten-keseluruhan {
+
+        padding: 6% 5% 3% 5%;
+    }
+
 }
 
 @media screen and (max-width: 800px) {
@@ -98,6 +104,10 @@ main .konten-keseluruhan .konten-utama .materi-pemberajaran-html button {
     main .konten-keseluruhan .konten-utama {
         padding-right: 0px;
         width: 100%;
+    }
+    main .konten-keseluruhan {
+
+        padding: 8% 5% 3% 5%;
     }
 
     main .konten-keseluruhan .tambahan {
@@ -111,3 +121,5 @@ main .konten-keseluruhan .konten-utama .materi-pemberajaran-html button {
         margin-top: 5%;
     }
 }
+
+

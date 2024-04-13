@@ -34,6 +34,8 @@ Route::get('/login', function () {
     return view('login');
 });
 
+Route::get('/pilih-pembelajaran/{pelajaran}', [KelasController::class,'setpembelajaranSession'])->middleware('auth');
+
 Route::get('/pilih-kelas', function () {
     $username = session('username');
     $user_type = session('user_type');

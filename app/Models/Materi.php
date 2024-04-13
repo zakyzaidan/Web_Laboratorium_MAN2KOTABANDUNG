@@ -22,6 +22,7 @@ class Materi extends Model
         'tujuan_dan_alat_materi',
         'id_admin',
         'kelas',
+        'pelajaran',
         'tambahan_materi'
     ];
 

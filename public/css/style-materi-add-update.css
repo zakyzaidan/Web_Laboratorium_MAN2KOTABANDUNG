@@ -28,6 +28,7 @@ main .materi-pembelajaran .header h2 {
     }
 }
 
+
 .btn-secondary {
     margin-left: auto;
     border-radius: 0;
@@ -179,6 +180,10 @@ main .materi-pembelajaran .detail .tampilan-materi .tampilan-foto {
     position: relative;
     height: 80%;
 }
+main .materi-pembelajaran .detail .tampilan-materi .tampilan-foto:hover{
+    transform: scale(1.1);
+    transition: transform 0.2s;
+}
 
 main .materi-pembelajaran .detail figcaption {
     font-size: 3vw;
@@ -259,5 +264,19 @@ main
     .pagination a,
     .pagination span {
         font-size: 3vw;
+    }
+}
+
+@media screen and (max-width: 950px) {
+
+    main .modal-body .form-group .thumbnail{
+        font-size: 1.16vw;
+    }
+}
+
+@media screen and (max-width: 650px) {
+
+    main .modal-body .form-group .thumbnail{
+        font-size: 1.66vw;
     }
 }

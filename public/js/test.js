@@ -3,7 +3,7 @@ $(document).on('shown.bs.modal', function(e) {
 });
 
 $(document).ready(function() {
-    $('#edit1').summernote({
+    $('#isi-materi').summernote({
         toolbar: [
             ['style', ['style']],
             ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -50,7 +50,7 @@ $(document).ready(function() {
         fontSizeUnits: ['px', 'pt'],
         lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '2.0', '3.0']
       }),
-      $('#edit2').summernote({
+      $('#tujuan-dan-alat').summernote({
         toolbar: [
             ['style', ['style']],
             ['style', ['bold', 'italic', 'underline', 'clear']],
@@ -93,7 +93,7 @@ $(document).ready(function() {
         fontSizeUnits: ['px', 'pt'],
         lineHeights: ['0.2', '0.3', '0.4', '0.5', '0.6', '0.8', '1.0', '1.2', '1.4', '1.5', '2.0', '3.0']
       }),
-      $('#edit3').summernote({
+      $('#tambahan').summernote({
         toolbar: [
             ['style', ['style']],
             ['style', ['bold', 'italic', 'underline', 'clear']],

@@ -3,21 +3,18 @@
  <link rel="stylesheet" href="{{ asset('css/style-materi.css') }}">
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+
 @endsection
 @section('page')
 <main>
     <div class="konten-keseluruhan">
-
         <div class="konten-utama">
             <h2>{{ $materi->judul_materi }}</h2>
             <!-- <img src="{{ asset(Storage::url($materi->thubnail_materi)) }}" alt="gerakmelingkar"> -->
             <div class="materi-pemberajaran-html">
                 <iframe id="html-preview" style="position: relative;"></iframe>
                 <button id="fullscreen-button" >⛶</button>
-
-
             </div>
-
             <script>
                 function previewHTMLFileFromServer(url) {
                     fetch(url)
@@ -43,11 +40,10 @@
                     }
                 });
             </script>
-            <div id="summernote">
+            <div id="isi-materi">
                 {!! $materi->isi_materi !!}
             </div>
-
-
+            <script src="{{ asset('JavaScript/script-materi.js') }}"></script>
         </div>
         <div class="tambahan">
             <div class="satu">
@@ -92,8 +88,18 @@
 </script>
 <!-- <script src="JavaScript/script-materi-add-update.js"></script> -->
 <!-- {{ asset('css/style-materi.css') }} -->
-<!-- <script type="module" src="{{ asset('js/test.js') }}"></script> -->
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var canvas = document.getElementById('myCanvas');
+    if (canvas) { // pastikan elemen canvas ada
+        var context = canvas.getContext('2d', { willReadFrequently: true });
+        // Kode lainnya
+    } else {
+        console.log("Element with id 'myCanvas' does not exist");
+    }
+});
+</script>
 @endsection
 @endsection
 

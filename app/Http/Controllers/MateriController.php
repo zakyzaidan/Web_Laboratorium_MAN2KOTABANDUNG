@@ -53,8 +53,9 @@ class MateriController extends Controller
         $tujuan_dan_alat_materi = $request->input('edit2');
         $tambahan_materi = $request->input('edit3');
         $kelas = session('kelas'); // Ganti dengan data kelas Anda
+        $pembelajaran = session('pembelajaran');
         $id_admin = session('id_admin');
-
+        // dd($pembelajaran);
         Materi::create([
             'judul_materi' => $judul,
             'thubnail_materi' => $pathGambar,
@@ -63,6 +64,7 @@ class MateriController extends Controller
             'tujuan_dan_alat_materi' => $tujuan_dan_alat_materi,
             'tambahan_materi' => $tambahan_materi,
             'kelas' => $kelas, // Menambahkan data kelas ke database
+            'pelajaran' => $pembelajaran,
             'id_admin' => $id_admin, // Menambahkan id_admin ke database
             // Tambahkan data lainnya di sini
         ]);

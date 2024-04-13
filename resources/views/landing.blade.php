@@ -20,7 +20,7 @@
                 </li>
                 <li>
                     @if (session()->has('username'))
-                    <a href="/pilih-kelas">
+                    <a href="/pilih-pembelajaran/FISIKA">
                         <img src="image/Lab-Fisika.png" alt="Lab Fisika">
                     </a>
                     <h3>Fisika</h3>
