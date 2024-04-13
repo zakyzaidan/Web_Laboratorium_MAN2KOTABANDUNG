@@ -80,7 +80,7 @@ function getTextWidth(text, fontSize) {
 
 // Menyimpan data form ke localStorage setiap kali pengguna mengubah nilai input atau textarea
 document
-    .querySelectorAll("input, textarea:not(#edit1, #edit2, #edit3)")
+    .querySelectorAll("input, textarea:not(#isi-materi, #tujuan-dan-alat, #tambahan)")
     .forEach(function (element) {
         console.log("data1");
         element.addEventListener("input", function () {
@@ -89,7 +89,7 @@ document
     });
 
 // Khusus untuk Summernote
-["edit1", "edit2", "edit3"].forEach(function (id) {
+["isi-materi", "tujuan-dan-alat", "tambahan"].forEach(function (id) {
     $("#" + id).on("summernote.change", function () {
         localStorage.setItem(id, $(this).summernote("code"));
     });
@@ -99,7 +99,7 @@ document
 window.addEventListener("load", function () {
     console.log("data3");
     document
-        .querySelectorAll("input, textarea:not(#edit1, #edit2, #edit3)")
+        .querySelectorAll("input, textarea:not(#isi-materi, #tujuan-dan-alat, #tambahan)")
         .forEach(function (element) {
             if (element.type !== "file" && localStorage.getItem(element.name)) {
                 element.value = localStorage.getItem(element.name);
@@ -107,7 +107,7 @@ window.addEventListener("load", function () {
         });
 
     // Khusus untuk Summernote
-    ["edit1", "edit2", "edit3"].forEach(function (id) {
+    ["isi-materi", "tujuan-dan-alat", "tambahan"].forEach(function (id) {
         if (localStorage.getItem(id)) {
             $("#" + id).summernote("code", localStorage.getItem(id));
         }
@@ -124,7 +124,7 @@ document
 function resetForm() {
     // Hapus data form dari localStorage dan reset nilai input dan textarea
     document
-        .querySelectorAll("input, textarea:not(#edit1, #edit2, #edit3)")
+        .querySelectorAll("input, textarea:not(#isi-materi, #tujuan-dan-alat, #tambahan)")
         .forEach(function (element) {
             if (element.type !== "file" && localStorage.getItem(element.name)) {
                 element.value = ""; // Reset nilai input dan textarea
@@ -132,7 +132,7 @@ function resetForm() {
         });
 
     // Khusus untuk Summernote
-    ["edit1", "edit2", "edit3"].forEach(function (id) {
+    ["isi-materi", "tujuan-dan-alat", "tambahan"].forEach(function (id) {
         if (localStorage.getItem(id)) {
             $("#" + id).summernote("code", ""); // Reset nilai Summernote
         }
@@ -168,9 +168,9 @@ function editData(id) {
             document.getElementById("image-preview").src = data.thubnail_materi;
             previewHTMLFileFromServer(data.modul_pembelajaran_materi);
             document.getElementById("judul").value = data.judul_materi;
-            $("#edit1").summernote("code", data.isi_materi);
-            $("#edit2").summernote("code", data.tujuan_dan_alat_materi);
-            $("#edit3").summernote("code", data.tambahan_materi);
+            $("#isi-materi").summernote("code", data.isi_materi);
+            $("#tujuan-dan-alat").summernote("code", data.tujuan_dan_alat_materi);
+            $("#tambahan").summernote("code", data.tambahan_materi);
         });
 }
 

@@ -41,17 +41,17 @@ class MateriController extends Controller
             'image-upload' => 'required|file|mimes:jpg,jpeg,png',
             'html-upload' => 'required|file|mimes:html',
             'judul' => 'required',
-            'edit1' => 'required',
-            'edit2' => 'required',
-            'edit3' => 'required',
+            'isi-materi' => 'required',
+            'tujuan-dan-alat' => 'required',
+            'tambahan' => 'required',
         ]);
 
         $pathGambar = $request->file('image-upload')->store('public/images');
         $pathDokumen = $request->file('html-upload')->store('public/documents');
         $judul = $request->input('judul');
-        $isi_materi = $request->input('edit1');
-        $tujuan_dan_alat_materi = $request->input('edit2');
-        $tambahan_materi = $request->input('edit3');
+        $isi_materi = $request->input('isi-materi');
+        $tujuan_dan_alat_materi = $request->input('tujuan-dan-alat');
+        $tambahan_materi = $request->input('tambahan');
         $kelas = session('kelas'); // Ganti dengan data kelas Anda
         $pembelajaran = session('pembelajaran');
         $id_admin = session('id_admin');
@@ -120,9 +120,9 @@ class MateriController extends Controller
 
         // Update data materi
         $materi->judul_materi = $request->input('judul');
-        $materi->isi_materi = $request->input('edit1');
-        $materi->tujuan_dan_alat_materi = $request->input('edit2');
-        $materi->tambahan_materi = $request->input('edit3');
+        $materi->isi_materi = $request->input('isi-materi');
+        $materi->tujuan_dan_alat_materi = $request->input('tujuan-dan-alat');
+        $materi->tambahan_materi = $request->input('tambahan');
 
         // Cek apakah file baru diunggah
         if ($request->hasFile('image-upload')) {
@@ -158,13 +158,20 @@ class MateriController extends Controller
      */
     public function destroy(Request $request)
     {
-
         $id = $request->input('id');
         $materi = Materi::find($id);
-        // Hapus file dari storage
+
+        // Delete files from storage
         Storage::delete($materi->thubnail_materi);
         Storage::delete($materi->modul_pembelajaran_materi);
-        $materi->delete();
-        return redirect('/materi-kelas-page');
+
+        // Check if files are deleted
+        if (!Storage::exists($materi->thubnail_materi) && !Storage::exists($materi->modul_pembelajaran_materi)) {
+            $materi->delete();
+            return redirect('/materi-kelas-page')->with('success', 'Files and record deleted successfully');
+        } else {
+            return redirect('/materi-kelas-page')->with('error', 'Failed to delete files or record');
+        }
     }
+
 }

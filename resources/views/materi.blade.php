@@ -88,18 +88,6 @@
 </script>
 <!-- <script src="JavaScript/script-materi-add-update.js"></script> -->
 <!-- {{ asset('css/style-materi.css') }} -->
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-    var canvas = document.getElementById('myCanvas');
-    if (canvas) { // pastikan elemen canvas ada
-        var context = canvas.getContext('2d', { willReadFrequently: true });
-        // Kode lainnya
-    } else {
-        console.log("Element with id 'myCanvas' does not exist");
-    }
-});
-</script>
 @endsection
 @endsection
 

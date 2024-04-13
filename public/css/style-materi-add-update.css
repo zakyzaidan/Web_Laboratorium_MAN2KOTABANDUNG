@@ -268,7 +268,6 @@ main
 }
 
 @media screen and (max-width: 950px) {
-
     main .modal-body .form-group .thumbnail{
         font-size: 1.16vw;
     }
