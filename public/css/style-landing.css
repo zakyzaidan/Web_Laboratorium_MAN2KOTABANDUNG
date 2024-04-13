@@ -515,6 +515,10 @@ body.sidebar-open {
     overflow: hidden;
 }
 
+body header .keterangan .highlight a{
+    color: white;
+}
+
 @media screen and (max-width: 900px) {
     .Tenaga-Laboratorium img {
         height: auto;

@@ -328,9 +328,9 @@
             </div>
         </div>
     </main>
+@endsection
 @section('js')
 
 <script src="JavaScript/script-landing.js"></script>
-@endsection
 @endsection
 
