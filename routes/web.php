@@ -42,6 +42,10 @@ Route::get('/pilih-kelas', function () {
     return view('kelaspage', compact('username', 'user_type'));
 })->middleware('auth');
 
+Route::get('/Dashboard-inventaris', function () {
+    return view('Dashboard/inventaris');
+})->middleware('auth');
+
 Route::get('/pilih-kelas/{kelas}', [KelasController::class,'setKelasSession'])->middleware('auth');
 Route::post('/materi-kelas-page/delete', [MateriController::class,'destroy'])->middleware('auth');
 Route::get('/mengambil-data/{id}', [MateriController::class,'show'])->middleware('auth');
