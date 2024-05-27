@@ -88,7 +88,12 @@ body main aside .Inventaris i{
     font-size: 0.8em;
 }
 
-body main section .card {
+body main .bagian_page{
+    display: flex;
+    flex-direction: column;
+}
+
+body main .bagian_page section .card {
     background: linear-gradient(to bottom right, #010c20, #053386);
     color: white;
     padding: 20px;
@@ -100,29 +105,51 @@ body main section .card {
 
   }
 
-  body main section{
-    width: 80%;
+  body main .bagian_page section{
+    width: 75vw;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr; /* Tiga kolom dengan lebar fleksibel */
-    grid-template-rows: 140px 140px; /* Baris pertama dan ketiga mengikuti konten, baris kedua setinggi 200px */
+    grid-template-rows: 120px 120px; /* Baris pertama dan ketiga mengikuti konten, baris kedua setinggi 200px */
     gap: 5%;
     margin: 2% 3% 0 3%;
   }
 
-  body main section img{
-    width: 100px;
-    height: 100px;
+  body main .bagian_page section img{
+    width: 80px;
+    height: 80px;
   }
 
-  body main section .grup{
+  body main .bagian_page section .grup{
     display: flex;
     flex-direction: column;
   }
 
-  body main section .grup span{
+  body main .bagian_page section .grup span{
     font-size: 2em;
     font-weight: bold;
   }
+  body main .bagian_page .bawah{
+    display: flex;
+    flex-direction: row;
+    margin: 4vh 0 0 2vw;
+    justify-content: space-between;
+
+  }
+
+  body main .bagian_page .bawah canvas{
+    width: 45vw !important;
+    height: 40vh !important;
+  }
+
+  body main .bagian_page .bawah .jadwal p{
+    font-weight: bold;
+    color: black;
+  }
+
+
+
+
+
 
 
 
