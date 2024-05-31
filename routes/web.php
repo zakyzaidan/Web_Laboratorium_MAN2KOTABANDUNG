@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MateriController;
 use App\Http\Controllers\InventarisasiAlatController;
+use App\Http\Controllers\InventarisasiFasilitasController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Materi;
@@ -61,6 +62,15 @@ Route::prefix('inventarisasi-alat')->group(function () {
     Route::delete('/{id}', [InventarisasiAlatController::class, 'destroy'])->name('alat.destroy'); // Delete tool
 });
 
+Route::prefix('inventarisasi-fasilitas')->group(function () {
+    Route::get('/', [InventarisasiFasilitasController::class, 'index'])->name('fasilitas.index'); // List of tools
+    Route::get('/create', [InventarisasiFasilitasController::class, 'create'])->name('fasilitas.create'); // Create tool form
+    Route::post('/', [InventarisasiFasilitasController::class, 'store'])->name('fasilitas.store'); // Store new tool
+    Route::get('/{id}', [InventarisasiFasilitasController::class, 'show'])->name('fasilitas.show'); // Show tool detail
+    Route::get('/{id}/edit', [InventarisasiFasilitasController::class, 'edit'])->name('fasilitas.edit'); // Edit tool form
+    Route::put('/{id}', [InventarisasiFasilitasController::class, 'update'])->name('fasilitas.update'); // Update tool
+    Route::delete('/{id}', [InventarisasiFasilitasController::class, 'destroy'])->name('fasilitas.destroy'); // Delete tool
+});
 
 
 Route::get('/Table-fasilitas', function () {

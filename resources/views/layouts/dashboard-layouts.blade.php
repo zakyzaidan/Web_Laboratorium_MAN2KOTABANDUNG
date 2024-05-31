@@ -40,13 +40,13 @@
                     <div id="myDropdown" class="dropdown-content">
                         <ul>
                             <li>
-                                <p><a href="/inventarisasi-alat/">Daftar Inventarisasi Barang</a></p>
+                                <p><a href="/inventarisasi-alat/">Daftar Inventarisasi Alat</a></p>
                             </li>
                             <li>
-                                <p>Daftar Usulan Barang</p>
+                                <p><a href="/inventarisasi-fasilitas/">Daftar Inventarisasi fasilitas</a></p>
                             </li>
                             <li>
-                                <p>Daftar Peminjaman Barang</p>
+                                <p>Daftar Inventarisasi bahan</p>
                             </li>
                         </ul>
                     </div>
