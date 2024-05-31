@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\MateriController;
+use App\Http\Controllers\InventarisasiAlatController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Materi;
@@ -44,6 +45,30 @@ Route::get('/pilih-kelas', function () {
 
 Route::get('/Dashboard-inventaris', function () {
     return view('Dashboard/inventaris');
+})->middleware('auth');
+
+// routes/web.php
+
+
+
+Route::prefix('inventarisasi-alat')->group(function () {
+    Route::get('/', [InventarisasiAlatController::class, 'index'])->name('alat.index'); // List of tools
+    Route::get('/create', [InventarisasiAlatController::class, 'create'])->name('alat.create'); // Create tool form
+    Route::post('/', [InventarisasiAlatController::class, 'store'])->name('alat.store'); // Store new tool
+    Route::get('/{id}', [InventarisasiAlatController::class, 'show'])->name('alat.show'); // Show tool detail
+    Route::get('/{id}/edit', [InventarisasiAlatController::class, 'edit'])->name('alat.edit'); // Edit tool form
+    Route::put('/{id}', [InventarisasiAlatController::class, 'update'])->name('alat.update'); // Update tool
+    Route::delete('/{id}', [InventarisasiAlatController::class, 'destroy'])->name('alat.destroy'); // Delete tool
+});
+
+
+
+Route::get('/Table-fasilitas', function () {
+    return view('Dashboard/table_fasilitas');
+})->middleware('auth');
+
+Route::get('/Table-bahan', function () {
+    return view('Dashboard/table_bahan');
 })->middleware('auth');
 
 Route::get('/pilih-kelas/{kelas}', [KelasController::class,'setKelasSession'])->middleware('auth');

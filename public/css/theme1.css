@@ -52,11 +52,13 @@
   }
   .cld-day.today .cld-number{
     display: inline-block;
-    height: 20px;
-    width: 20px;
+    height: 25px;
+    width: 25px;
     border-radius: 50px;
     background: #666;
     color: #fff;
+    margin: 0;
+    padding: 0;
   }
   .cld-day.disableDay{
     opacity: 0.5;
@@ -98,10 +100,12 @@
       }
       .cld-number.eventday{
         display: inline-block;
-        height: 20px;
-        width: 20px;
+        height: 25px;
+        width: 25px;
         border-radius: 50px;
         border: 1px solid #999;
+        margin: 0;
+        padding: 0;
       }
       .cld-number.eventday:hover{
         cursor: pointer;
