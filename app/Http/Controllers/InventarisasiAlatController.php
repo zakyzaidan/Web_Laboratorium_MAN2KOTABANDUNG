@@ -95,7 +95,8 @@ class InventarisasiAlatController extends Controller
     $alat->kondisi_buruk = $request->input('kondisiBuruk');
     $alat->lokasi_penyimpanan = $request->input('lokasiPenyimpanan');
     $alat->satuan = $request->input('satuan');
-
+    $alat->keterangan = $request->input('keterangan');
+    $alat->jumlah = $request->input('jumlah');
     // Cek apakah file baru diunggah
     if ($request->hasFile('image-upload')) {
         // Hapus file lama

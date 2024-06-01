@@ -34,10 +34,10 @@
                 $i = 1; // Initialize counter
             @endphp
             @foreach ($bahanList as $bahan)
-            <tr class="clickable-row" data-href="{{ route('bahan.show', $bahan->id_t_inventarisasi_bahan) }}">
+            <tr>
                 <td>{{ $i++ }}</td>
                 <td><img src="{{ asset(Storage::url($bahan->foto)) }}" width="50" height="50" alt="{{ $bahan->nama_bahan }}"></td>
-                <td>{{ $bahan->nama_bahan }}</td>
+                <td class="clickable-row" data-href="{{ route('bahan.show', $bahan->id_t_inventarisasi_bahan) }}">{{ $bahan->nama_bahan }}</td>
                 <td>{{ $bahan->jumlah }}</td>
                 <td>{{ $bahan->satuan }}</td>
                 <td>{{ $bahan->kondisi_baik }}</td>

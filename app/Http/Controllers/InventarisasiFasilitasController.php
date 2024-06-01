@@ -92,6 +92,8 @@ class InventarisasiFasilitasController extends Controller
     $fasilitas->kondisi_buruk = $request->input('kondisiBuruk');
     $fasilitas->lokasi_penyimpanan = $request->input('lokasiPenyimpanan');
     $fasilitas->satuan = $request->input('satuan');
+    $fasilitas->keterangan = $request->input('keterangan');
+    $fasilitas->jumlah = $request->input('jumlah');
 
     // Cek apakah file baru diunggah
     if ($request->hasFile('image-upload')) {

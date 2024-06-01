@@ -103,15 +103,6 @@ Route::prefix('jadwal-praktikum')->middleware(['auth', 'checkUserType:inventaris
 });
 
 
-
-Route::get('/Table-fasilitas', function () {
-    return view('Dashboard/table_fasilitas');
-})->middleware('auth');
-
-Route::get('/Table-bahan', function () {
-    return view('Dashboard/table_bahan');
-})->middleware('auth');
-
 Route::get('/pilih-kelas/{kelas}', [KelasController::class,'setKelasSession'])->middleware('auth');
 Route::post('/materi-kelas-page/delete', [MateriController::class,'destroy'])->middleware('auth');
 Route::get('/mengambil-data/{id}', [MateriController::class,'show'])->middleware('auth');

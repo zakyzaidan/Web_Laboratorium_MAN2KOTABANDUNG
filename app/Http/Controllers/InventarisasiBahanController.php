@@ -116,6 +116,8 @@ class InventarisasiBahanController extends Controller
     $bahan->kondisi_buruk = $request->input('kondisiBuruk');
     $bahan->lokasi_penyimpanan = $request->input('lokasiPenyimpanan');
     $bahan->satuan = $request->input('satuan');
+    $bahan->keterangan = $request->input('keterangan');
+    $bahan->jumlah = $request->input('jumlah');
 
     // Cek apakah file baru diunggah
     if ($request->hasFile('image-upload')) {
