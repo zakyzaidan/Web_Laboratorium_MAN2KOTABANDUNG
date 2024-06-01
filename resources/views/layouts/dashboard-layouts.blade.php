@@ -46,7 +46,13 @@
                                 <p><a href="/inventarisasi-fasilitas/">Daftar Inventarisasi fasilitas</a></p>
                             </li>
                             <li>
-                                <p>Daftar Inventarisasi bahan</p>
+                                <p><a href="/inventarisasi-bahan/">Daftar Inventarisasi bahan</a></p>
+                            </li>
+                            <li>
+                                <p><a href="/tenaga-laboratorium/">Daftar Tenaga Laboratorium</a></p>
+                            </li>
+                            <li>
+                                <p><a href="/jadwal-praktikum/">Jadwal Praktikum</a></p>
                             </li>
                         </ul>
                     </div>

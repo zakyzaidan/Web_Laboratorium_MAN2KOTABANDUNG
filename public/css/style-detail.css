@@ -1,0 +1,78 @@
+main .container{
+    color: black;
+}
+
+main .container h3{
+    color: #007bff;
+}
+
+main .container .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #f8f9fa;
+
+}
+main .container .card {
+    width: 600px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+}
+
+main .container .card hr{
+    border: none;
+    height: 2px; /* Thickness of the hr */
+    background-color: black; /* Color of the hr */
+    margin: 0; /* Optional: adjust the margin */
+}
+main .container .card img {
+    width: 150px;
+    height: 200px;
+    margin: auto;
+    display: block;
+}
+main .container .card h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+main .container .card p {
+    margin-bottom: 0;
+}
+main .container .btn-back {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    padding: 2px 3px 5px 3px;
+    color: #007bff;
+    text-decoration: none;
+    border: 2px solid #007bff;
+    border-radius: 20px;
+}
+main .container .btn-back i {
+    margin-right: 5px;
+}
+main .container .btn-group .btn {
+    margin-right: 10px;
+}
+
+main .container .btn-left {
+    background-color: white;
+    color: #03378A;
+    border: 1px solid #03378A;
+    margin-bottom: 10px;
+}
+main .container .btn-right {
+    background-color: #03378A;
+    color: white;
+    border: 1px solid #03378A;
+    margin-bottom: 10px;
+}
+main .container .btn-left:hover, main .container .btn-right:hover {
+    opacity: 0.8;
+}

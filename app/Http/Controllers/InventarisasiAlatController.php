@@ -66,7 +66,7 @@ class InventarisasiAlatController extends Controller
     public function show($id)
     {
         $alat = InventarisasiAlat::find($id);
-        return view('Dashboard/table_alat', compact('alat'));
+        return view('Dashboard/detail_alat', compact('alat'));
     }
 
     public function edit($id)

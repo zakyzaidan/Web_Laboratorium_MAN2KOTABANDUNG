@@ -2,7 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
-<link rel="stylesheet" href="{{ asset('css/style-dashbord-table-alat.css') }}">
+<link rel="stylesheet" href="{{ asset('css/style-dashboard-table.css') }}">
 @endsection
 
 @section('page')
@@ -37,7 +37,7 @@
             <tr>
                 <td>{{ $i++ }}</td>
                 <td><img src="{{ asset(Storage::url($alat->foto)) }}" width="50" height="50" alt="{{ $alat->nama_alat }}"></td>
-                <td>{{ $alat->nama_alat }}</td>
+                <td class="clickable-row" data-href="{{ route('alat.show', $alat->id_t_inventarisasi_alat) }}">{{ $alat->nama_alat }}</td>
                 <td>{{ $alat->jumlah }}</td>
                 <td>{{ $alat->satuan }}</td>
                 <td>{{ $alat->kondisi_baik }}</td>
@@ -154,7 +154,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-<script src="{{ asset('JavaScript/script-dashbord-table-alat.js') }}"></script>
+<script src="{{ asset('JavaScript/script-dashbord-table.js') }}"></script>
 <script>
 $(document).ready(function() {
     $('#myTable').DataTable();
@@ -246,6 +246,10 @@ $(document).ready(function() {
                 }
             });
         }
+    });
+
+    $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
     });
 });
 

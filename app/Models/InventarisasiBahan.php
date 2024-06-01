@@ -22,7 +22,7 @@ class InventarisasiBahan extends Model
     // Kolom-kolom yang dapat diisi (fillable)
     protected $fillable = [
         'foto',
-        'nama_alat',
+        'nama_bahan',
         'golongan',
         'mr',
         'kemurnian',
@@ -32,6 +32,8 @@ class InventarisasiBahan extends Model
         'produksi',
         'lokasi_penyimpanan',
         'tanggal_masuk',
+        'jumlah',
+        'satuan',
         'kondisi_baik',
         'kondisi_buruk',
         'keterangan',
