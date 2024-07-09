@@ -90,6 +90,9 @@ Route::prefix('tenaga-laboratorium')->middleware(['auth', 'checkUserType:inventa
     Route::put('/{id}', [TenagaLaboratoriumController::class, 'update'])->name('tenaga.update'); // Update tool
     Route::delete('/{id}', [TenagaLaboratoriumController::class, 'destroy'])->name('tenaga.destroy'); // Delete tool
 });
+Route::get('/jadwal-praktikum/check-date/{jadwal_praktikum}', [JadwalPraktikumController::class, 'checkDate']);
+
+Route::get('/jadwal-praktikum/check-time-slot', [JadwalPraktikumController::class, 'checkTimeSlot']);
 
 Route::prefix('jadwal-praktikum')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
     Route::get('/', [JadwalPraktikumController::class, 'index'])->name('jadwal.index'); // List of tools
@@ -99,7 +102,6 @@ Route::prefix('jadwal-praktikum')->middleware(['auth', 'checkUserType:inventaris
     Route::get('/{id}/edit', [JadwalPraktikumController::class, 'edit'])->name('jadwal.edit'); // Edit tool form
     Route::put('/{id}', [JadwalPraktikumController::class, 'update'])->name('jadwal.update'); // Update tool
     Route::delete('/{id}', [JadwalPraktikumController::class, 'destroy'])->name('jadwal.destroy'); // Delete tool
-    Route::get('/check-date/{jadwal_praktikum}', [JadwalPraktikumController::class, 'checkDate'])->name('check-date');
 });
 
 

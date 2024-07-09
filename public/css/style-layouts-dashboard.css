@@ -18,6 +18,7 @@ body main{
 }
 body main aside{
     width: 20%;
+    height: 120vh;
 }
 
 body main aside a{
@@ -42,6 +43,31 @@ body main aside .profil{
     display: flex;
     align-items: center;
 }
+
+header.navbar-container .nav-list ul {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    gap: 1.5rem 0.5rem;
+    padding-top: 10px;
+    justify-content: space-between;
+}
+
+header.navbar-container .nav-list li {
+    list-style-type: none;
+}
+
+header.navbar-container .nav-list li a {
+    display: flex;
+    position: relative;
+    padding: 1rem 0.5rem;
+    text-decoration: none;
+    font-size: 1vw;
+    font-weight: bold;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
 
 
 

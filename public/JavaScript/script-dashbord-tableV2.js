@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
     $('#myTable').DataTable({
-        pageLength: 5, // Menampilkan 50 entri per halaman secara default
+        pageLength: 10, // Menampilkan 50 entri per halaman secara default
         lengthMenu: false // Menyembunyikan menu entri per halaman
     });
 });

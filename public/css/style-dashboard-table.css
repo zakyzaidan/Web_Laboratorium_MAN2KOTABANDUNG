@@ -3,7 +3,7 @@ body main .bagian_page {
     display: flex;
     flex-direction: column;
     color: black;
-    margin: 3% 4% 0 4%;
+    margin: 3% 4% 5% 4%;
 }
 
 body main .bagian_page .table_header {

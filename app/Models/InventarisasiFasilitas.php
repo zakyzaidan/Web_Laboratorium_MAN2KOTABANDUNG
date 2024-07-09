@@ -10,7 +10,7 @@ class InventarisasiFasilitas extends Model
     use HasFactory;
 
     // Nama tabel yang terhubung dengan model
-    protected $table = 't_inventarisasi_fasilitas';
+    protected $table = 't_kimia_inventarisasi_fasilitas';
 
     // Nama kolom primary key
     protected $primaryKey = 'id_t_inventarisasi_fasilitas';

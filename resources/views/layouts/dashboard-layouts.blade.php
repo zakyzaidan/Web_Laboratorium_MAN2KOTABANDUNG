@@ -16,15 +16,31 @@
 </head>
 
 <body>
-    <header>
-        <h2>Laboratorium MAN 2</h2>
+    <header class="navbar-container">
+        <nav class="nav-list">
+            <ul>
+                <li>
+                    <h2>Laboratorium Kimia MAN 2</h2>
+                </li>
+            @if (session()->has('username'))
+                                <li>
+                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-primary" style="margin-top: 5px; margin-right: 2.5px">LOG-OUT</button>
+                                    </form>
+                                </li>
+                            @else
+                                <li><a href="login">LOG-IN</a></li>
+                            @endif
+            </ul>
+        </nav>
     </header>
     <main>
         <aside>
             <hr>
             <div class="profil">
                 <div class="circle"></div>
-                <p>Dr. Dadang Suparlan M.T</p>
+                <p>{{ session('username') }}</p>
             </div>
             <hr>
             <div class="jadwal">
@@ -76,7 +92,7 @@
         }
         window.onload = function() {
             var tinggiHeader = document.querySelector('header').offsetHeight;
-            document.querySelector('aside').style.height = 'calc(100vh - ' + tinggiHeader + 'px)';
+            document.querySelector('aside') //.style.height = 'calc(100vh - ' + tinggiHeader + 'px)';
         }
     </script>
     @yield('js')

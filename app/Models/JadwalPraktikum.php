@@ -10,7 +10,7 @@ class JadwalPraktikum extends Model
     use HasFactory;
 
     // Nama tabel yang terhubung dengan model
-    protected $table = 't_jadwal_praktikum';
+    protected $table = 't_kimia_jadwal_praktikum';
 
     // Nama primary key
     protected $primaryKey = 'id_t_jadwal_praktikum';
@@ -20,11 +20,11 @@ class JadwalPraktikum extends Model
 
     // Kolom-kolom yang dapat diisi (fillable)
     protected $fillable = [
-        'foto',
         'nama',
         'mata_pelajaran',
         'topik_praktikum',
         'jadwal_praktikum',
         'laboratorium',
+        'jadwal_jam_praktikum',
     ];
 }

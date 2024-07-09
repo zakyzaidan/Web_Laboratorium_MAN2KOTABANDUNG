@@ -148,7 +148,7 @@ $(document).ready(function() {
     $(document).on('click', '.edit-button', function() {
         var id = $(this).data('id');
         $.get('/tenaga-laboratorium/' + id + '/edit', function(data) {
-            $('#modalLabel').text('Edit Alat');
+            $('#modalLabel').text('Edit Tenaga');
             $('#form').attr('action', '/tenaga-laboratorium/' + id);
             document.querySelector('input[name="_method"]').value = "PUT";
             $('#nama').val(data.nama);

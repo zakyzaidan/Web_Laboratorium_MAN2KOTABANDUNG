@@ -15,12 +15,12 @@
         <thead>
             <tr>
                 <th>nomer</th>
-                <th data-orderable="false">foto</th>
                 <th>nama</th>
                 <th>nama perajaran</th>
                 <th>topik praktikum</th>
                 <th>jadwal praktikum</th>
                 <th>laboratorium</th>
+                <th>jadwal jam pelajaran</th>
                 <th data-orderable="false">action</th>
             </tr>
 
@@ -31,14 +31,24 @@
                 $i = 1; // Initialize counter
             @endphp
             @foreach ($jadwalList as $jadwal)
+            @php
+                $jadwalJamPelajaran = explode(',', $jadwal->jadwal_jam_praktikum);
+            @endphp
             <tr>
                 <td>{{ $i++ }}</td>
-                <td><img src="{{ asset(Storage::url($jadwal->foto)) }}" width="50" height="50" alt="{{ $jadwal->nama }}"></td>
                 <td>{{ $jadwal->nama }}</td>
                 <td>{{ $jadwal->mata_pelajaran }}</td>
                 <td>{{ $jadwal->topik_praktikum }}</td>
                 <td>{{ Carbon::parse($jadwal->jadwal_praktikum)->translatedFormat('d F Y') }}</td>
                 <td>{{ $jadwal->laboratorium }}</td>
+                <td>
+                    <ul>
+                        @foreach ($jadwalJamPelajaran as $jam)
+                            <li>{{ $jam }}</li>
+                        @endforeach
+                    </ul>
+                </td>
+
                 <td>
                     <div class="button-container">
                         <button class="btn btn-primary delete-button" data-id="{{ $jadwal->id_t_jadwal_praktikum }}" style="background-color: #ff4d4d; border-color: #ff4d4d;">Hapus</button>
@@ -66,18 +76,6 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                    <figcaption>Unggah Foto</figcaption>
-                    <div class="input">
-                        <img id="image-preview" src="{{ asset('image/image-default.png') }}" alt="Preview Image">
-                        <div class="foto">
-                            <p>Silahkan Unggah Foto Tenaga Laboratorium.<br><b>Pedoman penting</b>: 347x288 piksel.
-                                <br><b>Format yang didukung</b>: .jpg, .jpeg, atau .png</p>
-                            <label for="image-upload" class="custom-file-upload">
-                                Unggah foto <i class="fas fa-upload"></i>
-                            </label>
-                            <input id="image-upload" name="image-upload" type="file" accept=".jpg, .jpeg, .png" onchange="previewImage()" />
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label for="nama">Nama</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>
@@ -96,9 +94,64 @@
                         <input type="text" class="form-control" id="topik_praktikum" name="topik_praktikum" required>
                     </div>
                     <div class="form-group">
-                        <label for="jadwal_praktikum">Jadwal Praktikum</label>
+                        <label for="jadwal_praktikum">Jadwal Tanggal Praktikum</label>
                         <input type="date" id="jadwal_praktikum" name="jadwal_praktikum" class="form-control" required>
                         <p id="date-error" style="color:red; display:none;">Tanggal ini sudah dipilih, silakan pilih tanggal lain.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="jadwal_jam_praktikum[]">Jadwal Jam Pelajaran Praktikum</label>
+                        <table>
+                        <tr>
+                            <th>
+                        <ul>
+                            <li>
+                                <input class="form-check-input me-1" type="checkbox" name="jadwal_jam_praktikum[]" value="Jam 1" id="firstCheckbox">
+                                <label class="form-check-label" for="firstCheckbox">Jam 1</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input me-1" type="checkbox" name="jadwal_jam_praktikum[]" value="Jam 2" id="secondCheckbox">
+                                <label class="form-check-label" for="secondCheckbox">Jam 2</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input me-1" type="checkbox" name="jadwal_jam_praktikum[]" value="Jam 3" id="thirdCheckbox">
+                                <label class="form-check-label" for="thirdCheckbox">Jam 3</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input me-1" type="checkbox" name="jadwal_jam_praktikum[]" value="Jam 4" id="fourthCheckbox">
+                                <label class="form-check-label" for="thirdCheckbox">Jam 4</label>
+                            </li>
+                            <li>
+                                <input class="form-check-input me-1" type="checkbox" name="jadwal_jam_praktikum[]" value="Jam 5" id="fifthCheckbox" >
+                                <label class="form-check-label" for="thirdCheckbox">Jam 5</label>
+                            </li>
+                        </ul>
+                        </th>
+                        <th>
+                            <ul>
+                                <li>
+                                    <input class="form-check-input me-1" type="checkbox" name="jadwal_jam_praktikum[]" value="Jam 6" id="firstCheckbox">
+                                    <label class="form-check-label" for="firstCheckbox">Jam 6</label>
+                                </li>
+                                <li>
+                                    <input class="form-check-input me-1" type="checkbox" name="jadwal_jam_praktikum[]" value="Jam 7" id="secondCheckbox">
+                                    <label class="form-check-label" for="secondCheckbox">Jam 7</label>
+                                </li>
+                                <li>
+                                    <input class="form-check-input me-1" type="checkbox" name="jadwal_jam_praktikum[]" value="Jam 8" id="thirdCheckbox">
+                                    <label class="form-check-label" for="thirdCheckbox">Jam 8</label>
+                                </li>
+                                <li>
+                                    <input class="form-check-input me-1" type="checkbox" name="jadwal_jam_praktikum[]" value="Jam 9" id="fourthCheckbox">
+                                    <label class="form-check-label" for="thirdCheckbox">Jam 9</label>
+                                </li>
+                                <li>
+                                    <input class="form-check-input me-1" type="checkbox" name="jadwal_jam_praktikum[]" value="Jam 10" id="fifthCheckbox">
+                                    <label class="form-check-label" for="thirdCheckbox">Jam 10</label>
+                                </li>
+                            </ul>
+                        </th>
+                        </tr>
+                        </table>
                     </div>
                     <div class="form-group">
                         <label for="laboratorium">Laboratorium</label>
@@ -124,29 +177,51 @@ $(document).ready(function() {
         $('#modalLabel').text('Tambah Jadwal praktikum');
         $('#form').attr('action', '{{ route('jadwal.store') }}');
         document.querySelector('input[name="_method"]').value = "POST";
+        $('input[name="jadwal_jam_praktikum[]"]').prop('disabled', false);
+        $('input[name="jadwal_jam_praktikum[]"]').siblings('label').css('text-decoration', 'none');
         $('#form').trigger('reset');
-        $('#image-preview').attr('src', '{{ asset('image/image-default.png') }}');
         $('#modal').modal('show');
+        //$('#image-preview').attr('src', '{{ asset('image/image-default.png') }}');
     });
 
-    $(document).on('click', '.edit-button', function() {
+    $(document).on('click', '.edit-button', async function() {
         var id = $(this).data('id');
-        $.get('/jadwal-praktikum/' + id + '/edit', function(data) {
+        try {
+            const response = await fetch('/jadwal-praktikum/' + id + '/edit');
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+
             $('#modalLabel').text('Edit Alat');
             $('#form').attr('action', '/jadwal-praktikum/' + id);
             document.querySelector('input[name="_method"]').value = "PUT";
             $('#nama').val(data.nama);
             $('#mata_pelajaran').val(data.mata_pelajaran);
             $('#topik_praktikum').val(data.topik_praktikum);
-
             $('#jadwal_praktikum').val(data.jadwal_praktikum);
+
+            var jadwalJamPelajaran = data.jadwal_jam_praktikum;
+            await checkExistingSchedules(data.jadwal_praktikum);
+            $('input[name="jadwal_jam_praktikum[]"]').each(function() {
+                if (jadwalJamPelajaran.includes($(this).val())) {
+                    $(this).prop('disabled', false).prop('checked', true);
+                    $(this).siblings('label').css('text-decoration', 'none');
+                } else {
+                    $(this).prop('checked', false);
+                }
+            });
             $('#laboratorium').val(data.laboratorium);
 
-            var imageUrl = '{{ asset(Storage::url('')) }}/' + data.foto;
-            imageUrl = imageUrl.replace('/public', '');
-            $('#image-preview').attr('src', imageUrl);
             $('#modal').modal('show');
-        });
+
+            // var imageUrl = '{{ asset(Storage::url('')) }}/' + data.foto;
+            // imageUrl = imageUrl.replace('/public', '');
+            // $('#image-preview').attr('src', imageUrl);
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Error: " + error.message);
+        }
     });
 
     $('#form').submit(function(e) {
@@ -203,38 +278,63 @@ $(document).ready(function() {
             });
         }
     });
-    $('#jadwal_praktikum').change(function() {
-        var selectedDate = $(this).val();
 
-        $.ajax({
-            url: '/jadwal-praktikum/check-date/' + selectedDate,
-            method: 'GET',
-            success: function(response) {
-                if (response.exists) {
-                    alert('Tanggal sudah ada di database.');
-                    // Jika tanggal sudah ada di database, kosongkan nilai input
-                    $('#jadwal_praktikum').val('');
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error("Error:", error);
-                alert("Error: " + error.message);
+    async function checkExistingSchedules(jadwal_praktikum) {
+        try {
+            const response = await fetch('/jadwal-praktikum/check-date/' + jadwal_praktikum);
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        });
+            const data = await response.json();
+            $('input[name="jadwal_jam_praktikum[]"]').each(function() {
+                var jamPelajaran = $(this).val();
+                if (data.jadwal_jam_praktikum.includes(jamPelajaran)) {
+                    $(this).prop('disabled', true);
+                    $(this).siblings('label').css('text-decoration', 'line-through');
+                } else {
+                    $(this).prop('disabled', false);
+                    $(this).siblings('label').css('text-decoration', 'none');
+                }
+            });
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Error: " + error.message);
+        }
+    }
+
+    $('#jadwal_praktikum').change(async function() {
+        var selectedDate = $(this).val();
+        await checkExistingSchedules(selectedDate);
     });
+
+    // $('#jadwal_praktikum').change(function() {
+    //     var selectedDate = $(this).val();
+
+        
+    //     $.ajax({
+    //         url: '/jadwal-praktikum/check-time-slot',
+    //         method: 'GET',
+    //         data: { jadwal_praktikum: selectedDate },
+    //         success: function(response) {
+    //             // Reset all checkboxes
+    //             $('input[name="jadwal_jam_praktikum[]"]').prop('disabled', false).prop('checked', false);
+    //             $('label.form-check-label').css('text-decoration', 'none');
+
+    //             // Disable checkboxes that already exist and strikethrough text
+    //             response.forEach(function(slot) {
+    //                 var checkbox = $('input[name="jadwal_jam_praktikum[]"][value="' + slot + '"]');
+    //                 checkbox.prop('disabled', true);
+    //                 checkbox.next('label').css('text-decoration', 'line-through');
+    //             });
+    //         },
+    //         error: function(xhr, status, error) {
+    //             console.error("Error:", error);
+    //         }
+    //     });
+    // });
+
 });
 
-function previewImage() {
-    var file = document.getElementById("image-upload").files[0];
-    var reader = new FileReader();
-    reader.onloadend = function() {
-        document.getElementById('image-preview').src = reader.result;
-    }
-    if (file) {
-        reader.readAsDataURL(file);
-    } else {
-        document.getElementById('image-preview').src = "";
-    }
-}
+
 </script>
 @endsection

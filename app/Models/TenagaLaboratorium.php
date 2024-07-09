@@ -10,7 +10,7 @@ class TenagaLaboratorium extends Model
     use HasFactory;
 
     // Nama tabel yang terhubung dengan model
-    protected $table = 't_tenaga_laboratorium';
+    protected $table = 't_kimia_tenaga_laboratorium';
 
     // Nama primary key
     protected $primaryKey = 'id_tenaga_laboratorium';
