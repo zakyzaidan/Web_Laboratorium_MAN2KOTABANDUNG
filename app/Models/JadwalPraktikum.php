@@ -21,10 +21,9 @@ class JadwalPraktikum extends Model
     // Kolom-kolom yang dapat diisi (fillable)
     protected $fillable = [
         'nama',
-        'mata_pelajaran',
+        'kelas',
         'topik_praktikum',
         'jadwal_praktikum',
-        'laboratorium',
         'jadwal_jam_praktikum',
     ];
 }

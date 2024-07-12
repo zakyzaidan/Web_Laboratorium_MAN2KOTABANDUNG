@@ -34,10 +34,9 @@ class JadwalPraktikumController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'mata_pelajaran' => 'required',
+            'kelas' => 'required',
             'topik_praktikum' => 'required',
             'jadwal_praktikum' => 'required',
-            'laboratorium' => 'required',
             'jadwal_jam_praktikum' => 'required|array',
         ]);
         
@@ -46,10 +45,9 @@ class JadwalPraktikumController extends Controller
         // Create a new InventarisasiAlat model instance
         JadwalPraktikum::create([
             'nama' => $request->nama,
-            'mata_pelajaran' => $request->mata_pelajaran,
+            'kelas' => $request->kelas,
             'topik_praktikum' => $request->topik_praktikum,
             'jadwal_praktikum' => $request->jadwal_praktikum,
-            'laboratorium' => $request->laboratorium,
             'jadwal_jam_praktikum' => $jadwalJamPelajaran,
         ]);
 
@@ -90,10 +88,9 @@ class JadwalPraktikumController extends Controller
         $jadwal = JadwalPraktikum::find($id);
 
     $jadwal->nama = $request->input('nama');
-    $jadwal->mata_pelajaran = $request->input('mata_pelajaran');
+    $jadwal->kelas = $request->input('kelas');
     $jadwal->topik_praktikum = $request->input('topik_praktikum');
     $jadwal->jadwal_praktikum = $request->input('jadwal_praktikum');
-    $jadwal->laboratorium = $request->input('laboratorium');
     $jadwal->jadwal_jam_praktikum = $jadwalJamPelajaran;
 
 
@@ -116,48 +113,52 @@ class JadwalPraktikumController extends Controller
         return redirect()->route('jadwal.index')->with('success', 'Jadwal Praktikum berhasil dihapus');
     }
 
-    public function checkTimeSlot(Request $request)
-    {
-        $jadwalPraktikum = $request->jadwal_praktikum;
-        $jadwalJamPelajaran = JadwalPraktikum::where('jadwal_praktikum', $jadwalPraktikum)->pluck('jadwal_jam_praktikum');
-
-        $existingSlots = [];
-        foreach ($jadwalJamPelajaran as $jamPelajaran) {
-            $slots = explode(',', $jamPelajaran);
-            $existingSlots = array_merge($existingSlots, $slots);
-        }
-
-        return response()->json($existingSlots);
-    }
-
     public function checkDate($jadwal_praktikum)
 {
     try {
         $existingSchedules = JadwalPraktikum::where('jadwal_praktikum', $jadwal_praktikum)->get();
-        $existingJamPelajaran = [];
+        $scheduleData = [];
 
         foreach ($existingSchedules as $schedule) {
-            $existingJamPelajaran = array_merge($existingJamPelajaran, explode(',', $schedule->jadwal_jam_praktikum));
+            $jamPelajaran = explode(',', $schedule->jadwal_jam_praktikum);
+            foreach ($jamPelajaran as $jam) {
+                $scheduleData[$jam] = [
+                    'nama' => $schedule->nama,
+                    'kelas' => $schedule->kelas,
+                    'topik_praktikum' => $schedule->topik_praktikum,
+                ];
+            }
         }
 
-        return response()->json(['jadwal_jam_praktikum' => $existingJamPelajaran]);
+        return response()->json(['scheduleData' => $scheduleData]);
     } catch (\Exception $e) {
-        return response()->json(['error' => $e->getMessage()], 500);
+        return response()->json(['scheduleData' => []]);
     }
 }
+
+
 
 
     // public function checkDate($jadwal_praktikum)
     // {
     //     try {
-    //         // Cek apakah tanggal tersebut ada di database
-    //         $exists = JadwalPraktikum::where('jadwal_praktikum', $jadwal_praktikum)->exists();
+    //         $existingSchedules = JadwalPraktikum::where('jadwal_praktikum', $jadwal_praktikum)->get();
+    //         $existingJamPelajaran = [];
 
-    //         // Mengembalikan respons dalam format JSON
-    //         return response()->json(['exists' => $exists]);
+    //         foreach ($existingSchedules as $schedule) {
+    //             $existingJamPelajaran = array_merge($existingJamPelajaran, explode(',', $schedule->jadwal_jam_praktikum));
+    //             $nama = $schedule->nama;
+    //             $kelas = $schedule->kelas;
+    //             $topik_praktikum = $schedule->topik_praktikum;
+    //         }
+
+
+            
+    //         return response()->json(['jadwal_jam_praktikum' => $existingJamPelajaran, 'nama' => $nama, 'kelas' => $kelas, 'topik_praktikum' => $topik_praktikum]);
     //     } catch (\Exception $e) {
-    //         return response()->json(['error' => $e->getMessage()], 500);
+    //         return response()->json(['jadwal_jam_praktikum' => $existingJamPelajaran, 'nama' => '', 'kelas' => '', 'topik_praktikum' => '']);
     //     }
     // }
+
 
 }

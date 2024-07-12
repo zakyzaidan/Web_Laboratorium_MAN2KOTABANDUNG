@@ -16,10 +16,9 @@
             <tr>
                 <th>nomer</th>
                 <th>nama</th>
-                <th>nama perajaran</th>
+                <th>kelas</th>
                 <th>topik praktikum</th>
                 <th>jadwal praktikum</th>
-                <th>laboratorium</th>
                 <th>jadwal jam pelajaran</th>
                 <th data-orderable="false">action</th>
             </tr>
@@ -37,10 +36,9 @@
             <tr>
                 <td>{{ $i++ }}</td>
                 <td>{{ $jadwal->nama }}</td>
-                <td>{{ $jadwal->mata_pelajaran }}</td>
+                <td>{{ $jadwal->kelas }}</td>
                 <td>{{ $jadwal->topik_praktikum }}</td>
                 <td>{{ Carbon::parse($jadwal->jadwal_praktikum)->translatedFormat('d F Y') }}</td>
-                <td>{{ $jadwal->laboratorium }}</td>
                 <td>
                     <ul>
                         @foreach ($jadwalJamPelajaran as $jam)
@@ -81,13 +79,8 @@
                         <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                     <div class="form-group">
-                        <label for="mata_pelajaran">Mata Pelajaran</label>
-                        <select class="form-control" id="mata_pelajaran" name="mata_pelajaran" required>
-                            <option value="">pilih mata pelajaran</option>
-                            <option value="Kimia">Kimia</option>
-                            <option value="Fisika">Fisika</option>
-                            <option value="Biologi">Biologi</option>
-                        </select>
+                        <label for="kelas">Kelas</label>
+                        <input type="text" class="form-control" id="kelas" name="kelas" required>
                     </div>
                     <div class="form-group">
                         <label for="topik_praktikum">Topik Praktikum</label>
@@ -153,10 +146,6 @@
                         </tr>
                         </table>
                     </div>
-                    <div class="form-group">
-                        <label for="laboratorium">Laboratorium</label>
-                        <input type="text" class="form-control" id="laboratorium" name="laboratorium" required>
-                    </div>
                 </div>
             </form>
         </div>
@@ -197,7 +186,7 @@ $(document).ready(function() {
             $('#form').attr('action', '/jadwal-praktikum/' + id);
             document.querySelector('input[name="_method"]').value = "PUT";
             $('#nama').val(data.nama);
-            $('#mata_pelajaran').val(data.mata_pelajaran);
+            $('#kelas').val(data.kelas);
             $('#topik_praktikum').val(data.topik_praktikum);
             $('#jadwal_praktikum').val(data.jadwal_praktikum);
 
@@ -211,7 +200,6 @@ $(document).ready(function() {
                     $(this).prop('checked', false);
                 }
             });
-            $('#laboratorium').val(data.laboratorium);
 
             $('#modal').modal('show');
 
@@ -280,58 +268,41 @@ $(document).ready(function() {
     });
 
     async function checkExistingSchedules(jadwal_praktikum) {
-        try {
-            const response = await fetch('/jadwal-praktikum/check-date/' + jadwal_praktikum);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            const data = await response.json();
-            $('input[name="jadwal_jam_praktikum[]"]').each(function() {
-                var jamPelajaran = $(this).val();
-                if (data.jadwal_jam_praktikum.includes(jamPelajaran)) {
-                    $(this).prop('disabled', true);
-                    $(this).siblings('label').css('text-decoration', 'line-through');
-                } else {
-                    $(this).prop('disabled', false);
-                    $(this).siblings('label').css('text-decoration', 'none');
-                }
-            });
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Error: " + error.message);
+    try {
+        const response = await fetch('/jadwal-praktikum/check-date/' + jadwal_praktikum);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
         }
+        const data = await response.json();
+        
+        $('input[name="jadwal_jam_praktikum[]"]').each(function() {
+            var jamPelajaran = $(this).val();
+            if (data.scheduleData[jamPelajaran]) {
+                $(this).prop('disabled', true);
+                $(this).siblings('label').css('text-decoration', 'line-through');
+                $(this).siblings('.nama').text(data.scheduleData[jamPelajaran].nama);
+                $(this).siblings('.kelas').text(data.scheduleData[jamPelajaran].kelas);
+                $(this).siblings('.topik').text(data.scheduleData[jamPelajaran].topik_praktikum);
+            } else {
+                $(this).prop('disabled', false);
+                $(this).siblings('label').css('text-decoration', 'none');
+                $(this).siblings('.nama').text('');
+                $(this).siblings('.kelas').text('');
+                $(this).siblings('.topik').text('');
+            }
+        });
+    } catch (error) {
+        console.error("Error:", error);
+        alert("Error: " + error.message);
     }
+}
 
     $('#jadwal_praktikum').change(async function() {
         var selectedDate = $(this).val();
         await checkExistingSchedules(selectedDate);
     });
 
-    // $('#jadwal_praktikum').change(function() {
-    //     var selectedDate = $(this).val();
-
-        
-    //     $.ajax({
-    //         url: '/jadwal-praktikum/check-time-slot',
-    //         method: 'GET',
-    //         data: { jadwal_praktikum: selectedDate },
-    //         success: function(response) {
-    //             // Reset all checkboxes
-    //             $('input[name="jadwal_jam_praktikum[]"]').prop('disabled', false).prop('checked', false);
-    //             $('label.form-check-label').css('text-decoration', 'none');
-
-    //             // Disable checkboxes that already exist and strikethrough text
-    //             response.forEach(function(slot) {
-    //                 var checkbox = $('input[name="jadwal_jam_praktikum[]"][value="' + slot + '"]');
-    //                 checkbox.prop('disabled', true);
-    //                 checkbox.next('label').css('text-decoration', 'line-through');
-    //             });
-    //         },
-    //         error: function(xhr, status, error) {
-    //             console.error("Error:", error);
-    //         }
-    //     });
-    // });
+    
 
 });
 

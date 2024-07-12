@@ -39,22 +39,108 @@ body main .bagian_page section .card {
     font-weight: bold;
   }
   body main .bagian_page .bawah{
-    display: flex;
-    flex-direction: row;
-    margin: 4vh 0 0 2vw;
-    justify-content: space-between;
-
+    margin: 4vh 2vw 5vh 2vw;
+    color: black;
+    
   }
-
+  
   body main .bagian_page .bawah canvas{
-    width: 45vw !important;
-    height: 40vh !important;
+    width: 60vw !important;
+    height: 50vh !important;
   }
 
   body main .bagian_page .bawah .jadwal p{
     font-weight: bold;
     color: black;
   }
+
+  .bawah .jadwal{
+    color: black;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .bawah .jadwal .div-calendar{
+    margin-right: 5vh;
+  }
+
+  .jadwal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: #0b0b0b;
+}
+.jadwal-table th, .jadwal-table td {
+    border: 1px solid #0b0b0b;
+    padding: 8px;
+    text-align: left;
+}
+.jadwal-table th {
+    color: white;
+    background-color: #053386;
+}
+.jadwal-table tr.filled {
+    color: white;
+    background-color: #1d458f;
+}
+
+.caleandar {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.caleandar .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.caleandar .header .title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.caleandar .days {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.caleandar .day {
+  width: 14.2857%; /* 100% / 7 days */
+  text-align: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #eee;
+  cursor: pointer;
+}
+
+.caleandar .day.name {
+  background-color: #f2f2f2;
+  cursor: default;
+}
+
+.caleandar .day.empty {
+  background-color: #fff;
+  cursor: default;
+}
+
+.caleandar .day.today {
+  background-color: #d4edda;
+}
+
+.caleandar .day.selected {
+  background-color: #cce5ff;
+}
+
+.caleandar .prev,
+.caleandar .next {
+  cursor: pointer;
+  font-size: 1.5em;
+}
 
 
 

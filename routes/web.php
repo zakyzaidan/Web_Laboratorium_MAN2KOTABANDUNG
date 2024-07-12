@@ -92,7 +92,6 @@ Route::prefix('tenaga-laboratorium')->middleware(['auth', 'checkUserType:inventa
 });
 Route::get('/jadwal-praktikum/check-date/{jadwal_praktikum}', [JadwalPraktikumController::class, 'checkDate']);
 
-Route::get('/jadwal-praktikum/check-time-slot', [JadwalPraktikumController::class, 'checkTimeSlot']);
 
 Route::prefix('jadwal-praktikum')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
     Route::get('/', [JadwalPraktikumController::class, 'index'])->name('jadwal.index'); // List of tools

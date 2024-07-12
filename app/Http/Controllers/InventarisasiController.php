@@ -59,6 +59,7 @@ class InventarisasiController extends Controller
             'jumlahTenagaLaboratorium', 'events'
         ));
     }
+
     /**
      * Show the form for creating a new resource.
      */
