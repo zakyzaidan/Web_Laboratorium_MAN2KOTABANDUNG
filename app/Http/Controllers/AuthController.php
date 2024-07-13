@@ -35,7 +35,7 @@ class AuthController extends Controller
             // Arahkan ke dashboard jika username diakhiri dengan 'A'
             if (substr($username, -1) === 'A') {
                 session(['username' => $username, 'user_type' => 'inventaris', 'id_admin' => $id_admin]);
-                return redirect()->intended('/Dashboard-inventaris');
+                return redirect()->intended('/pilih-labolatorium');
             } else {
                 session(['username' => $username, 'user_type' => 'admin', 'id_admin' => $id_admin]);
                 return redirect()->intended('/home');

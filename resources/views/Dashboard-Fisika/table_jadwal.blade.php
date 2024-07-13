@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-layouts')
+@extends('layouts.dashboard-layouts-fisika')
 
 @section('css')
 <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
@@ -176,14 +176,14 @@ $(document).ready(function() {
     $(document).on('click', '.edit-button', async function() {
         var id = $(this).data('id');
         try {
-            const response = await fetch('/jadwal-praktikum/' + id + '/edit');
+            const response = await fetch('/jadwal-praktikum-fisika/' + id + '/edit');
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
 
             $('#modalLabel').text('Edit Alat');
-            $('#form').attr('action', '/jadwal-praktikum/' + id);
+            $('#form').attr('action', '/jadwal-praktikum-fisika/' + id);
             document.querySelector('input[name="_method"]').value = "PUT";
             $('#nama').val(data.nama);
             $('#kelas').val(data.kelas);
@@ -252,7 +252,7 @@ $(document).ready(function() {
             var id = $(this).data('id');
             $.ajax({
                 type: 'POST',
-                url: '/jadwal-praktikum/' + id,
+                url: '/jadwal-praktikum-fisika/' + id,
                 data: {
                     _token: '{{ csrf_token() }}',
                     _method: 'DELETE'
@@ -269,7 +269,7 @@ $(document).ready(function() {
 
     async function checkExistingSchedules(jadwal_praktikum) {
     try {
-        const response = await fetch('/jadwal-praktikum/check-date/' + jadwal_praktikum);
+        const response = await fetch('/jadwal-praktikum-fisika/check-date/' + jadwal_praktikum);
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }

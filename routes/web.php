@@ -9,6 +9,19 @@ use App\Http\Controllers\InventarisasiBahanController;
 use App\Http\Controllers\TenagaLaboratoriumController;
 use App\Http\Controllers\JadwalPraktikumController;
 use App\Http\Controllers\InventarisasiController;
+use App\Http\Controllers\FisikaInventarisasiAlatController;
+use App\Http\Controllers\FisikaInventarisasiFasilitasController;
+use App\Http\Controllers\FisikaInventarisasiBahanController;
+use App\Http\Controllers\FisikaTenagaLaboratoriumController;
+use App\Http\Controllers\FisikaJadwalPraktikumController;
+use App\Http\Controllers\FisikaInventarisasiController;
+use App\Http\Controllers\BiologiInventarisasiAlatController;
+use App\Http\Controllers\BiologiInventarisasiFasilitasController;
+use App\Http\Controllers\BiologiInventarisasiBahanController;
+use App\Http\Controllers\BiologiTenagaLaboratoriumController;
+use App\Http\Controllers\BiologiJadwalPraktikumController;
+use App\Http\Controllers\BiologiInventarisasiController;
+use App\Http\Controllers\PilihLabolatoriumController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Materi;
@@ -49,6 +62,7 @@ Route::get('/pilih-kelas', function () {
 })->middleware('auth');
 
 
+Route::get('/pilih-labolatorium', [PilihLabolatoriumController::class, 'index'])->middleware(['auth', 'checkUserType:inventaris']);
 Route::get('/Dashboard-inventaris', [InventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:inventaris']);
 
 Route::prefix('inventarisasi-alat')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
@@ -101,6 +115,116 @@ Route::prefix('jadwal-praktikum')->middleware(['auth', 'checkUserType:inventaris
     Route::get('/{id}/edit', [JadwalPraktikumController::class, 'edit'])->name('jadwal.edit'); // Edit tool form
     Route::put('/{id}', [JadwalPraktikumController::class, 'update'])->name('jadwal.update'); // Update tool
     Route::delete('/{id}', [JadwalPraktikumController::class, 'destroy'])->name('jadwal.destroy'); // Delete tool
+});
+
+Route::get('/Dashboard-inventaris-fisika', [FisikaInventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:inventaris']);
+
+Route::prefix('inventarisasi-alat-fisika')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+    Route::get('/', [FisikaInventarisasiAlatController::class, 'index'])->name('alat.index'); // List of tools
+    Route::get('/create', [FisikaInventarisasiAlatController::class, 'create'])->name('alat.create'); // Create tool form
+    Route::post('/', [FisikaInventarisasiAlatController::class, 'store'])->name('alat.store'); // Store new tool
+    Route::get('/{id}', [FisikaInventarisasiAlatController::class, 'show'])->name('alat.show'); // Show tool detail
+    Route::get('/{id}/edit', [FisikaInventarisasiAlatController::class, 'edit'])->name('alat.edit'); // Edit tool form
+    Route::put('/{id}', [FisikaInventarisasiAlatController::class, 'update'])->name('alat.update'); // Update tool
+    Route::delete('/{id}', [FisikaInventarisasiAlatController::class, 'destroy'])->name('alat.destroy'); // Delete tool
+});
+
+Route::prefix('inventarisasi-fasilitas-fisika')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+    Route::get('/', [FisikaInventarisasiFasilitasController::class, 'index'])->name('fasilitas.index'); // List of tools
+    Route::get('/create', [FisikaInventarisasiFasilitasController::class, 'create'])->name('fasilitas.create'); // Create tool form
+    Route::post('/', [FisikaInventarisasiFasilitasController::class, 'store'])->name('fasilitas.store'); // Store new tool
+    Route::get('/{id}', [FisikaInventarisasiFasilitasController::class, 'show'])->name('fasilitas.show'); // Show tool detail
+    Route::get('/{id}/edit', [FisikaInventarisasiFasilitasController::class, 'edit'])->name('fasilitas.edit'); // Edit tool form
+    Route::put('/{id}', [FisikaInventarisasiFasilitasController::class, 'update'])->name('fasilitas.update'); // Update tool
+    Route::delete('/{id}', [FisikaInventarisasiFasilitasController::class, 'destroy'])->name('fasilitas.destroy'); // Delete tool
+});
+
+Route::prefix('inventarisasi-bahan-fisika')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+    Route::get('/', [FisikaInventarisasiBahanController::class, 'index'])->name('bahan.index'); // List of tools
+    Route::get('/create', [FisikaInventarisasiBahanController::class, 'create'])->name('bahan.create'); // Create tool form
+    Route::post('/', [FisikaInventarisasiBahanController::class, 'store'])->name('bahan.store'); // Store new tool
+    Route::get('/{id}', [FisikaInventarisasiBahanController::class, 'show'])->name('bahan.show'); // Show tool detail
+    Route::get('/{id}/edit', [FisikaInventarisasiBahanController::class, 'edit'])->name('bahan.edit'); // Edit tool form
+    Route::put('/{id}', [FisikaInventarisasiBahanController::class, 'update'])->name('bahan.update'); // Update tool
+    Route::delete('/{id}', [FisikaInventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
+});
+
+Route::prefix('tenaga-laboratorium-fisika')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+    Route::get('/', [FisikaTenagaLaboratoriumController::class, 'index'])->name('tenaga.index'); // List of tools
+    Route::get('/create', [FisikaTenagaLaboratoriumController::class, 'create'])->name('tenaga.create'); // Create tool form
+    Route::post('/', [FisikaTenagaLaboratoriumController::class, 'store'])->name('tenaga.store'); // Store new tool
+    Route::get('/{id}', [FisikaTenagaLaboratoriumController::class, 'show'])->name('tenaga.show'); // Show tool detail
+    Route::get('/{id}/edit', [FisikaTenagaLaboratoriumController::class, 'edit'])->name('tenaga.edit'); // Edit tool form
+    Route::put('/{id}', [FisikaTenagaLaboratoriumController::class, 'update'])->name('tenaga.update'); // Update tool
+    Route::delete('/{id}', [FisikaTenagaLaboratoriumController::class, 'destroy'])->name('tenaga.destroy'); // Delete tool
+});
+Route::get('/jadwal-praktikum-fisika/check-date/{jadwal_praktikum}', [FisikaJadwalPraktikumController::class, 'checkDate']);
+
+
+Route::prefix('jadwal-praktikum-fisika')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+    Route::get('/', [FisikaJadwalPraktikumController::class, 'index'])->name('jadwal.index'); // List of tools
+    Route::get('/create', [FisikaJadwalPraktikumController::class, 'create'])->name('jadwal.create'); // Create tool form
+    Route::post('/', [FisikaJadwalPraktikumController::class, 'store'])->name('jadwal.store'); // Store new tool
+    Route::get('/{id}', [FisikaJadwalPraktikumController::class, 'show'])->name('jadwal.show'); // Show tool detail
+    Route::get('/{id}/edit', [FisikaJadwalPraktikumController::class, 'edit'])->name('jadwal.edit'); // Edit tool form
+    Route::put('/{id}', [FisikaJadwalPraktikumController::class, 'update'])->name('jadwal.update'); // Update tool
+    Route::delete('/{id}', [FisikaJadwalPraktikumController::class, 'destroy'])->name('jadwal.destroy'); // Delete tool
+});
+
+
+
+Route::get('/Dashboard-inventaris-biologi', [BiologiInventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:inventaris']);
+
+Route::prefix('inventarisasi-alat-biologi')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+    Route::get('/', [BiologiInventarisasiAlatController::class, 'index'])->name('alat.index'); // List of tools
+    Route::get('/create', [BiologiInventarisasiAlatController::class, 'create'])->name('alat.create'); // Create tool form
+    Route::post('/', [BiologiInventarisasiAlatController::class, 'store'])->name('alat.store'); // Store new tool
+    Route::get('/{id}', [BiologiInventarisasiAlatController::class, 'show'])->name('alat.show'); // Show tool detail
+    Route::get('/{id}/edit', [BiologiInventarisasiAlatController::class, 'edit'])->name('alat.edit'); // Edit tool form
+    Route::put('/{id}', [BiologiInventarisasiAlatController::class, 'update'])->name('alat.update'); // Update tool
+    Route::delete('/{id}', [BiologiInventarisasiAlatController::class, 'destroy'])->name('alat.destroy'); // Delete tool
+});
+
+Route::prefix('inventarisasi-fasilitas-biologi')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+    Route::get('/', [BiologiInventarisasiFasilitasController::class, 'index'])->name('fasilitas.index'); // List of tools
+    Route::get('/create', [BiologiInventarisasiFasilitasController::class, 'create'])->name('fasilitas.create'); // Create tool form
+    Route::post('/', [BiologiInventarisasiFasilitasController::class, 'store'])->name('fasilitas.store'); // Store new tool
+    Route::get('/{id}', [BiologiInventarisasiFasilitasController::class, 'show'])->name('fasilitas.show'); // Show tool detail
+    Route::get('/{id}/edit', [BiologiInventarisasiFasilitasController::class, 'edit'])->name('fasilitas.edit'); // Edit tool form
+    Route::put('/{id}', [BiologiInventarisasiFasilitasController::class, 'update'])->name('fasilitas.update'); // Update tool
+    Route::delete('/{id}', [BiologiInventarisasiFasilitasController::class, 'destroy'])->name('fasilitas.destroy'); // Delete tool
+});
+
+Route::prefix('inventarisasi-bahan-biologi')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+    Route::get('/', [BiologiInventarisasiBahanController::class, 'index'])->name('bahan.index'); // List of tools
+    Route::get('/create', [BiologiInventarisasiBahanController::class, 'create'])->name('bahan.create'); // Create tool form
+    Route::post('/', [BiologiInventarisasiBahanController::class, 'store'])->name('bahan.store'); // Store new tool
+    Route::get('/{id}', [BiologiInventarisasiBahanController::class, 'show'])->name('bahan.show'); // Show tool detail
+    Route::get('/{id}/edit', [BiologiInventarisasiBahanController::class, 'edit'])->name('bahan.edit'); // Edit tool form
+    Route::put('/{id}', [BiologiInventarisasiBahanController::class, 'update'])->name('bahan.update'); // Update tool
+    Route::delete('/{id}', [BiologiInventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
+});
+
+Route::prefix('tenaga-laboratorium-biologi')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+    Route::get('/', [BiologiTenagaLaboratoriumController::class, 'index'])->name('tenaga.index'); // List of tools
+    Route::get('/create', [BiologiTenagaLaboratoriumController::class, 'create'])->name('tenaga.create'); // Create tool form
+    Route::post('/', [BiologiTenagaLaboratoriumController::class, 'store'])->name('tenaga.store'); // Store new tool
+    Route::get('/{id}', [BiologiTenagaLaboratoriumController::class, 'show'])->name('tenaga.show'); // Show tool detail
+    Route::get('/{id}/edit', [BiologiTenagaLaboratoriumController::class, 'edit'])->name('tenaga.edit'); // Edit tool form
+    Route::put('/{id}', [BiologiTenagaLaboratoriumController::class, 'update'])->name('tenaga.update'); // Update tool
+    Route::delete('/{id}', [BiologiTenagaLaboratoriumController::class, 'destroy'])->name('tenaga.destroy'); // Delete tool
+});
+Route::get('/jadwal-praktikum-biologi/check-date/{jadwal_praktikum}', [BiologiJadwalPraktikumController::class, 'checkDate']);
+
+
+Route::prefix('jadwal-praktikum-biologi')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+    Route::get('/', [BiologiJadwalPraktikumController::class, 'index'])->name('jadwal.index'); // List of tools
+    Route::get('/create', [BiologiJadwalPraktikumController::class, 'create'])->name('jadwal.create'); // Create tool form
+    Route::post('/', [BiologiJadwalPraktikumController::class, 'store'])->name('jadwal.store'); // Store new tool
+    Route::get('/{id}', [BiologiJadwalPraktikumController::class, 'show'])->name('jadwal.show'); // Show tool detail
+    Route::get('/{id}/edit', [BiologiJadwalPraktikumController::class, 'edit'])->name('jadwal.edit'); // Edit tool form
+    Route::put('/{id}', [BiologiJadwalPraktikumController::class, 'update'])->name('jadwal.update'); // Update tool
+    Route::delete('/{id}', [BiologiJadwalPraktikumController::class, 'destroy'])->name('jadwal.destroy'); // Delete tool
 });
 
 
