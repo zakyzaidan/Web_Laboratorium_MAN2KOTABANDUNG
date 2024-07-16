@@ -47,7 +47,7 @@ Route::get('/home', function () {
     // Sekarang Anda bisa menggunakan $username dan $user_type
     // Misalnya, Anda bisa mengirimkannya ke view
     return view('landing', compact('username', 'user_type'));
-});
+})->name('home');
 
 Route::get('/login', function () {
     return view('login');
@@ -62,10 +62,10 @@ Route::get('/pilih-kelas', function () {
 })->middleware('auth');
 
 
-Route::get('/pilih-labolatorium', [PilihLabolatoriumController::class, 'index'])->middleware(['auth', 'checkUserType:inventaris']);
-Route::get('/Dashboard-inventaris', [InventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:inventaris']);
+Route::get('/pilih-labolatorium', [PilihLabolatoriumController::class, 'index'])->middleware(['auth', 'checkUserType:guru'])->name('pilih-labolatorium');
+Route::get('/Dashboard-inventaris', [InventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:guru']);
 
-Route::prefix('inventarisasi-alat')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('inventarisasi-alat')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [InventarisasiAlatController::class, 'index'])->name('alat.index'); // List of tools
     Route::get('/create', [InventarisasiAlatController::class, 'create'])->name('alat.create'); // Create tool form
     Route::post('/', [InventarisasiAlatController::class, 'store'])->name('alat.store'); // Store new tool
@@ -75,7 +75,7 @@ Route::prefix('inventarisasi-alat')->middleware(['auth', 'checkUserType:inventar
     Route::delete('/{id}', [InventarisasiAlatController::class, 'destroy'])->name('alat.destroy'); // Delete tool
 });
 
-Route::prefix('inventarisasi-fasilitas')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('inventarisasi-fasilitas')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [InventarisasiFasilitasController::class, 'index'])->name('fasilitas.index'); // List of tools
     Route::get('/create', [InventarisasiFasilitasController::class, 'create'])->name('fasilitas.create'); // Create tool form
     Route::post('/', [InventarisasiFasilitasController::class, 'store'])->name('fasilitas.store'); // Store new tool
@@ -85,7 +85,7 @@ Route::prefix('inventarisasi-fasilitas')->middleware(['auth', 'checkUserType:inv
     Route::delete('/{id}', [InventarisasiFasilitasController::class, 'destroy'])->name('fasilitas.destroy'); // Delete tool
 });
 
-Route::prefix('inventarisasi-bahan')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('inventarisasi-bahan')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [InventarisasiBahanController::class, 'index'])->name('bahan.index'); // List of tools
     Route::get('/create', [InventarisasiBahanController::class, 'create'])->name('bahan.create'); // Create tool form
     Route::post('/', [InventarisasiBahanController::class, 'store'])->name('bahan.store'); // Store new tool
@@ -95,7 +95,7 @@ Route::prefix('inventarisasi-bahan')->middleware(['auth', 'checkUserType:inventa
     Route::delete('/{id}', [InventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
 });
 
-Route::prefix('tenaga-laboratorium')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('tenaga-laboratorium')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [TenagaLaboratoriumController::class, 'index'])->name('tenaga.index'); // List of tools
     Route::get('/create', [TenagaLaboratoriumController::class, 'create'])->name('tenaga.create'); // Create tool form
     Route::post('/', [TenagaLaboratoriumController::class, 'store'])->name('tenaga.store'); // Store new tool
@@ -107,7 +107,7 @@ Route::prefix('tenaga-laboratorium')->middleware(['auth', 'checkUserType:inventa
 Route::get('/jadwal-praktikum/check-date/{jadwal_praktikum}', [JadwalPraktikumController::class, 'checkDate']);
 
 
-Route::prefix('jadwal-praktikum')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('jadwal-praktikum')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [JadwalPraktikumController::class, 'index'])->name('jadwal.index'); // List of tools
     Route::get('/create', [JadwalPraktikumController::class, 'create'])->name('jadwal.create'); // Create tool form
     Route::post('/', [JadwalPraktikumController::class, 'store'])->name('jadwal.store'); // Store new tool
@@ -117,9 +117,9 @@ Route::prefix('jadwal-praktikum')->middleware(['auth', 'checkUserType:inventaris
     Route::delete('/{id}', [JadwalPraktikumController::class, 'destroy'])->name('jadwal.destroy'); // Delete tool
 });
 
-Route::get('/Dashboard-inventaris-fisika', [FisikaInventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:inventaris']);
+Route::get('/Dashboard-inventaris-fisika', [FisikaInventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:guru']);
 
-Route::prefix('inventarisasi-alat-fisika')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('inventarisasi-alat-fisika')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [FisikaInventarisasiAlatController::class, 'index'])->name('alat.index'); // List of tools
     Route::get('/create', [FisikaInventarisasiAlatController::class, 'create'])->name('alat.create'); // Create tool form
     Route::post('/', [FisikaInventarisasiAlatController::class, 'store'])->name('alat.store'); // Store new tool
@@ -129,7 +129,7 @@ Route::prefix('inventarisasi-alat-fisika')->middleware(['auth', 'checkUserType:i
     Route::delete('/{id}', [FisikaInventarisasiAlatController::class, 'destroy'])->name('alat.destroy'); // Delete tool
 });
 
-Route::prefix('inventarisasi-fasilitas-fisika')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('inventarisasi-fasilitas-fisika')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [FisikaInventarisasiFasilitasController::class, 'index'])->name('fasilitas.index'); // List of tools
     Route::get('/create', [FisikaInventarisasiFasilitasController::class, 'create'])->name('fasilitas.create'); // Create tool form
     Route::post('/', [FisikaInventarisasiFasilitasController::class, 'store'])->name('fasilitas.store'); // Store new tool
@@ -139,7 +139,7 @@ Route::prefix('inventarisasi-fasilitas-fisika')->middleware(['auth', 'checkUserT
     Route::delete('/{id}', [FisikaInventarisasiFasilitasController::class, 'destroy'])->name('fasilitas.destroy'); // Delete tool
 });
 
-Route::prefix('inventarisasi-bahan-fisika')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('inventarisasi-bahan-fisika')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [FisikaInventarisasiBahanController::class, 'index'])->name('bahan.index'); // List of tools
     Route::get('/create', [FisikaInventarisasiBahanController::class, 'create'])->name('bahan.create'); // Create tool form
     Route::post('/', [FisikaInventarisasiBahanController::class, 'store'])->name('bahan.store'); // Store new tool
@@ -149,7 +149,7 @@ Route::prefix('inventarisasi-bahan-fisika')->middleware(['auth', 'checkUserType:
     Route::delete('/{id}', [FisikaInventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
 });
 
-Route::prefix('tenaga-laboratorium-fisika')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('tenaga-laboratorium-fisika')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [FisikaTenagaLaboratoriumController::class, 'index'])->name('tenaga.index'); // List of tools
     Route::get('/create', [FisikaTenagaLaboratoriumController::class, 'create'])->name('tenaga.create'); // Create tool form
     Route::post('/', [FisikaTenagaLaboratoriumController::class, 'store'])->name('tenaga.store'); // Store new tool
@@ -161,7 +161,7 @@ Route::prefix('tenaga-laboratorium-fisika')->middleware(['auth', 'checkUserType:
 Route::get('/jadwal-praktikum-fisika/check-date/{jadwal_praktikum}', [FisikaJadwalPraktikumController::class, 'checkDate']);
 
 
-Route::prefix('jadwal-praktikum-fisika')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('jadwal-praktikum-fisika')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [FisikaJadwalPraktikumController::class, 'index'])->name('jadwal.index'); // List of tools
     Route::get('/create', [FisikaJadwalPraktikumController::class, 'create'])->name('jadwal.create'); // Create tool form
     Route::post('/', [FisikaJadwalPraktikumController::class, 'store'])->name('jadwal.store'); // Store new tool
@@ -173,9 +173,9 @@ Route::prefix('jadwal-praktikum-fisika')->middleware(['auth', 'checkUserType:inv
 
 
 
-Route::get('/Dashboard-inventaris-biologi', [BiologiInventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:inventaris']);
+Route::get('/Dashboard-inventaris-biologi', [BiologiInventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:guru']);
 
-Route::prefix('inventarisasi-alat-biologi')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('inventarisasi-alat-biologi')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [BiologiInventarisasiAlatController::class, 'index'])->name('alat.index'); // List of tools
     Route::get('/create', [BiologiInventarisasiAlatController::class, 'create'])->name('alat.create'); // Create tool form
     Route::post('/', [BiologiInventarisasiAlatController::class, 'store'])->name('alat.store'); // Store new tool
@@ -185,7 +185,7 @@ Route::prefix('inventarisasi-alat-biologi')->middleware(['auth', 'checkUserType:
     Route::delete('/{id}', [BiologiInventarisasiAlatController::class, 'destroy'])->name('alat.destroy'); // Delete tool
 });
 
-Route::prefix('inventarisasi-fasilitas-biologi')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('inventarisasi-fasilitas-biologi')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [BiologiInventarisasiFasilitasController::class, 'index'])->name('fasilitas.index'); // List of tools
     Route::get('/create', [BiologiInventarisasiFasilitasController::class, 'create'])->name('fasilitas.create'); // Create tool form
     Route::post('/', [BiologiInventarisasiFasilitasController::class, 'store'])->name('fasilitas.store'); // Store new tool
@@ -195,7 +195,7 @@ Route::prefix('inventarisasi-fasilitas-biologi')->middleware(['auth', 'checkUser
     Route::delete('/{id}', [BiologiInventarisasiFasilitasController::class, 'destroy'])->name('fasilitas.destroy'); // Delete tool
 });
 
-Route::prefix('inventarisasi-bahan-biologi')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('inventarisasi-bahan-biologi')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [BiologiInventarisasiBahanController::class, 'index'])->name('bahan.index'); // List of tools
     Route::get('/create', [BiologiInventarisasiBahanController::class, 'create'])->name('bahan.create'); // Create tool form
     Route::post('/', [BiologiInventarisasiBahanController::class, 'store'])->name('bahan.store'); // Store new tool
@@ -205,7 +205,7 @@ Route::prefix('inventarisasi-bahan-biologi')->middleware(['auth', 'checkUserType
     Route::delete('/{id}', [BiologiInventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
 });
 
-Route::prefix('tenaga-laboratorium-biologi')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('tenaga-laboratorium-biologi')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [BiologiTenagaLaboratoriumController::class, 'index'])->name('tenaga.index'); // List of tools
     Route::get('/create', [BiologiTenagaLaboratoriumController::class, 'create'])->name('tenaga.create'); // Create tool form
     Route::post('/', [BiologiTenagaLaboratoriumController::class, 'store'])->name('tenaga.store'); // Store new tool
@@ -217,7 +217,7 @@ Route::prefix('tenaga-laboratorium-biologi')->middleware(['auth', 'checkUserType
 Route::get('/jadwal-praktikum-biologi/check-date/{jadwal_praktikum}', [BiologiJadwalPraktikumController::class, 'checkDate']);
 
 
-Route::prefix('jadwal-praktikum-biologi')->middleware(['auth', 'checkUserType:inventaris'])->group(function () {
+Route::prefix('jadwal-praktikum-biologi')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [BiologiJadwalPraktikumController::class, 'index'])->name('jadwal.index'); // List of tools
     Route::get('/create', [BiologiJadwalPraktikumController::class, 'create'])->name('jadwal.create'); // Create tool form
     Route::post('/', [BiologiJadwalPraktikumController::class, 'store'])->name('jadwal.store'); // Store new tool
@@ -244,7 +244,7 @@ Route::get('/materi-kelas-page', function (Request $request) {
     $user_type = session('user_type');
     $materi = Materi::paginate(6);
 
-    if ($user_type == 'admin') {
+    if ($user_type == 'guru') {
         return view('materikelaspageguru',compact('username', 'user_type','materi'));
     } else if ($user_type == 'siswa') {
         return view('materikelaspagesiswa',compact('username', 'user_type','materi'));

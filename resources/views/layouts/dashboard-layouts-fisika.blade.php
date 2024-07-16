@@ -23,15 +23,24 @@
                     <h2>Laboratorium Fisika MAN 2</h2>
                 </li>
             @if (session()->has('username'))
-                                <li>
-                                    <form action="{{ route('logout') }}" method="POST" style="display: inline;">
-                                        @csrf
-                                        <button type="submit" class="btn btn-outline-primary" style="margin-top: 5px; margin-right: 2.5px">LOG-OUT</button>
-                                    </form>
-                                </li>
-                            @else
-                                <li><a href="login">LOG-IN</a></li>
-                            @endif
+                <div style="display: flex">
+                    <li style="margin-right: 10px">
+                        <form action="{{ route('home') }}" method="GET" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-primary" style="margin-top: 5px; margin-right: 2.5px">HOME</button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-secondary" style="margin-top: 5px; margin-right: 2.5px">LOG-OUT</button>
+                        </form>
+                    </li>
+
+                </div>
+            @else
+                <li><a href="login">LOG-IN</a></li>
+            @endif
             </ul>
         </nav>
     </header>
@@ -40,7 +49,7 @@
             <hr>
             <div class="profil">
                 <div class="circle"></div>
-                <p>{{ session('username') }}</p>
+                <p>{{ session('nama') }}</p>
             </div>
             <hr>
             <div class="jadwal">

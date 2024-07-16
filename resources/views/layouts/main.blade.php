@@ -36,11 +36,19 @@
                 <li><a href="/#struktur-organisasi">STRUKTUR ORGANISASI</a></li>
                 <li><a href="/#profil">TENTANG</a></li>
                 @if (session()->has('username'))
-                    <li class="login"><a>Hi {{ session('username') }}</a></li>
+                    <li class="login"><a>Hi {{ session('nama') }}</a></li>
+                    @if (session('user_type') == 'guru')
+                        <li>
+                            <form action="{{ route('pilih-labolatorium') }}" method="GET" style="display: inline;">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-primary" style="margin-top: 10px; margin-right: 5px">Dashboard</button>
+                            </form>
+                        </li>
+                    @endif
                     <li>
                         <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                             @csrf
-                            <button type="submit" class="btn btn-outline-primary" style="margin-top: 10px; margin-right: 5px">LOG-OUT</button>
+                            <button type="submit" class="btn btn-outline-secondary" style="margin-top: 10px; margin-right: 5px">LOG-OUT</button>
                         </form>
                     </li>
                 @else
@@ -60,7 +68,15 @@
                         <li><a href="/#struktur-organisasi">STRUKTUR ORGANISASI</a></li>
                         <li><a href="/#profil">TENTANG</a></li>
                         @if (session()->has('username'))
-                            <li><a>Hi {{ session('username') }}</a></li>
+                            <li><a>Hi {{ session('nama') }}</a></li>
+                            @if (session('user_type') == 'guru')
+                                <li>
+                                    <form action="{{ route('pilih-labolatorium') }}" method="GET" style="display: inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-primary" style="margin-top: 10px; margin-right: 5px">Dashboard</button>
+                                    </form>
+                                </li>
+                            @endif
                             <li>
                                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                                     @csrf

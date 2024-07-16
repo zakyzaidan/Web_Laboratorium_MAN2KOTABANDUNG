@@ -12,11 +12,11 @@ class Admin extends Model implements AuthenticatableContract
 {
     use HasFactory, Authenticatable;
 
-    protected $table = 't_admin'; // Nama tabel di database
+    protected $table = 'master_guru'; // Nama tabel di database
     protected $primaryKey = 'id'; // Primary key tabel (default: 'id')
 
     public $timestamps = false;
-    protected $fillable = ['username']; // Kolom yang dapat diisi
+    protected $fillable = ['nip', 'nama']; // Kolom yang dapat diisi
     public function getAuthPassword()
     {
         return $this->password;

@@ -10,7 +10,7 @@
         <div class="materi-pembelajaran">
             <div class="header">
                 <h2>MATERI PEMBELAJARAN <br> PRAKTIKUM</h2>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="clearForm()">+</button>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="clearForm()">Tambah +</button>
 
             </div>
             <div class="detail">
