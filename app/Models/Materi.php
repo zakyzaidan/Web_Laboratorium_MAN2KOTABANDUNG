@@ -12,7 +12,7 @@ class Materi extends Model
 
     protected $primaryKey = 'id_materi'; // Primary key tabel
 
-    public $timestamps = false; // Laravel secara default mengharapkan kolom created_at dan updated_at. Jika tidak ada, set ke false
+    public $timestamps = true; // Laravel secara default mengharapkan kolom created_at dan updated_at. Jika tidak ada, set ke false
 
     protected $fillable = [ // Kolom-kolom yang dapat diisi
         'thubnail_materi',
@@ -23,7 +23,9 @@ class Materi extends Model
         'id_admin',
         'kelas',
         'pelajaran',
-        'tambahan_materi'
+        'tambahan_materi',
+        'penulis',
+        'file_materi'
     ];
 
     // Relasi ke tabel t_admin

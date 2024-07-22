@@ -18,12 +18,18 @@ main .konten-keseluruhan {
     padding: 3% 5% 3% 5%;
 }
 
-main .konten-keseluruhan .konten-utama h2 {
+main .konten-keseluruhan .konten-utama #isi-materi {
     margin-bottom: 2vw;
 }
 main .konten-keseluruhan .konten-utama {
     width: 80%;
     padding-right: 5%;
+}
+
+main .konten-keseluruhan .konten-utama img{
+    position: relative;
+    max-width: 100%;
+    height: auto;
 }
 
 main .konten-keseluruhan .tambahan {

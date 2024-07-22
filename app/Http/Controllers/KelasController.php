@@ -15,6 +15,6 @@ class KelasController extends Controller
     public function setpembelajaranSession(Request $request,$kelas){
         $request->session()->put('pembelajaran', $kelas);
 
-        return redirect('/pilih-kelas');
+        return redirect("/pilih-kelas");
     }
 }

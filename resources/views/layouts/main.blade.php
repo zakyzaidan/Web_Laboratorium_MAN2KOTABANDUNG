@@ -30,9 +30,9 @@
             <ul>
                 <li><img src="{{ asset('image/logo-man2.png') }}" alt="logo"></li>
                 <li><a href="/">BERANDA</a></li>
-                <li><a href="/#pilihan-pelajaran">LAB KIMIA</a></li>
-                <li><a href="/#pilihan-pelajaran">LAB FISIKA</a></li>
-                <li><a href="/#pilihan-pelajaran">LAB BIOLOGI</a></li>
+                <li><a href="/pilih-pembelajaran/Kimia">LAB KIMIA</a></li>
+                <li><a href="/pilih-pembelajaran/Fisika">LAB FISIKA</a></li>
+                <li><a href="/pilih-pembelajaran/Biologi">LAB BIOLOGI</a></li>
                 <li><a href="/#struktur-organisasi">STRUKTUR ORGANISASI</a></li>
                 <li><a href="/#profil">TENTANG</a></li>
                 @if (session()->has('username'))
@@ -62,9 +62,9 @@
                 <nav id="sidebar">
                     <ul>
                         <li><a href="/">BERANDA</a></li>
-                        <li><a href="/#pilihan-pelajaran">LAB KIMIA</a></li>
-                        <li><a href="/#pilihan-pelajaran">LAB FISIKA</a></li>
-                        <li><a href="/#pilihan-pelajaran">LAB BIOLOGI</a></li>
+                        <li><a href="/pilih-pembelajaran/Kimia">LAB KIMIA</a></li>
+                        <li><a href="/pilih-pembelajaran/Fisika">LAB FISIKA</a></li>
+                        <li><a href="/pilih-pembelajaran/Biologi">LAB BIOLOGI</a></li>
                         <li><a href="/#struktur-organisasi">STRUKTUR ORGANISASI</a></li>
                         <li><a href="/#profil">TENTANG</a></li>
                         @if (session()->has('username'))

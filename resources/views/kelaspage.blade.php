@@ -6,7 +6,7 @@
     <main>
         <div class="pilihan-kelas">
             <h2>
-                MATERI<br>PEMBELAJARAN - FISIKA
+                MATERI<br>PEMBELAJARAN - {{session('pembelajaran')}}
             </h2>
             <ul>
                 <li>

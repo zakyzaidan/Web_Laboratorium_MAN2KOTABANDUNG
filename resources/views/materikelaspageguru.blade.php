@@ -3,38 +3,40 @@
  <link rel="stylesheet" href="css/style-materi-add-update.css">
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+ <script>console.log("----------")</script>
 @endsection
 @section('page')
     <main>
 
         <div class="materi-pembelajaran">
             <div class="header">
-                <h2>MATERI PEMBELAJARAN <br> PRAKTIKUM</h2>
+                <h2>MATERI PEMBELAJARAN PRAKTIKUM <br> {{session("pembelajaran")}} - Kelas {{session("kelas")}} </h2>
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" onclick="clearForm()">Tambah +</button>
 
             </div>
             <div class="detail">
                 <?php $i = 0; ?>
                 @foreach ($materi as $item)
-                    <div class="tampilan-materi">
-                        <div class="tampilan-foto">
+                    <div class="card" style="width: 30rem;">
+                        <a href="/materi/{{$item->id_materi}}">
+                            <img class="card-img-top" src="{{ asset(Storage::url($item->thubnail_materi)) }}" alt="Card image cap">
+                        </a>
+                        <div class="card-body">
                             <a href="/materi/{{$item->id_materi}}">
-                                <img src="{{ asset(Storage::url($item->thubnail_materi)) }}" alt="gerakmelingkar">
+                                <h3 class="card-title">{{ $item->judul_materi }}</h3>
+                                <h5 class="card-subtitle mb-2 text-body-secondary">{{ $item->penulis }}</h5>
                             </a>
-                            <div class="tampilan-fitur">
-                                <div class="pilihan">
-                                <button type="button" data-toggle="modal" data-target="#exampleModal" onclick="editData({{ $item->id_materi }})" ><i class="fas fa-pen" style="background-color: yellow;"></i></button>
-                                <form action="/materi-kelas-page/delete" method="post">
-                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                    @csrf
-                                    <input type="hidden" name="id" value="{{ $item->id_materi }}">
-                                    <button type="submit"><i class="fas fa-times-circle" style="background-color: red;"></i></button>
-                                </form>
-
-                                </div>
-                            </div>
                         </div>
-                        <figcaption>{{ $item->judul_materi }}</figcaption>
+                        <div class="card-body card-action">
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="editData({{ $item->id_materi }})">Edit</button>
+                            <form action="/materi-kelas-page/delete" method="post">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $item->id_materi }}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            
+                        </div>
                     </div>
                     <?php $i++; ?>
                     @if ($i % 3 == 0)
@@ -62,17 +64,17 @@
                                             <div class="input">
                                                 <img id="image-preview" src="image/image-default.png" alt="Preview Image">
                                                 <div class="foto">
-                                                    <p>Unggah Thumbnail materi 1 Anda di sini. <b>Pedoman penting</b>: 347x288 piksel. <b>Format yang didukung</b>: .jpg, .jpeg, atau .png</p>
+                                                    <p>Unggah Thumbnail materi 1 Anda di sini. <b>Format yang didukung</b>: .jpg, .jpeg, atau .png</p>
                                                     <label for="image-upload" class="custom-file-upload">
                                                         Unggah foto  <i class="fas fa-upload"></i>
                                                     </label>
-                                                    <input id="image-upload" name="image-upload" type="file" accept=".jpg, .jpeg, .png" onchange="previewImage()"/>
+                                                    <input id="image-upload" name="image-upload" type="file" accept=".jpg, .jpeg, .png" onchange="previewImage()" required/>
                                                 </div>
                                             </div>
                                             <div class="input">
                                                 <iframe id="html-preview"></iframe>
                                                 <div class="html">
-                                                    <p>Unggah Simulasi pada materi yang akan anda unggah. </p>
+                                                    <p>Unggah Simulasi html jika ada. </p>
                                                     <label for="html-upload" class="custom-file-upload">
                                                         Unggah Laman  <i class="fas fa-upload"></i>
                                                     </label>
@@ -88,6 +90,14 @@
                                             <input type="text" class="form-control" id="judul" name="judul" maxlength="80" placeholder="Silahkan Tuliskan Judul Materi" oninput="updateCount()">
                                             <small id="judulHelp" class="form-text text-muted">0/80</small>
                                         </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="penulis">Penulis</label>
+                                        <input type="text" class="form-control" id="penulis" name="penulis" value="{{ session('nama') }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="file-materi">File Pendukung Materi</label>
+                                        <input type="file" class="form-control" id="file-materi" name="file-materi" accept=".pdf, .doc, .docx" required>
                                     </div>
                                     <div class="form-group" >
                                         <label for="isi-materi">isi materi</label>

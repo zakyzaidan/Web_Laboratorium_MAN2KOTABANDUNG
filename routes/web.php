@@ -56,9 +56,8 @@ Route::get('/login', function () {
 Route::get('/pilih-pembelajaran/{pelajaran}', [KelasController::class,'setpembelajaranSession'])->middleware('auth');
 
 Route::get('/pilih-kelas', function () {
-    $username = session('username');
-    $user_type = session('user_type');
-    return view('kelaspage', compact('username', 'user_type'));
+
+    return view('kelaspage');
 })->middleware('auth');
 
 
@@ -242,7 +241,7 @@ Route::get('/materi-kelas-page', function (Request $request) {
 
     $username = session('username');
     $user_type = session('user_type');
-    $materi = Materi::paginate(6);
+    $materi = Materi::where('kelas', session('kelas'))->where('pelajaran',session('pembelajaran'))->paginate(6);
 
     if ($user_type == 'guru') {
         return view('materikelaspageguru',compact('username', 'user_type','materi'));

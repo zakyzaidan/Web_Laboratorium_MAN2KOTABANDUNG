@@ -9,7 +9,7 @@
             <ul>
                 <li>
                     @if (session()->has('username'))
-                    <a href="">
+                    <a href="/pilih-pembelajaran/Kimia">
                         <img src="image/Lab-Kimia.png" alt="Lab Kimia">
                     </a>
                     <h3>Kimia</h3>
@@ -20,7 +20,7 @@
                 </li>
                 <li>
                     @if (session()->has('username'))
-                    <a href="/pilih-pembelajaran/FISIKA">
+                    <a href="/pilih-pembelajaran/Fisika">
                         <img src="image/Lab-Fisika.png" alt="Lab Fisika">
                     </a>
                     <h3>Fisika</h3>
@@ -33,7 +33,7 @@
                 </li>
                 <li>
                     @if (session()->has('username'))
-                    <a href="">
+                    <a href="/pilih-pembelajaran/Biologi">
                         <img src="image/Lab-Biologi.png" alt="Lab Biologi" >
                     </a>
                     <h3>Biologi</h3>

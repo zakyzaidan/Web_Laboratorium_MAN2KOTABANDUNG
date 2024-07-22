@@ -14,7 +14,28 @@
             <div class="detail">
                 <?php $i = 0; ?>
                 @foreach ($materi as $item)
-                    <div class="tampilan-materi">
+                <div class="card" style="width: 30rem;">
+                        <a href="/materi/{{$item->id_materi}}">
+                            <img class="card-img-top" src="{{ asset(Storage::url($item->thubnail_materi)) }}" alt="Card image cap">
+                        </a>
+                        <div class="card-body">
+                            <a href="/materi/{{$item->id_materi}}">
+                                <h3 class="card-title">{{ $item->judul_materi }}</h3>
+                            </a>
+                        </div>
+                        <!-- <div class="card-body card-action">
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="editData({{ $item->id_materi }})">Edit</button>
+                            <form action="/materi-kelas-page/delete" method="post">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                @csrf
+                                <input type="hidden" name="id" value="{{ $item->id_materi }}">
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                            
+                        </div> -->
+                    </div>
+
+                    <!-- <div class="tampilan-materi">
                         <div class="tampilan-foto">
                             <a href="/materi/{{$item->id_materi}}">
                                 <img src="{{ asset(Storage::url($item->thubnail_materi)) }}" alt="gerakmelingkar">
@@ -23,7 +44,7 @@
                         <figcaption>
                             {{ $item->judul_materi }}
                         </figcaption>
-                    </div>
+                    </div> -->
                     <?php $i++; ?>
                     @if ($i % 3 == 0)
                         </div><div class="detail">

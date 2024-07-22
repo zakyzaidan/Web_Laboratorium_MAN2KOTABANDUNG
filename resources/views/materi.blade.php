@@ -10,11 +10,16 @@
     <div class="konten-keseluruhan">
         <div class="konten-utama">
             <h2>{{ $materi->judul_materi }}</h2>
-            <!-- <img src="{{ asset(Storage::url($materi->thubnail_materi)) }}" alt="gerakmelingkar"> -->
+            <p>Penulis: {{ $materi->penulis }}</p>
+            <p>Diposting pada: {{ $materi->created_at->format('d M Y, H:i') }}</p>
+            @if( $materi->modul_pembelajaran_materi !== '')
             <div class="materi-pemberajaran-html">
                 <iframe id="html-preview" style="position: relative;"></iframe>
                 <button id="fullscreen-button" >⛶</button>
             </div>
+            @else
+            <img src="{{ asset(Storage::url($materi->thubnail_materi)) }}" alt="gerakmelingkar" class="responsive-image">
+            @endif
             <script>
                 function previewHTMLFileFromServer(url) {
                     fetch(url)
@@ -43,6 +48,8 @@
             <div id="isi-materi">
                 {!! $materi->isi_materi !!}
             </div>
+            <h5>File Pendukung Materi:</h5>
+            <a href="{{ asset(Storage::url($materi->file_materi)) }}" class="btn btn-primary mt-3" download>Unduh Materi</a>
             <script src="{{ asset('JavaScript/script-materi.js') }}"></script>
         </div>
         <div class="tambahan">

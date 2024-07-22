@@ -39,7 +39,7 @@ class MateriController extends Controller
     {
         $request->validate([
             'image-upload' => 'required|file|mimes:jpg,jpeg,png',
-            'html-upload' => 'required|file|mimes:html',
+            //'html-upload' => 'required|file|mimes:html',
             'judul' => 'required',
             'isi-materi' => 'required',
             'tujuan-dan-alat' => 'required',
@@ -47,11 +47,14 @@ class MateriController extends Controller
         ]);
 
         $pathGambar = $request->file('image-upload')->store('public/images');
-        $pathDokumen = $request->file('html-upload')->store('public/documents');
+        $pathDokumen = $request->file('html-upload')?->store('public/documents') ?? '';
+        $pathFileMateri = $request->file('file-materi')->store('public/files');
+
         $judul = $request->input('judul');
         $isi_materi = $request->input('isi-materi');
         $tujuan_dan_alat_materi = $request->input('tujuan-dan-alat');
         $tambahan_materi = $request->input('tambahan');
+        $penulis = $request->input('penulis');
         $kelas = session('kelas'); // Ganti dengan data kelas Anda
         $pembelajaran = session('pembelajaran');
         $id_admin = session('id_admin');
@@ -66,6 +69,8 @@ class MateriController extends Controller
             'kelas' => $kelas, // Menambahkan data kelas ke database
             'pelajaran' => $pembelajaran,
             'id_admin' => $id_admin, // Menambahkan id_admin ke database
+            'penulis' => $penulis,
+            'file_materi' => $pathFileMateri,
             // Tambahkan data lainnya di sini
         ]);
         // Reset sesi
@@ -92,6 +97,8 @@ class MateriController extends Controller
             'isi_materi' => $materi->isi_materi,
             'tujuan_dan_alat_materi' => $materi->tujuan_dan_alat_materi,
             'tambahan_materi' => $materi->tambahan_materi,
+            'penulis' => $materi->penulis,
+            'file_materi' => Storage::url($materi->file_materi),
         ]);
     }
 
@@ -123,6 +130,7 @@ class MateriController extends Controller
         $materi->isi_materi = $request->input('isi-materi');
         $materi->tujuan_dan_alat_materi = $request->input('tujuan-dan-alat');
         $materi->tambahan_materi = $request->input('tambahan');
+        $materi->penulis = $request->input('penulis');
 
         // Cek apakah file baru diunggah
         if ($request->hasFile('image-upload')) {
@@ -141,6 +149,15 @@ class MateriController extends Controller
             // Simpan file baru
             $pathDokumen = $request->file('html-upload')->store('public/documents');
             $materi->modul_pembelajaran_materi = $pathDokumen;
+        }
+
+        if ($request->hasFile('file-materi')) {
+            // Hapus file lama
+            Storage::delete($materi->file_materi);
+
+            // Simpan file baru
+            $pathFileMateri = $request->file('file-materi')->store('public/files');
+            $materi->file_materi = $pathFileMateri;
         }
 
         // Simpan perubahan
@@ -164,9 +181,10 @@ class MateriController extends Controller
         // Delete files from storage
         Storage::delete($materi->thubnail_materi);
         Storage::delete($materi->modul_pembelajaran_materi);
-
+        Storage::delete($materi->file_materi);
+        
         // Check if files are deleted
-        if (!Storage::exists($materi->thubnail_materi) && !Storage::exists($materi->modul_pembelajaran_materi)) {
+        if (!Storage::exists($materi->thubnail_materi)) {
             $materi->delete();
             return redirect('/materi-kelas-page')->with('success', 'Files and record deleted successfully');
         } else {

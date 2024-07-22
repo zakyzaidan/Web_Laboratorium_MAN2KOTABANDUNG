@@ -125,30 +125,6 @@ main .materi-pembelajaran .header h2 {
     ); /* Warna latar belakang dengan sedikit transparansi */
 }
 
-/* Konten Modal */
-/* .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  } */
-
-/* Tombol Tutup */
-/* .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  } */
-
 button.close {
     display: none;
 }
@@ -183,6 +159,31 @@ main .materi-pembelajaran .detail .tampilan-materi .tampilan-foto {
 main .materi-pembelajaran .detail .tampilan-materi .tampilan-foto:hover{
     transform: scale(1.1);
     transition: transform 0.2s;
+}
+
+main .detail .card{
+    height: fit-content;
+    padding-bottom: 2vh;
+}
+
+main .detail .card:hover{
+    transform: scale(1.1);
+    transition: transform 0.2s;
+    text-decoration: underline;
+}
+
+main .detail a{
+    text-decoration: none;
+    color: black;
+}
+
+main .card .card-action{
+    display: flex;
+}
+
+main .card .card-action button{
+    margin-right: 2vh;
+    height: fit-content;
 }
 
 main .materi-pembelajaran .detail figcaption {
@@ -279,3 +280,5 @@ main
         font-size: 1.66vw;
     }
 }
+
+
