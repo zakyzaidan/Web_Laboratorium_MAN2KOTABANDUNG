@@ -147,6 +147,7 @@
 
 $(document).ready(function() {
             var events = {!! json_encode($events) !!};
+            console.log(events);
             events = events.map(event => {
                 return {
                     Date: new Date(event.Date),

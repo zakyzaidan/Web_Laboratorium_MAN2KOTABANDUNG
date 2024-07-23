@@ -132,6 +132,108 @@ main .pilihan-kelas ul li h3 {
     font-size: 30px;
 }
 
+
+
+main .jadwal{
+    margin: 4vh 2vw 5vh 2vw;
+    color: black;
+    display: flex;
+    flex-direction: row;
+  }
+
+main .jadwal p{
+    font-weight: bold;
+    color: black;
+  }
+
+main .jadwal h5{
+    font-weight: bold;
+
+}
+
+main .jadwal .div-calendar{
+    margin-right: 5vh;
+  }
+
+main  .jadwal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    color: #0b0b0b;
+}
+.jadwal-table th, .jadwal-table td {
+    border: 1px solid #0b0b0b;
+    padding: 8px;
+    text-align: left;
+}
+.jadwal-table th {
+    color: white;
+    background-color: #053386;
+}
+.jadwal-table tr.filled {
+    color: white;
+    background-color: #1d458f;
+}
+
+.caleandar {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.caleandar .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.caleandar .header .title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.caleandar .days {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.caleandar .day {
+  width: 14.2857%; /* 100% / 7 days */
+  text-align: center;
+  padding: 10px 0;
+  box-sizing: border-box;
+  border: 1px solid #eee;
+  cursor: pointer;
+}
+
+.caleandar .day.name {
+  background-color: #f2f2f2;
+  cursor: default;
+}
+
+.caleandar .day.empty {
+  background-color: #fff;
+  cursor: default;
+}
+
+.caleandar .day.today {
+    background-color: #d4edda;
+}
+
+.caleandar .day.selected {
+    background-color: #cce5ff;
+}
+
+.caleandar .prev,
+.caleandar .next {
+  cursor: pointer;
+  font-size: 1.5em;
+}
+
+
 @media screen and (max-width: 900px) {
     main .pilihan-kelas h2 {
         padding-top: 2vw;
@@ -154,6 +256,15 @@ main .pilihan-kelas ul li h3 {
     main .pilihan-kelas ul li h3 {
         font-size: 7vw;
         padding-top: 0;
+        padding-bottom: 3vw;
+    }
+
+     main .jadwal{
+        display: flex;
+        flex-direction: column;
+    }
+
+    main .jadwal .div-calendar{
         padding-bottom: 3vw;
     }
 }

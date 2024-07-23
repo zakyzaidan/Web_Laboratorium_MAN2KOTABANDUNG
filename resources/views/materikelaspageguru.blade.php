@@ -29,7 +29,7 @@
                         </div>
                         <div class="card-body card-action">
                             <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="editData({{ $item->id_materi }})">Edit</button>
-                            <form action="/materi-kelas-page/delete" method="post">
+                            <form action="/materi-kelas-page/delete" method="post" onsubmit="return confirmDeletion()">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $item->id_materi }}">
@@ -74,7 +74,7 @@
                                             <div class="input">
                                                 <iframe id="html-preview"></iframe>
                                                 <div class="html">
-                                                    <p>Unggah Simulasi html jika ada. </p>
+                                                    <p>Unggah Simulasi html jika ada. (optional)</p>
                                                     <label for="html-upload" class="custom-file-upload">
                                                         Unggah Laman  <i class="fas fa-upload"></i>
                                                     </label>
@@ -186,6 +186,13 @@
 
 <script type="module" src="js/test.js"></script>
 <!-- <script type="module" src="js/ckeditor.js"></script> -->
+
+<script>
+    // JavaScript function for confirmation dialog
+    function confirmDeletion() {
+        return confirm('Apakah Anda yakin ingin menghapus materi ini?');
+    }
+</script>
 
 @endsection
 
