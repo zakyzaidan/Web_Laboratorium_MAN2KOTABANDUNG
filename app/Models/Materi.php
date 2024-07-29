@@ -28,6 +28,30 @@ class Materi extends Model
         'file_materi'
     ];
 
+    // relasi ke tabel inventarisasi alat
+    public function fisika_alat()
+    {
+        return $this->belongsToMany(FisikaInventarisasiAlat::class, 'fisika_materi_alat', 'materi_id', 't_fisika_inventarisasi_alat_id');
+    }
+
+    // relasi ke tabel inventarisasi alat
+    public function biologi_alat()
+    {
+        return $this->belongsToMany(BiologiInventarisasiAlat::class, 'biologi_materi_alat', 'materi_id', 't_biologi_inventarisasi_alat_id');
+    }
+
+    // relasi ke tabel inventarisasi alat
+    public function kimia_alat()
+    {
+        return $this->belongsToMany(InventarisasiAlat::class, 'kimia_materi_alat', 'materi_id', 't_kimia_inventarisasi_alat_id');
+    }
+
+    // relasi ke tabel inventarisasi alat
+    public function kimia_bahan()
+    {
+        return $this->belongsToMany(InventarisasiBahan::class, 'kimia_materi_bahan', 'materi_id', 't_kimia_inventarisasi_bahan_id');
+    }
+
     // Relasi ke tabel t_admin
     public function admin()
     {

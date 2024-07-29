@@ -1,9 +1,12 @@
 @extends('layouts.main')
 @section('css')
+<!-- Tambahkan link ke stylesheet Select2 di bagian <head> -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+
  <link rel="stylesheet" href="css/style-materi-add-update.css">
  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
- <script>console.log("----------")</script>
+
 @endsection
 @section('page')
     <main>
@@ -78,7 +81,7 @@
                                                     <label for="html-upload" class="custom-file-upload">
                                                         Unggah Laman  <i class="fas fa-upload"></i>
                                                     </label>
-                                                    <input id="html-upload" name="html-upload" type="file" accept=".html" onchange="previewHTMLFile()">
+                                                    <input id="html-upload" name="html-upload" type="file" accept=".html">
                                                 </div>
                                             </div>
                                         </div>
@@ -113,6 +116,39 @@
                                         <label for="tambahan">tambahan</label>
                                         <textarea id="tambahan" name="tambahan"></textarea>
                                     </div>
+
+                                    <!-- Tabel Alat -->
+                                    <div class="form-group">
+                                        <label for="search-tool">Cari Alat</label>
+                                        <input type="text" class="form-control" id="search-tool" placeholder="Cari Alat..." oninput="searchTools()">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Foto</th>
+                                                    <th>Nama Alat</th>
+                                                    <th>Lokasi Penyimpanan</th>
+                                                    <th>Pilih</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="tools-table">
+                                                @foreach($alat as $tool)
+                                                <tr>
+                                                    <td><img src="{{ asset(Storage::url($tool->foto)) }}" alt="Foto Alat" style="width: 50px; height: 50px;"></td>
+                                                    <td>{{ $tool->nama_alat }}</td>
+                                                    <td>{{ $tool->lokasi_penyimpanan }}</td>
+                                                    <td>
+                                                        <input value="{{ $tool->id_t_inventarisasi_alat }}" id="check-{{ $tool->id_t_inventarisasi_alat }}" type="checkbox"  name="alat[]" >
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- Akhir Tabel Alat -->
+
                                 </div>
                             </form>
                         </div>
@@ -124,41 +160,6 @@
                     </script>
                 @endif
 
-
-                <!-- <div>
-                    <img src="image/gerakmelingkar.png" alt="gerakmelingkar">
-                    <figcaption>Gerak Melingkar</figcaption>
-                    <a href="">Lihat Detail -></a>
-                </div>
-                <div>
-                    <img src="image/ayunanbandulsederhana.png" alt="ayunanbandul">
-                    <figcaption>Ayunan Bandul Sederhana</figcaption>
-                    <a href="">Lihat Detail -></a>
-                </div>
-                <div>
-                    <img src="image/energipotensial.png" alt="energipotensial">
-                    <figcaption>Energi Potensial</figcaption>
-                    <a href="">Lihat Detail -></a>
-                </div> -->
-
-            <!-- <br><br><br><br><br><br>
-            <div class="detail">
-                <div>
-                    <img src="image/gerakmelingkar.png" alt="gerakmelingkar">
-                    <figcaption>Gerak Melingkar</figcaption>
-                    <a href="">Lihat Detail -></a>
-                </div>
-                <div>
-                    <img src="image/ayunanbandulsederhana.png" alt="ayunanbandul">
-                    <figcaption>Ayunan Bandul Sederhana</figcaption>
-                    <a href="">Lihat Detail -></a>
-                </div>
-                <div>
-                    <img src="image/energipotensial.png" alt="energipotensial">
-                    <figcaption>Energi Potensial</figcaption>
-                    <a href="">Lihat Detail -></a>
-                </div>
-            </div> -->
         </div>
         <div class="pagination">
             {{ $materi->links('vendor.pagination.custom') }}
@@ -173,7 +174,9 @@
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/super-build/ckeditor.js"></script> -->
 <!-- <script src="https://cdn.ckeditor.com/ckeditor5/41.2.1/classic/ckeditor.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 <script src="JavaScript/script-materi-add-update.js"></script>
+
 @if (session('success'))
     <script>
         console.log('test successful');
@@ -188,11 +191,26 @@
 <!-- <script type="module" src="js/ckeditor.js"></script> -->
 
 <script>
+    $(document).ready(function() {
+        $('#isi-materi, #tujuan-dan-alat, #tambahan').summernote({
+            height: 200
+        });
+
+        // Initialize Select2
+        $('#alat').select2();
+    });
+    function searchTools() {
+        const query = $('#search-tool').val().toLowerCase();
+        $('#tools-table tr').filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(query) > -1)
+        });
+    }
     // JavaScript function for confirmation dialog
     function confirmDeletion() {
         return confirm('Apakah Anda yakin ingin menghapus materi ini?');
     }
 </script>
+
 
 @endsection
 

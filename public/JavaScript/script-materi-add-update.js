@@ -20,7 +20,6 @@ function previewHTMLFile() {
     var file = document.querySelector("#html-upload").files[0];
     var reader = new FileReader();
     var preview = document.querySelector("#html-preview");
-    console.log(file);
     reader.onloadend = function () {
         preview.srcdoc = reader.result;
     };
@@ -82,7 +81,6 @@ function getTextWidth(text, fontSize) {
 document
     .querySelectorAll("input, textarea:not(#isi-materi, #tujuan-dan-alat, #tambahan)")
     .forEach(function (element) {
-        console.log("data1");
         element.addEventListener("input", function () {
             localStorage.setItem(element.name, element.value);
         });
@@ -97,7 +95,6 @@ document
 
 // Memuat kembali data form dari localStorage saat halaman dimuat
 window.addEventListener("load", function () {
-    console.log("data3");
     document
         .querySelectorAll("input, textarea:not(#isi-materi, #tujuan-dan-alat, #tambahan)")
         .forEach(function (element) {
@@ -165,12 +162,30 @@ function editData(id) {
         .then((data) => {
             // Tampilkan data di form
             console.log(data.modul_pembelajaran_materi);
+            console.log(data.file_materi);
             document.getElementById("image-preview").src = data.thubnail_materi;
+            document.getElementById("image-upload").required = false;
+            document.getElementById("file-materi").required = false;
             previewHTMLFileFromServer(data.modul_pembelajaran_materi);
             document.getElementById("judul").value = data.judul_materi;
             $("#isi-materi").summernote("code", data.isi_materi);
             $("#tujuan-dan-alat").summernote("code", data.tujuan_dan_alat_materi);
             $("#tambahan").summernote("code", data.tambahan_materi);
+            // Reset all checkboxes
+            document.querySelectorAll('.alat-checkbox').forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+
+            // Centang checkbox alat yang dipilih
+            data.alat.forEach((alatId) => {
+                // const checkbox = document.querySelector(`.alat-checkbox[data-id="${alatId}"]`);
+                // console.log(document.querySelector(`.alat-checkbox`));
+                console.log("check-"+alatId.toString());
+                document.getElementById("check-"+alatId.toString()).checked = true;
+                // if (checkbox) {
+                //     checkbox.checked = true;
+                // }
+            });
         });
 }
 

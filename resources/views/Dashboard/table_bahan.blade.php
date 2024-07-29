@@ -174,7 +174,7 @@ $(document).ready(function() {
 
     $('#addButton').click(function() {
         $('#modalLabel').text('Tambah Bahan');
-        $('#form').attr('action', '{{ route('bahan.store') }}');
+        $('#form').attr('action', '{{ route('bahan.store.kimia') }}');
         document.querySelector('input[name="_method"]').value = "POST";
         $('#form').trigger('reset');
         $('#image-preview').attr('src', '{{ asset('image/image-default.png') }}');

@@ -33,5 +33,9 @@ class InventarisasiAlat extends Model
         'keterangan',
     ];
 
+    public function materi()
+    {
+        return $this->belongsToMany(Materi::class, 'kimia_materi_alat', 't_kimia_inventarisasi_alat_id', 'materi_id');
+    }
 
 }

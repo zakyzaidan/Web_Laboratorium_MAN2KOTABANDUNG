@@ -33,5 +33,9 @@ class FisikaInventarisasiAlat extends Model
         'keterangan',
     ];
 
+    public function materi()
+    {
+        return $this->belongsToMany(Materi::class, 'fisika_materi_alat', 't_fisika_inventarisasi_alat_id', 'materi_id');
+    }
 
 }

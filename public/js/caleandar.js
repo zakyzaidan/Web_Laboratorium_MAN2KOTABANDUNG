@@ -352,7 +352,7 @@
 
           var title = document.createElement('div');
           title.className = 'title';
-          var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+          var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
           title.innerHTML = months[options.Month] + ' ' + options.Year;
 
           header.appendChild(prev);
@@ -363,7 +363,7 @@
           var days = document.createElement('div');
           days.className = 'days';
 
-          var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+          var dayNames = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
           for (var i = 0; i < dayNames.length; i++) {
               var day = document.createElement('div');
               day.className = 'day name';

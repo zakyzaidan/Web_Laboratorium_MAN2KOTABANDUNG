@@ -161,7 +161,7 @@ $(document).ready(function() {
 
     $('#addButton').click(function() {
         $('#modalLabel').text('Tambah Alat');
-        $('#form').attr('action', '{{ route('alat.store') }}');
+        $('#form').attr('action', '{{ route('alat.store.kimia') }}');
         document.querySelector('input[name="_method"]').value = "POST";
         $('#form').trigger('reset');
         $('#image-preview').attr('src', '{{ asset('image/image-default.png') }}');

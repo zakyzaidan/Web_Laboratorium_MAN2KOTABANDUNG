@@ -138,7 +138,7 @@ $(document).ready(function() {
 
     $('#addButton').click(function() {
         $('#modalLabel').text('Tambah Tenaga Laboratorium');
-        $('#form').attr('action', '{{ route('tenaga.store') }}');
+        $('#form').attr('action', '{{ route('tenaga.store.kimia') }}');
         document.querySelector('input[name="_method"]').value = "POST";
         $('#form').trigger('reset');
         $('#image-preview').attr('src', '{{ asset('image/image-default.png') }}');

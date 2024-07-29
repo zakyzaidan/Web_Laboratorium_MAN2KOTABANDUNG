@@ -33,5 +33,9 @@ class BiologiInventarisasiAlat extends Model
         'keterangan',
     ];
 
+    public function materi()
+    {
+        return $this->belongsToMany(Materi::class, 'biologi_materi_alat', 't_biologi_inventarisasi_alat_id', 'materi_id');
+    }
 
 }

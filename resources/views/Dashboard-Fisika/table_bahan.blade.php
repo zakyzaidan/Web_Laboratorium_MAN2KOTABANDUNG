@@ -48,6 +48,7 @@
                     <div class="button-container">
                         <button class="btn btn-primary delete-button" data-id="{{ $bahan->id_t_inventarisasi_bahan }}" style="background-color: #ff4d4d; border-color: #ff4d4d;">Hapus</button>
                         <button class="btn btn-primary edit-button" data-id="{{ $bahan->id_t_inventarisasi_bahan }}" style="background-color: #ffc107; border-color: #ffc107;">Ubah</button>
+                        <button class="btn btn-info kartu" data-href="{{ route('bahan.show', $bahan->id_t_inventarisasi_bahan) }}">Kartu</button>
                     </div>
                 </td>
             </tr>
@@ -264,6 +265,9 @@ $(document).ready(function() {
         }
     });
     $(".clickable-row").click(function() {
+        window.location = $(this).data("href");
+    });
+    $(".kartu").click(function() {
         window.location = $(this).data("href");
     });
 });

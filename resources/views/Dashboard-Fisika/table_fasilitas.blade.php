@@ -141,7 +141,7 @@ $(document).ready(function() {
 
     $('#addButton').click(function() {
         $('#modalLabel').text('Tambah Fasilitas');
-        $('#form').attr('action', '{{ route('fasilitas.store') }}');
+        $('#form').attr('action', '{{ route('fasilitas.store.fisika') }}');
         document.querySelector('input[name="_method"]').value = "POST";
         $('#form').trigger('reset');
         $('#image-preview').attr('src', '{{ asset('image/image-default.png') }}');

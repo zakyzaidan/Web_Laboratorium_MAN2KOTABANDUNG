@@ -164,7 +164,7 @@ $(document).ready(function() {
 
     $('#addButton').click(function() {
         $('#modalLabel').text('Tambah Jadwal praktikum');
-        $('#form').attr('action', '{{ route('jadwal.store') }}');
+        $('#form').attr('action', '{{ route('jadwal.store.kimia') }}');
         document.querySelector('input[name="_method"]').value = "POST";
         $('input[name="jadwal_jam_praktikum[]"]').prop('disabled', false);
         $('input[name="jadwal_jam_praktikum[]"]').siblings('label').css('text-decoration', 'none');

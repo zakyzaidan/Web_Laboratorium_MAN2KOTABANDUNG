@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\BiologiInventarisasiAlat;
+use App\Models\FisikaInventarisasiAlat;
 use Illuminate\Support\Facades\Storage;
 
-class BiologiInventarisasiAlatController extends Controller
+class FisikaInventarisasiAlatController extends Controller
 {
     public function index()
     {
-        $alatList = BiologiInventarisasiAlat::all();
-        return view('Dashboard-Biologi/table_alat', compact('alatList'));
+        $alatList = FisikaInventarisasiAlat::all();
+        return view('Dashboard-Fisika/table_alat', compact('alatList'));
     }
 
     public function create()
     {
-        return view('Dashboard-Biologi/table_alat');
+        return view('Dashboard-Fisika/table_alat');
     }
 
     public function store(Request $request)
@@ -41,7 +41,7 @@ class BiologiInventarisasiAlatController extends Controller
 
 
     // Create a new InventarisasiAlat model instance
-    BiologiInventarisasiAlat::create([
+    FisikaInventarisasiAlat::create([
         'nama_alat' => $request->namaAlat,
         'golongan' => $request->golongan,
         'merk' => $request->merk,
@@ -65,14 +65,14 @@ class BiologiInventarisasiAlatController extends Controller
 
     public function show($id)
     {
-        $alat = BiologiInventarisasiAlat::find($id);
-        return view('Dashboard-Biologi/detail_alat', compact('alat'));
+        $alat = FisikaInventarisasiAlat::find($id);
+        return view('Dashboard-Fisika/detail_alat', compact('alat'));
     }
 
     public function edit($id)
     {
         try {
-            $alat = BiologiInventarisasiAlat::findOrFail($id);
+            $alat = FisikaInventarisasiAlat::findOrFail($id);
             return response()->json($alat);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -83,7 +83,7 @@ class BiologiInventarisasiAlatController extends Controller
     public function update(Request $request, $id)
 {
 
-    $alat = BiologiInventarisasiAlat::find($id);
+    $alat = FisikaInventarisasiAlat::find($id);
 
     $alat->nama_alat = $request->input('namaAlat');
     $alat->golongan = $request->input('golongan');
@@ -115,7 +115,7 @@ class BiologiInventarisasiAlatController extends Controller
 
 public function destroy(Request $request,$id)
 {
-    $alat = BiologiInventarisasiAlat::find($id);
+    $alat = FisikaInventarisasiAlat::find($id);
     Storage::delete($alat->foto);
 
     $alat->delete();

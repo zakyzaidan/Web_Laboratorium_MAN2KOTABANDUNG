@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Materi; // Pastikan Anda telah membuat model Materi
+use App\Models\FisikaInventarisasiAlat;
+use App\Models\BiologiInventarisasiAlat;
+use App\Models\InventarisasiAlat;
 use Illuminate\Support\Facades\Storage;
 
 class MateriController extends Controller
@@ -15,19 +18,37 @@ class MateriController extends Controller
      */
     public function index()
     {
-        $materi = Materi::paginate(6);
-        return view('materi.index', compact('materi'));
+        
+        $username = session('username');
+        $user_type = session('user_type');
+        if(session('pembelajaran') == 'Fisika'){
+            $alat = FisikaInventarisasiAlat::all(); // Ambil semua data alat
+        }else if(session('pembelajaran') == 'Biologi'){
+            $alat = BiologiInventarisasiAlat::all(); // Ambil semua data alat
+        }else if(session('pembelajaran') == 'Kimia'){
+            $alat = InventarisasiAlat::all(); // Ambil semua data alat
+        }else{
+            return redirect('/');
+        }
+
+        $materi = Materi::where('kelas', session('kelas'))->where('pelajaran',session('pembelajaran'))->paginate(6);
+        $selectedAlatIds = [];
+
+        if ($user_type == 'guru') {
+            return view('materikelaspageguru',compact('username', 'user_type','materi', 'alat', 'selectedAlatIds'));
+        } else if ($user_type == 'siswa') {
+            return view('materikelaspagesiswa',compact('username', 'user_type','materi'));
+        }
+
+        // Anda bisa menambahkan logika lainnya di sini, misalnya jika user_type tidak ada di session
+        return redirect('/login');
+
+        // $alat = FisikaInventarisasiAlat::all(); // Ambil semua data alat
+        // $materi = Materi::paginate(6);
+        // return view('materi.index', compact('materi', 'alat'));
     }
 
-    /**
-     * Menampilkan form untuk membuat materi baru.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('materi.create');
-    }
+
 
     /**
      * Menyimpan materi baru ke database.
@@ -44,6 +65,7 @@ class MateriController extends Controller
             'isi-materi' => 'required',
             'tujuan-dan-alat' => 'required',
             'tambahan' => 'required',
+            'alat' => 'required|array', 
         ]);
 
         $pathGambar = $request->file('image-upload')->store('public/images');
@@ -58,8 +80,9 @@ class MateriController extends Controller
         $kelas = session('kelas'); // Ganti dengan data kelas Anda
         $pembelajaran = session('pembelajaran');
         $id_admin = session('id_admin');
-        // dd($pembelajaran);
-        Materi::create([
+        
+        //dd($request->input('alat'));
+        $materi = Materi::create([
             'judul_materi' => $judul,
             'thubnail_materi' => $pathGambar,
             'modul_pembelajaran_materi' => $pathDokumen,
@@ -76,6 +99,15 @@ class MateriController extends Controller
         // Reset sesi
         // Dapatkan semua data dari sesi
 
+        // Simpan relasi alat yang dipilih
+        if(session('pembelajaran') == "Fisika"){
+            $materi->fisika_alat()->attach($request->input('alat'));
+        }else if(session('pembelajaran') == "Biologi"){
+            $materi->biologi_alat()->attach($request->input('alat'));
+        }else if(session('pembelajaran') == "Kimia"){
+            $materi->kimia_alat()->attach($request->input('alat'));
+        }
+
         return redirect('/materi-kelas-page')->with('success', 'Data berhasil disimpan');
     }
 
@@ -89,6 +121,14 @@ class MateriController extends Controller
     {
 
         $materi = Materi::find($id);
+        
+        if(session('pembelajaran') == "Fisika"){
+            $alatIds = $materi->fisika_alat()->pluck('t_fisika_inventarisasi_alat_id')->toArray();
+        }else if(session('pembelajaran') == "Biologi"){
+            $alatIds = $materi->biologi_alat()->pluck('t_biologi_inventarisasi_alat_id')->toArray();
+        }else if(session('pembelajaran') == "Kimia"){
+            $alatIds = $materi->kimia_alat()->pluck('t_kimia_inventarisasi_alat_id')->toArray();
+        }
 
         return response()->json([
             'thubnail_materi' => Storage::url($materi->thubnail_materi),
@@ -99,6 +139,7 @@ class MateriController extends Controller
             'tambahan_materi' => $materi->tambahan_materi,
             'penulis' => $materi->penulis,
             'file_materi' => Storage::url($materi->file_materi),
+            'alat' => $alatIds,
         ]);
     }
 
@@ -111,7 +152,12 @@ class MateriController extends Controller
     public function edit($id)
     {
         $materi = Materi::find($id);
-        return view('materi.edit', compact('materi'));
+        $inventarisasiAlat = FisikaInventarisasiAlat::all();
+
+        // Dapatkan ID alat yang sudah terhubung dengan materi
+        $selectedAlatIds = $materi->inventarisasiAlat()->pluck('inventarisasi_alat.id')->toArray();
+
+        return view('materi.edit', compact('materi','inventarisasiAlat', 'selectedAlatIds'));
     }
 
     /**
@@ -123,6 +169,14 @@ class MateriController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'judul' => 'required',
+            'isi-materi' => 'required',
+            'tujuan-dan-alat' => 'required',
+            'tambahan' => 'required',
+            'alat' => 'required|array',
+        ]);
+
         $materi = Materi::find($id);
 
         // Update data materi
@@ -162,6 +216,20 @@ class MateriController extends Controller
 
         // Simpan perubahan
         $materi->save();
+
+        // Delete hubungan antara materi dan alat lama
+        if(session('pembelajaran') == "Fisika"){
+            $materi->fisika_alat()->detach();
+            $materi->fisika_alat()->attach($request->input('alat'));
+        }else if(session('pembelajaran') == "Biologi"){
+            $materi->biologi_alat()->detach();
+            $materi->biologi_alat()->attach($request->input('alat'));
+        }else if(session('pembelajaran') == "Kimia"){
+            $materi->kimia_alat()->detach();
+            $materi->kimia_alat()->attach($request->input('alat'));
+        }
+
+        // Update hubungan antara materi dan alat yang dipilih
 
         return redirect('/materi-kelas-page');
     }

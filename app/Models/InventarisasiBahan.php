@@ -38,4 +38,10 @@ class InventarisasiBahan extends Model
         'kondisi_buruk',
         'keterangan',
     ];
+
+    public function materi()
+    {
+        return $this->belongsToMany(Materi::class, 'kimia_materi_bahan', 't_kimia_inventarisasi_bahan_id', 'materi_id');
+    }
+
 }
