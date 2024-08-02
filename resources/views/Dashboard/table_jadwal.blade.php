@@ -20,6 +20,8 @@
                 <th>topik praktikum</th>
                 <th>jadwal praktikum</th>
                 <th>jadwal jam pelajaran</th>
+                <th>alat yang dipinjam</th>
+                <th>bahan yang dipakai</th>
                 <th data-orderable="false">action</th>
             </tr>
 
@@ -37,12 +39,26 @@
                 <td>{{ $i++ }}</td>
                 <td>{{ $jadwal->nama }}</td>
                 <td>{{ $jadwal->kelas }}</td>
-                <td>{{ $jadwal->topik_praktikum }}</td>
+                <td>{{ $jadwal->materi->judul_materi }}</td>
                 <td>{{ Carbon::parse($jadwal->jadwal_praktikum)->translatedFormat('d F Y') }}</td>
                 <td>
                     <ul>
                         @foreach ($jadwalJamPelajaran as $jam)
                             <li>{{ $jam }}</li>
+                        @endforeach
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach ($jadwal->alat as $alat)
+                        <li>{{ $alat->nama_alat }} - Jumlah: {{ $alat->pivot->jumlah }}</li>
+                        @endforeach
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        @foreach ($jadwal->bahan as $bahan)
+                        <li>{{ $bahan->nama_bahan }} - Jumlah: {{ $bahan->pivot->jumlah }} {{ $bahan->satuan }}</li>
                         @endforeach
                     </ul>
                 </td>
@@ -83,9 +99,21 @@
                         <input type="text" class="form-control" id="kelas" name="kelas" required>
                     </div>
                     <div class="form-group">
-                        <label for="topik_praktikum">Topik Praktikum</label>
-                        <input type="text" class="form-control" id="topik_praktikum" name="topik_praktikum" required>
+                        <label for="materi_id">Materi:</label>
+                        <select class="form-control" id="materi_id" name="materi_id" required>
+                            <option value="">Pilih Materi</option>
+                            @foreach($materis as $materi)
+                            <option value="{{ $materi->id_materi }}">{{ $materi->judul_materi }}</option>
+                            @endforeach
+                        </select>
                     </div>
+                    <div id="alat-container" class="form-group">
+                        <!-- Alat akan dimuat di sini dengan JavaScript -->
+                    </div>
+                    <div id="bahan-container" class="form-group">
+                        <!-- bahan akan dimuat di sini dengan JavaScript -->
+                    </div>
+
                     <div class="form-group">
                         <label for="jadwal_praktikum">Jadwal Tanggal Praktikum</label>
                         <input type="date" id="jadwal_praktikum" name="jadwal_praktikum" class="form-control" required>
@@ -159,6 +187,142 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="{{ asset('JavaScript/script-dashbord-tableV2.js') }}"></script>
 <script>
+    
+    document.getElementById('materi_id').addEventListener('change', function() {
+    var materiId = this.value;
+    fetch('/jadwal-praktikum-kimia/materi/' + materiId + '/alat')
+        .then(response => response.json())
+        .then(data => {
+            var alatContainer = document.getElementById('alat-container');
+            var bahanContainer = document.getElementById('bahan-container');
+
+            alatContainer.innerHTML = ''; // Bersihkan container alat
+            bahanContainer.innerHTML = ''; // Bersihkan container bahan
+
+            // menampilkan alat
+            var table = document.createElement('table');
+            table.className = 'table table-bordered';
+
+            var thead = document.createElement('thead');
+            var headerRow = document.createElement('tr');
+            var headers = ['Foto', 'Nama Alat', 'Jumlah tersedia', 'Jumlah dipinjam'];
+            headers.forEach(headerText => {
+                var th = document.createElement('th');
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+            thead.appendChild(headerRow);
+            table.appendChild(thead);
+
+            var tbody = document.createElement('tbody');
+            tbody.id = 'tools-table';
+
+            data[0].forEach(alat => {
+                var row = document.createElement('tr');
+
+                var fotoCell = document.createElement('td');
+                var fotoImg = document.createElement('img');
+                var imageUrl = '{{ asset(Storage::url('')) }}/' + alat.foto;
+                imageUrl = imageUrl.replace('/public', '');
+                fotoImg.src = imageUrl;
+                fotoImg.alt = 'Foto Alat';
+                fotoImg.style.width = '50px';
+                fotoImg.style.height = '50px';
+                fotoCell.appendChild(fotoImg);
+                row.appendChild(fotoCell);
+
+                var namaCell = document.createElement('td');
+                namaCell.textContent = alat.nama_alat;
+                row.appendChild(namaCell);
+
+                var lokasiCell = document.createElement('td');
+                lokasiCell.textContent = alat.jumlah;
+                row.appendChild(lokasiCell);
+
+                var jumlahCell = document.createElement('td');
+                var input = document.createElement('input');
+                input.type = 'number';
+                input.name = 'jumlah_alat[]';
+                input.className = 'form-control';
+                input.min = 0;
+                input.max = alat.jumlah;
+                input.placeholder = 'Jumlah alat yang dibutuhkan';
+                jumlahCell.appendChild(input);
+
+                var hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'alat[]';
+                hiddenInput.value = alat.id_t_inventarisasi_alat;
+                jumlahCell.appendChild(hiddenInput);
+
+                row.appendChild(jumlahCell);
+
+                tbody.appendChild(row);
+            });
+
+            table.appendChild(tbody);
+            alatContainer.appendChild(table);
+
+            // Menampilkan Bahan
+            var bahanTable = document.createElement('table');
+            bahanTable.className = 'table table-bordered';
+
+            var bahanThead = document.createElement('thead');
+            var bahanHeaderRow = document.createElement('tr');
+            var bahanHeaders = ['Nama Bahan', 'Jumlah tersedia', 'Jumlah', 'Satuan'];
+            bahanHeaders.forEach(headerText => {
+                var th = document.createElement('th');
+                th.textContent = headerText;
+                bahanHeaderRow.appendChild(th);
+            });
+            bahanThead.appendChild(bahanHeaderRow);
+            bahanTable.appendChild(bahanThead);
+
+            var bahanTbody = document.createElement('tbody');
+            bahanTbody.id = 'materials-table';
+
+            data[1].forEach(bahan => {
+                var row = document.createElement('tr');
+
+                var namaCell = document.createElement('td');
+                namaCell.textContent = bahan.nama_bahan;
+                row.appendChild(namaCell);
+
+                var lokasiCell = document.createElement('td');
+                lokasiCell.textContent = bahan.jumlah;
+                row.appendChild(lokasiCell);
+                
+                var jumlahCell = document.createElement('td');
+                var input = document.createElement('input');
+                input.type = 'number';
+                input.name = 'jumlah_bahan[]';
+                input.className = 'form-control';
+                input.min = 0;
+                input.max = bahan.jumlah;
+                input.placeholder = 'Jumlah bahan yang dibutuhkan';
+                jumlahCell.appendChild(input);
+                
+                var hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.name = 'bahan[]';
+                hiddenInput.value = bahan.id_t_inventarisasi_bahan;
+                jumlahCell.appendChild(hiddenInput);
+                
+                row.appendChild(jumlahCell);
+                
+                var satuanCell = document.createElement('td');
+                satuanCell.textContent = bahan.satuan;
+                row.appendChild(satuanCell);
+
+                bahanTbody.appendChild(row);
+            });
+
+            bahanTable.appendChild(bahanTbody);
+            bahanContainer.appendChild(bahanTable);
+        });
+});
+
+
 $(document).ready(function() {
     $('#myTable').DataTable();
 

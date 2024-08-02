@@ -17,10 +17,15 @@ return new class extends Migration
             $table->id('id_t_jadwal_praktikum');
             $table->string('nama')->nullable();
             $table->string('kelas')->nullable();
-            $table->string('topik_praktikum')->nullable();
+            
+            $table->unsignedBigInteger('materi_id');
             $table->date('jadwal_praktikum')->nullable();
             $table->string('jadwal_jam_praktikum')->nullable();
+            // Definisikan foreign key constraint
+            $table->foreign('materi_id')->references('id_materi')->on('materi')->onDelete('cascade');
         });
+
+        
     }
 
     /**

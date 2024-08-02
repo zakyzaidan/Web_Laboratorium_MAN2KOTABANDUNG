@@ -22,8 +22,23 @@ class JadwalPraktikum extends Model
     protected $fillable = [
         'nama',
         'kelas',
-        'topik_praktikum',
+        'materi_id',
         'jadwal_praktikum',
         'jadwal_jam_praktikum',
     ];
+
+    public function materi()
+    {
+        return $this->belongsTo(Materi::class, 'materi_id');
+    }
+
+    public function alat()
+    {
+        return $this->belongsToMany(InventarisasiAlat::class, 'kimia_jadwal_alat', 'jadwal_praktikum_id', 'alat_id')->withPivot('jumlah');
+    }
+
+    public function bahan()
+    {
+        return $this->belongsToMany(InventarisasiBahan::class, 'kimia_jadwal_bahan', 'jadwal_praktikum_id', 'bahan_id')->withPivot('jumlah');
+    }
 }

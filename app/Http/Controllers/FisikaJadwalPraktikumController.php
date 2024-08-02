@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\FisikaJadwalPraktikum;
+use App\Models\FisikaInventarisasiAlat;
+use App\Models\Materi;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
@@ -16,7 +18,8 @@ class FisikaJadwalPraktikumController extends Controller
     public function index()
     {
         $jadwalList = FisikaJadwalPraktikum::all();
-        return view('Dashboard-Fisika/table_jadwal', compact('jadwalList'));
+        $materis = Materi::with('fisika_alat')->where('pelajaran','Fisika')->get();
+        return view('Dashboard-Fisika/table_jadwal', compact('jadwalList', 'materis'));
     }
 
     /**
@@ -35,23 +38,47 @@ class FisikaJadwalPraktikumController extends Controller
         $request->validate([
             'nama' => 'required',
             'kelas' => 'required',
-            'topik_praktikum' => 'required',
+            'materi_id' => 'required',
             'jadwal_praktikum' => 'required',
             'jadwal_jam_praktikum' => 'required|array',
+            'alat' => 'required|array',
+            'jumlah_alat' => 'required|array',
         ]);
+
+
+        //$materi = Materi::find($request->input('materi_id'));
+
+        // Cek ketersediaan alat
+        foreach ($request->input('alat') as $key => $alatId) {
+            $alat = FisikaInventarisasiAlat::find($alatId);
+            $jumlahDibutuhkan = $request->input('jumlah_alat')[$key];
+            
+            if ($jumlahDibutuhkan > $alat->jumlah) {
+                return back()->withErrors(['Jumlah alat yang dibutuhkan melebihi jumlah tersedia untuk alat ' . $alat->nama_alat]);
+            }
+        }
+
         
         $jadwalJamPelajaran = implode(',', $request->jadwal_jam_praktikum);
 
         // Create a new InventarisasiAlat model instance
-        FisikaJadwalPraktikum::create([
+        $jadwal = FisikaJadwalPraktikum::create([
             'nama' => $request->nama,
             'kelas' => $request->kelas,
-            'topik_praktikum' => $request->topik_praktikum,
+            'materi_id' => $request->materi_id,
             'jadwal_praktikum' => $request->jadwal_praktikum,
             'jadwal_jam_praktikum' => $jadwalJamPelajaran,
         ]);
 
+
+        // Simpan alat dan jumlah yang dipinjam ke tabel pivot
+        foreach ($request->input('alat') as $key => $alatId) {
+            $jumlahDibutuhkan = $request->input('jumlah_alat')[$key];
+            $jadwal->alat()->attach($alatId, ['jumlah' => $jumlahDibutuhkan]);
+        }
+
         return redirect()->route('jadwal.index')->with('success', 'Jadwal Praktikum berhasil ditambahkan');
+    
     }
 
     /**
@@ -116,7 +143,7 @@ class FisikaJadwalPraktikumController extends Controller
     public function checkDate($jadwal_praktikum)
 {
     try {
-        $existingSchedules = FisikaJadwalPraktikum::where('jadwal_praktikum', $jadwal_praktikum)->get();
+        $existingSchedules = FisikaJadwalPraktikum::with('materi')->where('jadwal_praktikum', $jadwal_praktikum)->get();
         $scheduleData = [];
 
         foreach ($existingSchedules as $schedule) {
@@ -125,7 +152,7 @@ class FisikaJadwalPraktikumController extends Controller
                 $scheduleData[$jam] = [
                     'nama' => $schedule->nama,
                     'kelas' => $schedule->kelas,
-                    'topik_praktikum' => $schedule->topik_praktikum,
+                    'topik_praktikum' => $schedule->materi->judul_materi,
                 ];
             }
         }
@@ -135,6 +162,14 @@ class FisikaJadwalPraktikumController extends Controller
         return response()->json(['scheduleData' => []]);
     }
 }
+
+    public function getAlatByMateri($materiId)
+    {
+        $materi = Materi::find($materiId);
+        $alat = $materi->fisika_alat()->get();
+
+        return response()->json($alat);
+    }
 
 
 

@@ -69,7 +69,7 @@ Route::prefix('inventarisasi-alat')->middleware(['auth', 'checkUserType:guru'])-
     Route::get('/', [InventarisasiAlatController::class, 'index'])->name('alat.index'); // List of tools
     Route::get('/create', [InventarisasiAlatController::class, 'create'])->name('alat.create'); // Create tool form
     Route::post('/', [InventarisasiAlatController::class, 'store'])->name('alat.store.kimia'); // Store new tool
-    Route::get('/{id}', [InventarisasiAlatController::class, 'show'])->name('alat.show'); // Show tool detail
+    Route::get('/{id}', [InventarisasiAlatController::class, 'show'])->name('alat.show.kimia'); // Show tool detail
     Route::get('/{id}/edit', [InventarisasiAlatController::class, 'edit'])->name('alat.edit'); // Edit tool form
     Route::put('/{id}', [InventarisasiAlatController::class, 'update'])->name('alat.update'); // Update tool
     Route::delete('/{id}', [InventarisasiAlatController::class, 'destroy'])->name('alat.destroy'); // Delete tool
@@ -89,7 +89,7 @@ Route::prefix('inventarisasi-bahan')->middleware(['auth', 'checkUserType:guru'])
     Route::get('/', [InventarisasiBahanController::class, 'index'])->name('bahan.index'); // List of tools
     Route::get('/create', [InventarisasiBahanController::class, 'create'])->name('bahan.create'); // Create tool form
     Route::post('/', [InventarisasiBahanController::class, 'store'])->name('bahan.store.kimia'); // Store new tool
-    Route::get('/{id}', [InventarisasiBahanController::class, 'show'])->name('bahan.show'); // Show tool detail
+    Route::get('/{id}', [InventarisasiBahanController::class, 'show'])->name('bahan.show.kimia'); // Show tool detail
     Route::get('/{id}/edit', [InventarisasiBahanController::class, 'edit'])->name('bahan.edit'); // Edit tool form
     Route::put('/{id}', [InventarisasiBahanController::class, 'update'])->name('bahan.update'); // Update tool
     Route::delete('/{id}', [InventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
@@ -123,7 +123,7 @@ Route::prefix('inventarisasi-alat-fisika')->middleware(['auth', 'checkUserType:g
     Route::get('/', [FisikaInventarisasiAlatController::class, 'index'])->name('alat.index'); // List of tools
     Route::get('/create', [FisikaInventarisasiAlatController::class, 'create'])->name('alat.create'); // Create tool form
     Route::post('/', [FisikaInventarisasiAlatController::class, 'store'])->name('alat.store.fisika'); // Store new tool
-    Route::get('/{id}', [FisikaInventarisasiAlatController::class, 'show'])->name('alat.show'); // Show tool detail
+    Route::get('/{id}', [FisikaInventarisasiAlatController::class, 'show'])->name('alat.show.fisika'); // Show tool detail
     Route::get('/{id}/edit', [FisikaInventarisasiAlatController::class, 'edit'])->name('alat.edit'); // Edit tool form
     Route::put('/{id}', [FisikaInventarisasiAlatController::class, 'update'])->name('alat.update'); // Update tool
     Route::delete('/{id}', [FisikaInventarisasiAlatController::class, 'destroy'])->name('alat.destroy'); // Delete tool
@@ -143,7 +143,7 @@ Route::prefix('inventarisasi-bahan-fisika')->middleware(['auth', 'checkUserType:
     Route::get('/', [FisikaInventarisasiBahanController::class, 'index'])->name('bahan.index'); // List of tools
     Route::get('/create', [FisikaInventarisasiBahanController::class, 'create'])->name('bahan.create'); // Create tool form
     Route::post('/', [FisikaInventarisasiBahanController::class, 'store'])->name('bahan.store.fisika'); // Store new tool
-    Route::get('/{id}', [FisikaInventarisasiBahanController::class, 'show'])->name('bahan.show'); // Show tool detail
+    Route::get('/{id}', [FisikaInventarisasiBahanController::class, 'show'])->name('bahan.show.fisika'); // Show tool detail
     Route::get('/{id}/edit', [FisikaInventarisasiBahanController::class, 'edit'])->name('bahan.edit'); // Edit tool form
     Route::put('/{id}', [FisikaInventarisasiBahanController::class, 'update'])->name('bahan.update'); // Update tool
     Route::delete('/{id}', [FisikaInventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
@@ -159,7 +159,10 @@ Route::prefix('tenaga-laboratorium-fisika')->middleware(['auth', 'checkUserType:
     Route::delete('/{id}', [FisikaTenagaLaboratoriumController::class, 'destroy'])->name('tenaga.destroy'); // Delete tool
 });
 Route::get('/jadwal-praktikum-fisika/check-date/{jadwal_praktikum}', [FisikaJadwalPraktikumController::class, 'checkDate']);
-
+// API route untuk mendapatkan alat berdasarkan materi
+Route::get('/jadwal-praktikum-fisika/materi/{materi}/alat', [FisikaJadwalPraktikumController::class, 'getAlatByMateri']);
+Route::get('/jadwal-praktikum-biologi/materi/{materi}/alat', [BiologiJadwalPraktikumController::class, 'getAlatByMateri']);
+Route::get('/jadwal-praktikum-kimia/materi/{materi}/alat', [JadwalPraktikumController::class, 'getAlatByMateri']);
 
 Route::prefix('jadwal-praktikum-fisika')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [FisikaJadwalPraktikumController::class, 'index'])->name('jadwal.index'); // List of tools
@@ -179,7 +182,7 @@ Route::prefix('inventarisasi-alat-biologi')->middleware(['auth', 'checkUserType:
     Route::get('/', [BiologiInventarisasiAlatController::class, 'index'])->name('alat.index'); // List of tools
     Route::get('/create', [BiologiInventarisasiAlatController::class, 'create'])->name('alat.create'); // Create tool form
     Route::post('/', [BiologiInventarisasiAlatController::class, 'store'])->name('alat.store'); // Store new tool
-    Route::get('/{id}', [BiologiInventarisasiAlatController::class, 'show'])->name('alat.show'); // Show tool detail
+    Route::get('/{id}', [BiologiInventarisasiAlatController::class, 'show'])->name('alat.show.biologi'); // Show tool detail
     Route::get('/{id}/edit', [BiologiInventarisasiAlatController::class, 'edit'])->name('alat.edit'); // Edit tool form
     Route::put('/{id}', [BiologiInventarisasiAlatController::class, 'update'])->name('alat.update'); // Update tool
     Route::delete('/{id}', [BiologiInventarisasiAlatController::class, 'destroy'])->name('alat.destroy'); // Delete tool
@@ -199,7 +202,7 @@ Route::prefix('inventarisasi-bahan-biologi')->middleware(['auth', 'checkUserType
     Route::get('/', [BiologiInventarisasiBahanController::class, 'index'])->name('bahan.index'); // List of tools
     Route::get('/create', [BiologiInventarisasiBahanController::class, 'create'])->name('bahan.create'); // Create tool form
     Route::post('/', [BiologiInventarisasiBahanController::class, 'store'])->name('bahan.store'); // Store new tool
-    Route::get('/{id}', [BiologiInventarisasiBahanController::class, 'show'])->name('bahan.show'); // Show tool detail
+    Route::get('/{id}', [BiologiInventarisasiBahanController::class, 'show'])->name('bahan.show.biologi'); // Show tool detail
     Route::get('/{id}/edit', [BiologiInventarisasiBahanController::class, 'edit'])->name('bahan.edit'); // Edit tool form
     Route::put('/{id}', [BiologiInventarisasiBahanController::class, 'update'])->name('bahan.update'); // Update tool
     Route::delete('/{id}', [BiologiInventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
@@ -241,6 +244,8 @@ Route::get('/materi/{id}', function ($id) {
         $alat = $materi->biologi_alat()->get();
     }else if(session('pembelajaran') == "Kimia"){
         $alat = $materi->kimia_alat()->get();
+        $bahan = $materi->kimia_bahan()->get();
+        return view('materi', compact('materi', 'alat', 'bahan'));
     }
     //dd($alat);
     return view('materi', compact('materi', 'alat'));

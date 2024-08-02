@@ -67,10 +67,10 @@
                                 <p><a href="/inventarisasi-alat-biologi/">Daftar Inventarisasi Alat</a></p>
                             </li>
                             <li>
-                                <p><a href="/inventarisasi-fasilitas-biologi/">Daftar Inventarisasi fasilitas</a></p>
+                                <p><a href="/inventarisasi-bahan-biologi/">Daftar Inventarisasi bahan</a></p>
                             </li>
                             <li>
-                                <p><a href="/inventarisasi-bahan-biologi/">Daftar Inventarisasi bahan</a></p>
+                                <p><a href="/inventarisasi-fasilitas-biologi/">Daftar Inventarisasi fasilitas</a></p>
                             </li>
                             <li>
                                 <p><a href="/tenaga-laboratorium-biologi/">Daftar Tenaga Laboratorium</a></p>

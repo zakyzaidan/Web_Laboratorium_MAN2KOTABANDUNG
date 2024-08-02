@@ -38,4 +38,9 @@ class FisikaInventarisasiAlat extends Model
         return $this->belongsToMany(Materi::class, 'fisika_materi_alat', 't_fisika_inventarisasi_alat_id', 'materi_id');
     }
 
+    public function jadwal()
+    {
+        return $this->belongsToMany(FisikaJadwalPraktikum::class, 'fisika_jadwal_alat', 'alat_id', 'jadwal_praktikum_id')->withPivot('jumlah');
+    }
+
 }

@@ -7,6 +7,7 @@ use App\Models\Materi; // Pastikan Anda telah membuat model Materi
 use App\Models\FisikaInventarisasiAlat;
 use App\Models\BiologiInventarisasiAlat;
 use App\Models\InventarisasiAlat;
+use App\Models\InventarisasiBahan;
 use Illuminate\Support\Facades\Storage;
 
 class MateriController extends Controller
@@ -27,6 +28,16 @@ class MateriController extends Controller
             $alat = BiologiInventarisasiAlat::all(); // Ambil semua data alat
         }else if(session('pembelajaran') == 'Kimia'){
             $alat = InventarisasiAlat::all(); // Ambil semua data alat
+            $bahan = InventarisasiBahan::all(); // Ambil semua data alat
+
+            $materi = Materi::where('kelas', session('kelas'))->where('pelajaran',session('pembelajaran'))->paginate(6);
+            $selectedAlatIds = [];
+
+            if ($user_type == 'guru') {
+                return view('materikelaspageguru',compact('username', 'user_type','materi', 'alat', 'bahan', 'selectedAlatIds'));
+            } else if ($user_type == 'siswa') {
+                return view('materikelaspagesiswa',compact('username', 'user_type','materi'));
+            }
         }else{
             return redirect('/');
         }
@@ -106,6 +117,7 @@ class MateriController extends Controller
             $materi->biologi_alat()->attach($request->input('alat'));
         }else if(session('pembelajaran') == "Kimia"){
             $materi->kimia_alat()->attach($request->input('alat'));
+            $materi->kimia_bahan()->attach($request->input('bahan'));
         }
 
         return redirect('/materi-kelas-page')->with('success', 'Data berhasil disimpan');
@@ -128,6 +140,7 @@ class MateriController extends Controller
             $alatIds = $materi->biologi_alat()->pluck('t_biologi_inventarisasi_alat_id')->toArray();
         }else if(session('pembelajaran') == "Kimia"){
             $alatIds = $materi->kimia_alat()->pluck('t_kimia_inventarisasi_alat_id')->toArray();
+            $bahanIds = $materi->kimia_bahan()->pluck('t_kimia_inventarisasi_bahan_id')->toArray();
         }
 
         return response()->json([

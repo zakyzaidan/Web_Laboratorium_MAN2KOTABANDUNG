@@ -36,7 +36,6 @@
                             <button type="submit" class="btn btn-outline-secondary" style="margin-top: 5px; margin-right: 2.5px">LOG-OUT</button>
                         </form>
                     </li>
-
                 </div>
             @else
                 <li><a href="login">LOG-IN</a></li>
@@ -68,10 +67,10 @@
                                 <p><a href="/inventarisasi-alat-fisika/">Daftar Inventarisasi Alat</a></p>
                             </li>
                             <li>
-                                <p><a href="/inventarisasi-fasilitas-fisika/">Daftar Inventarisasi fasilitas</a></p>
+                                <p><a href="/inventarisasi-bahan-fisika/">Daftar Inventarisasi bahan</a></p>
                             </li>
                             <li>
-                                <p><a href="/inventarisasi-bahan-fisika/">Daftar Inventarisasi bahan</a></p>
+                                <p><a href="/inventarisasi-fasilitas-fisika/">Daftar Inventarisasi fasilitas</a></p>
                             </li>
                             <li>
                                 <p><a href="/tenaga-laboratorium-fisika/">Daftar Tenaga Laboratorium</a></p>

@@ -1,5 +1,7 @@
 @extends('layouts.main')
-
+@section('css')
+ <link rel="stylesheet" href="css/pilih-lab.css">
+@endsection
 @section('page')
 <main>
 <div class="pilihan-pelajaran" id="pilihan-pelajaran">

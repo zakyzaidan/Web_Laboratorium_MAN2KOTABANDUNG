@@ -140,7 +140,7 @@
                                                     <td>{{ $tool->nama_alat }}</td>
                                                     <td>{{ $tool->lokasi_penyimpanan }}</td>
                                                     <td>
-                                                        <input value="{{ $tool->id_t_inventarisasi_alat }}" id="check-{{ $tool->id_t_inventarisasi_alat }}" type="checkbox"  name="alat[]" >
+                                                        <input value="{{ $tool->id_t_inventarisasi_alat }}" id="check-{{ $tool->id_t_inventarisasi_alat }}" type="checkbox"  name="alat[]" style="width: 25px; height: 25px;">
                                                     </td>
                                                 </tr>
                                                 @endforeach
@@ -148,6 +148,42 @@
                                         </table>
                                     </div>
                                     <!-- Akhir Tabel Alat -->
+
+                                    <!-- Tabel Bahan (hanya untuk Kimia) -->
+                                    @if (session("pembelajaran") === "Kimia")
+                                    <div class="form-group">
+                                        <label for="search-material">Cari Bahan</label>
+                                        <input type="text" class="form-control" id="search-material" placeholder="Cari Bahan..." oninput="searchMaterials()">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>Foto</th>
+                                                    <th>Nama Bahan</th>
+                                                    <th>Jumlah Tersedia</th>
+                                                    <th>Satuan</th>
+                                                    <th>Pilih</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="materials-table">
+                                                @foreach($bahan as $material)
+                                                <tr>
+                                                    <td><img src="{{ asset(Storage::url($material->foto)) }}" alt="Foto Alat" style="width: 50px; height: 50px;"></td>
+                                                    <td>{{ $material->nama_bahan }}</td>
+                                                    <td>{{ $material->jumlah }}</td>
+                                                    <td>{{ $material->satuan }}</td>
+                                                    <td>
+                                                        <input value="{{ $material->id_t_inventarisasi_bahan }}" id="check-material-{{ $material->id_t_inventarisasi_bahan }}" type="checkbox" name="bahan[]"style="width: 25px; height: 25px;">
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    @endif
+                                    <!-- Akhir Tabel Bahan -->
 
                                 </div>
                             </form>
@@ -198,10 +234,17 @@
 
         // Initialize Select2
         $('#alat').select2();
+        $('#bahan').select2();
     });
     function searchTools() {
         const query = $('#search-tool').val().toLowerCase();
         $('#tools-table tr').filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(query) > -1)
+        });
+    }
+    function searchMaterials() {
+        const query = $('#search-material').val().toLowerCase();
+        $('#materials-table tr').filter(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(query) > -1)
         });
     }

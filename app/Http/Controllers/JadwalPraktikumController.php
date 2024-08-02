@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\JadwalPraktikum;
+use App\Models\InventarisasiAlat;
+use App\Models\Materi;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
@@ -14,9 +16,11 @@ class JadwalPraktikumController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
+    {   
         $jadwalList = JadwalPraktikum::all();
-        return view('Dashboard/table_jadwal', compact('jadwalList'));
+        $materis = Materi::with(['kimia_alat', 'kimia_bahan'])->where('pelajaran','Kimia')->get();
+
+        return view('Dashboard/table_jadwal', compact('jadwalList', 'materis'));
     }
 
     /**
@@ -35,21 +39,49 @@ class JadwalPraktikumController extends Controller
         $request->validate([
             'nama' => 'required',
             'kelas' => 'required',
-            'topik_praktikum' => 'required',
+            'materi_id' => 'required',
             'jadwal_praktikum' => 'required',
             'jadwal_jam_praktikum' => 'required|array',
+            'alat' => 'required|array',
+            'jumlah_alat' => 'required|array',
+            'bahan' => 'required|array',
+            'jumlah_bahan' => 'required|array',
         ]);
+
+        
+        // Cek ketersediaan alat
+        foreach ($request->input('alat') as $key => $alatId) {
+            $alat = InventarisasiAlat::find($alatId);
+            $jumlahDibutuhkan = $request->input('jumlah_alat')[$key];
+            
+            if ($jumlahDibutuhkan > $alat->jumlah) {
+                return back()->withErrors(['Jumlah alat yang dibutuhkan melebihi jumlah tersedia untuk alat ' . $alat->nama_alat]);
+            }
+        }
+        
         
         $jadwalJamPelajaran = implode(',', $request->jadwal_jam_praktikum);
 
         // Create a new InventarisasiAlat model instance
-        JadwalPraktikum::create([
+        $jadwal = JadwalPraktikum::create([
             'nama' => $request->nama,
             'kelas' => $request->kelas,
-            'topik_praktikum' => $request->topik_praktikum,
+            'materi_id' => $request->materi_id,
             'jadwal_praktikum' => $request->jadwal_praktikum,
             'jadwal_jam_praktikum' => $jadwalJamPelajaran,
         ]);
+
+         // Simpan alat dan jumlah yang dipinjam ke tabel pivot
+         foreach ($request->input('alat') as $key => $alatId) {
+            $jumlahDibutuhkan = $request->input('jumlah_alat')[$key];
+            $jadwal->alat()->attach($alatId, ['jumlah' => $jumlahDibutuhkan]);
+        }
+        
+         // Simpan bahan dan jumlah yang dipinjam ke tabel pivot
+         foreach ($request->input('bahan') as $key => $alatId) {
+            $jumlahDibutuhkan = $request->input('jumlah_bahan')[$key];
+            $jadwal->bahan()->attach($alatId, ['jumlah' => $jumlahDibutuhkan]);
+        }
 
         return redirect()->route('jadwal.index')->with('success', 'Jadwal Praktikum berhasil ditambahkan');
     }
@@ -116,7 +148,7 @@ class JadwalPraktikumController extends Controller
     public function checkDate($jadwal_praktikum)
 {
     try {
-        $existingSchedules = JadwalPraktikum::where('jadwal_praktikum', $jadwal_praktikum)->get();
+        $existingSchedules = JadwalPraktikum::with('materi')->where('jadwal_praktikum', $jadwal_praktikum)->get();
         $scheduleData = [];
 
         foreach ($existingSchedules as $schedule) {
@@ -125,7 +157,7 @@ class JadwalPraktikumController extends Controller
                 $scheduleData[$jam] = [
                     'nama' => $schedule->nama,
                     'kelas' => $schedule->kelas,
-                    'topik_praktikum' => $schedule->topik_praktikum,
+                    'topik_praktikum' => $schedule->materi->judul_materi,
                 ];
             }
         }
@@ -135,6 +167,15 @@ class JadwalPraktikumController extends Controller
         return response()->json(['scheduleData' => []]);
     }
 }
+
+    public function getAlatByMateri($materiId)
+    {
+        $materi = Materi::find($materiId);
+        $alat = $materi->kimia_alat()->get();
+        $bahan = $materi->kimia_bahan()->get();
+
+        return response()->json([$alat, $bahan]);
+    }
 
 
 

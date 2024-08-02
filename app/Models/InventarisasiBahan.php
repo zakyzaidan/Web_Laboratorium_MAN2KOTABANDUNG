@@ -43,5 +43,12 @@ class InventarisasiBahan extends Model
     {
         return $this->belongsToMany(Materi::class, 'kimia_materi_bahan', 't_kimia_inventarisasi_bahan_id', 'materi_id');
     }
+    
+    public function jadwal()
+    {
+        return $this->belongsToMany(JadwalPraktikum::class, 'kimia_jadwal_bahan', 'bahan_id', 'jadwal_praktikum_id')->withPivot('jumlah');
+    }
+
+
 
 }

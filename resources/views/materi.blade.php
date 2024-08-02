@@ -70,6 +70,15 @@
         <li>{{ $item->nama_alat }}</li>
     @endforeach
 </ul>
+                @if (session("pembelajaran") === "Kimia")
+                    <h3>Bahan yang Dibutuhkan:</h3>
+                <ul>
+
+                    @foreach($bahan as $item)
+                        <li>{{ $item->nama_bahan }}</li>
+                    @endforeach
+                </ul>
+                @endif
 
         </div>
     </div>

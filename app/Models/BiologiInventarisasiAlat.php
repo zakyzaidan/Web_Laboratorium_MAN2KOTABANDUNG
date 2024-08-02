@@ -38,4 +38,10 @@ class BiologiInventarisasiAlat extends Model
         return $this->belongsToMany(Materi::class, 'biologi_materi_alat', 't_biologi_inventarisasi_alat_id', 'materi_id');
     }
 
+    public function jadwal()
+    {
+        return $this->belongsToMany(BiologiJadwalPraktikum::class, 'biologi_jadwal_alat', 'alat_id', 'jadwal_praktikum_id')->withPivot('jumlah');
+    }
+
+
 }

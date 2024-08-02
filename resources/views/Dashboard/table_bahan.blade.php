@@ -37,7 +37,7 @@
             <tr>
                 <td>{{ $i++ }}</td>
                 <td><img src="{{ asset(Storage::url($bahan->foto)) }}" width="50" height="50" alt="{{ $bahan->nama_bahan }}"></td>
-                <td class="clickable-row" data-href="{{ route('bahan.show', $bahan->id_t_inventarisasi_bahan) }}">{{ $bahan->nama_bahan }}</td>
+                <td>{{ $bahan->nama_bahan }}</td>
                 <td>{{ $bahan->jumlah }}</td>
                 <td>{{ $bahan->satuan }}</td>
                 <td>{{ $bahan->kondisi_baik }}</td>
@@ -48,6 +48,7 @@
                     <div class="button-container">
                         <button class="btn btn-primary delete-button" data-id="{{ $bahan->id_t_inventarisasi_bahan }}" style="background-color: #ff4d4d; border-color: #ff4d4d;">Hapus</button>
                         <button class="btn btn-primary edit-button" data-id="{{ $bahan->id_t_inventarisasi_bahan }}" style="background-color: #ffc107; border-color: #ffc107;">Ubah</button>
+                        <button class="btn btn-info kartu" data-href="{{ route('bahan.show.kimia', $bahan->id_t_inventarisasi_bahan) }}">Kartu</button>
                     </div>
                 </td>
             </tr>
@@ -263,7 +264,7 @@ $(document).ready(function() {
             });
         }
     });
-    $(".clickable-row").click(function() {
+    $(".kartu").click(function() {
         window.location = $(this).data("href");
     });
 });
