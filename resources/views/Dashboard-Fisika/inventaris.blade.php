@@ -80,8 +80,7 @@
                     </table>
                 </div>
             </div>
-            <h6>Tingkat Kerusakan Lab Per Bulan</h6>
-            <canvas id="tingkat_kerusakan_tabel"></canvas>
+            
         </div>
         
     </div>
@@ -94,55 +93,7 @@
     <script type="text/javascript" src="{{ asset('js/caleandar.js') }}"></script>
     <!-- <script type="text/javascript" src="{{ asset('js/demo.js') }}"></script> -->
 
-    <script>
-        const allLabels = ['', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov',
-        'Dec']; // Semua label bulan
-        const Data = [0, 10, 5, 20, 45, 15, 20, 10];
-        const Labels = allLabels.slice(0, Data.length);
-        const ctx = document.getElementById('tingkat_kerusakan_tabel');
-
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: Labels,
-                datasets: [{
-                    label: 'Tingkat Kerusakan Lab Per Bulan', // Menghilangkan label di atas grafik
-                    data: Data,
-                    fill: false,
-                    pointRadius: 4,
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                plugins: {
-                    title: {
-                        display: false,
-                        text: 'Tingkat Kerusakan Lab Per Bulan'
-                    }
-                },
-                scales: {
-                    x: {
-                        border: {
-                            color: 'black'
-                        },
-                        ticks: {
-                            color: 'black',
-                        }
-                    },
-                    y: {
-                        beginAtZero: true,
-                        border: {
-                            color: 'black'
-                        },
-                        ticks: {
-                            color: 'black',
-                        }
-                    }
-                }
-            }
-
-        });
-    </script>
+    
     <script>
 
 $(document).ready(function() {

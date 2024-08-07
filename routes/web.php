@@ -22,6 +22,9 @@ use App\Http\Controllers\BiologiTenagaLaboratoriumController;
 use App\Http\Controllers\BiologiJadwalPraktikumController;
 use App\Http\Controllers\BiologiInventarisasiController;
 use App\Http\Controllers\PilihLabolatoriumController;
+use App\Http\Controllers\PeminjamanPihakLuarController;
+use App\Http\Controllers\BiologiPeminjamanPihakLuarController;
+use App\Http\Controllers\FisikaPeminjamanPihakLuarController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Materi;
@@ -95,6 +98,16 @@ Route::prefix('inventarisasi-bahan')->middleware(['auth', 'checkUserType:guru'])
     Route::delete('/{id}', [InventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
 });
 
+Route::prefix('peminjaman-pihak-luar')->middleware(['auth', 'checkUserType:guru'])->group(function () {
+    Route::get('/', [PeminjamanPihakLuarController::class, 'index'])->name('peminjaman.index'); // List of tools
+    Route::get('/create', [PeminjamanPihakLuarController::class, 'create'])->name('peminjaman.create'); // Create tool form
+    Route::post('/', [PeminjamanPihakLuarController::class, 'store'])->name('peminjaman.store.kimia'); // Store new tool
+    Route::get('/{id}', [PeminjamanPihakLuarController::class, 'show'])->name('peminjaman.show.kimia'); // Show tool detail
+    Route::get('/{id}/edit', [PeminjamanPihakLuarController::class, 'edit'])->name('peminjaman.edit'); // Edit tool form
+    Route::put('/{id}', [PeminjamanPihakLuarController::class, 'update'])->name('peminjaman.update'); // Update tool
+    Route::delete('/{id}', [PeminjamanPihakLuarController::class, 'destroy'])->name('peminjaman.destroy'); // Delete tool
+});
+
 Route::prefix('tenaga-laboratorium')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [TenagaLaboratoriumController::class, 'index'])->name('tenaga.index'); // List of tools
     Route::get('/create', [TenagaLaboratoriumController::class, 'create'])->name('tenaga.create'); // Create tool form
@@ -147,6 +160,16 @@ Route::prefix('inventarisasi-bahan-fisika')->middleware(['auth', 'checkUserType:
     Route::get('/{id}/edit', [FisikaInventarisasiBahanController::class, 'edit'])->name('bahan.edit'); // Edit tool form
     Route::put('/{id}', [FisikaInventarisasiBahanController::class, 'update'])->name('bahan.update'); // Update tool
     Route::delete('/{id}', [FisikaInventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
+});
+
+Route::prefix('peminjaman-pihak-luar-fisika')->middleware(['auth', 'checkUserType:guru'])->group(function () {
+    Route::get('/', [FisikaPeminjamanPihakLuarController::class, 'index'])->name('peminjaman.index'); // List of tools
+    Route::get('/create', [FisikaPeminjamanPihakLuarController::class, 'create'])->name('peminjaman.create'); // Create tool form
+    Route::post('/', [FisikaPeminjamanPihakLuarController::class, 'store'])->name('peminjaman.store.fisika'); // Store new tool
+    Route::get('/{id}', [FisikaPeminjamanPihakLuarController::class, 'show'])->name('peminjaman.show.fisika'); // Show tool detail
+    Route::get('/{id}/edit', [FisikaPeminjamanPihakLuarController::class, 'edit'])->name('peminjaman.edit'); // Edit tool form
+    Route::put('/{id}', [FisikaPeminjamanPihakLuarController::class, 'update'])->name('peminjaman.update'); // Update tool
+    Route::delete('/{id}', [FisikaPeminjamanPihakLuarController::class, 'destroy'])->name('peminjaman.destroy'); // Delete tool
 });
 
 Route::prefix('tenaga-laboratorium-fisika')->middleware(['auth', 'checkUserType:guru'])->group(function () {
@@ -206,6 +229,16 @@ Route::prefix('inventarisasi-bahan-biologi')->middleware(['auth', 'checkUserType
     Route::get('/{id}/edit', [BiologiInventarisasiBahanController::class, 'edit'])->name('bahan.edit'); // Edit tool form
     Route::put('/{id}', [BiologiInventarisasiBahanController::class, 'update'])->name('bahan.update'); // Update tool
     Route::delete('/{id}', [BiologiInventarisasiBahanController::class, 'destroy'])->name('bahan.destroy'); // Delete tool
+});
+
+Route::prefix('peminjaman-pihak-luar-biologi')->middleware(['auth', 'checkUserType:guru'])->group(function () {
+    Route::get('/', [BiologiPeminjamanPihakLuarController::class, 'index'])->name('peminjaman.index'); // List of tools
+    Route::get('/create', [BiologiPeminjamanPihakLuarController::class, 'create'])->name('peminjaman.create'); // Create tool form
+    Route::post('/', [BiologiPeminjamanPihakLuarController::class, 'store'])->name('peminjaman.store.biologi'); // Store new tool
+    Route::get('/{id}', [BiologiPeminjamanPihakLuarController::class, 'show'])->name('peminjaman.show.biologi'); // Show tool detail
+    Route::get('/{id}/edit', [BiologiPeminjamanPihakLuarController::class, 'edit'])->name('peminjaman.edit'); // Edit tool form
+    Route::put('/{id}', [BiologiPeminjamanPihakLuarController::class, 'update'])->name('peminjaman.update'); // Update tool
+    Route::delete('/{id}', [BiologiPeminjamanPihakLuarController::class, 'destroy'])->name('peminjaman.destroy'); // Delete tool
 });
 
 Route::prefix('tenaga-laboratorium-biologi')->middleware(['auth', 'checkUserType:guru'])->group(function () {

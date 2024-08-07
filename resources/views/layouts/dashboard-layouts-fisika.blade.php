@@ -20,10 +20,10 @@
         <nav class="nav-list">
             <ul>
                 <li>
-                    <h2>Laboratorium Fisika MAN 2</h2>
+                <a href="/Dashboard-inventaris-fisika/"><h2>Laboratorium Fisika MAN 2</h2></a>
                 </li>
             @if (session()->has('username'))
-                <div style="display: flex">
+            <div style="display: flex">
                     <li style="margin-right: 10px">
                         <form action="{{ route('home') }}" method="GET" style="display: inline;">
                             @csrf
@@ -37,9 +37,9 @@
                         </form>
                     </li>
                 </div>
-            @else
-                <li><a href="login">LOG-IN</a></li>
-            @endif
+                            @else
+                                <li><a href="login">LOG-IN</a></li>
+                            @endif
             </ul>
         </nav>
     </header>
@@ -51,14 +51,10 @@
                 <p>{{ session('nama') }}</p>
             </div>
             <hr>
-            <div class="jadwal">
-                <p><a href="/Dashboard-inventaris-fisika">Jadwal Laboratorium</a> <i class="fas fa-chevron-right"></i></p>
-            </div>
-            <hr>
             <div class="Inventaris">
                 <div class="dropdown" onclick="myFunction()">
                     <div class="text">
-                        <span>Inventaris Lab</span>
+                        <span>Inventarisasi Lab</span>
                         <i id="arrow" class="fas fa-chevron-right"></i>
                     </div>
                     <div id="myDropdown" class="dropdown-content">
@@ -75,12 +71,15 @@
                             <li>
                                 <p><a href="/tenaga-laboratorium-fisika/">Daftar Tenaga Laboratorium</a></p>
                             </li>
-                            <li>
-                                <p><a href="/jadwal-praktikum-fisika/">Jadwal Praktikum</a></p>
-                            </li>
                         </ul>
                     </div>
                 </div>
+            </div>
+            <div class="jadwal">
+                <p><a href="/jadwal-praktikum-fisika/">Jadwal Praktikum</a> <i class="fas fa-chevron-right"></i></p>
+            </div>
+            <div class="jadwal">
+                <p><a href="/peminjaman-pihak-luar-fisika/">Peminjaman Pihak Luar</a> <i class="fas fa-chevron-right"></i></p>
             </div>
         </aside>
         @yield('page')

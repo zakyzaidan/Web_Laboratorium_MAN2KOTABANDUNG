@@ -60,16 +60,11 @@ header.navbar-container .nav-list li {
 header.navbar-container .nav-list li a {
     display: flex;
     position: relative;
-    padding: 1rem 0.5rem;
     text-decoration: none;
-    font-size: 1vw;
     font-weight: bold;
     color: white;
     transition: all 0.2s ease-in-out;
 }
-
-
-
 
 body main aside .profil .circle{
   width: 40px;
@@ -100,12 +95,13 @@ body main aside .jadwal i{
 body main aside .Inventaris{
     display: flex;
     padding-left: 5%;
-}
+    padding-bottom: 5%;
+}       
 
 body main aside .Inventaris .dropdown {
     position: relative;
     display: inline-block;
-    font-size: 1.1em;
+    font-size: 1.2em;
     padding-top: 0.5em;
 }
 
