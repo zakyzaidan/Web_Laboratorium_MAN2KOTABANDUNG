@@ -366,6 +366,16 @@ $(document).ready(function() {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
+
+        $('input[name="jadwal_jam_praktikum[]"]').each(function() {
+                        var jamPelajaran = $(this).val();
+                            $(this).prop('disabled', false);
+                            $(this).prop('checked', false);
+                            $(this).siblings('label').css('text-decoration', 'none');
+                            $(this).siblings('.nama').text('');
+                            $(this).siblings('.kelas').text('');
+                            $(this).siblings('.topik').text('');
+                    });
         
         $('input[name="jadwal_jam_praktikum[]"]').each(function() {
             var jamPelajaran = $(this).val();

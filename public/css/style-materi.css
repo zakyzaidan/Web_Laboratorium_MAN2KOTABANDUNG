@@ -21,6 +21,14 @@ main .konten-keseluruhan {
 main .konten-keseluruhan .konten-utama #isi-materi {
     margin-bottom: 2vw;
 }
+
+main .konten-keseluruhan .konten-utama .responsive-image {
+    max-height: 40%;
+}
+
+main .konten-keseluruhan .konten-utama .file {
+    margin-bottom: 1vh;
+}
 main .konten-keseluruhan .konten-utama {
     width: 80%;
     padding-right: 5%;

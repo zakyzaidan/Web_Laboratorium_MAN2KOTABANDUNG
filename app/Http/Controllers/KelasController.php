@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\FisikaJadwalPraktikum;
 use App\Models\BiologiJadwalPraktikum;
+use App\Models\Materi;
 use App\Models\JadwalPraktikum;
 
 class KelasController extends Controller
@@ -21,10 +22,13 @@ class KelasController extends Controller
         // Mengambil data jadwal praktikum
         if ($kelas == 'Fisika'){
             $jadwalPraktikum = FisikaJadwalPraktikum::all();
+            $materis = Materi::with('fisika_alat')->where('pelajaran','Fisika')->get();
         } elseif ($kelas == 'Biologi'){
             $jadwalPraktikum = BiologiJadwalPraktikum::all();
+            $materis = Materi::with('biologi_alat')->where('pelajaran','Biologi')->get();
         } elseif ($kelas == 'Kimia'){
             $jadwalPraktikum = JadwalPraktikum::all();
+            $materis = Materi::with(['kimia_alat', 'kimia_bahan'])->where('pelajaran','Kimia')->get();
         } else {
             return redirect('/');
         }
@@ -45,6 +49,6 @@ class KelasController extends Controller
             $events[] = $event;
         }
 
-        return redirect("/pilih-kelas")->with('events', $events);
+        return view('kelaspage', compact('events', 'materis'));
     }
 }

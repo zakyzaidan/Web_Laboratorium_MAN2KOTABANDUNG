@@ -134,6 +134,10 @@ main .pilihan-kelas ul li h3 {
 
 
 
+main .tambah-jadwal{
+    margin: 4vh 2vw 5vh 2vw;
+  }
+  
 main .jadwal{
     margin: 4vh 2vw 5vh 2vw;
     color: black;
@@ -231,6 +235,24 @@ main  .jadwal-table {
 .caleandar .next {
   cursor: pointer;
   font-size: 1.5em;
+}
+
+.modal-body .form-group{
+    padding-bottom: 1vh;
+}
+.modal-body .form-group ul{
+    list-style-type: none;
+  padding-left: 0; /* Remove margins */
+  padding-right: 2vh; /* Remove margins */
+}
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-header .btn-secondary{
+    margin-right: 1vw;
 }
 
 
