@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/style-landing1.css') }}">
+@endsection
 @section('page')
     <main>
         <div class="pilihan-pelajaran" id="pilihan-pelajaran">
@@ -83,17 +86,35 @@
             <iframe src="https://www.youtube.com/embed/NigovH274js?si=Y-qgHaV71Obb7SEy?modestbranding=1&showinfo=0&controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
         <div class="Tenaga-Laboratorium">
+    <h2>TENAGA LABORATORIUM</h2>
+        <div class="detail">
+            <a class="prev" onclick="plusSlides2(-1)">❮</a>
+            <div class="slideshow-container2" id="slideshow-container2">
+                @foreach($tenagaLaboratorium as $tenaga)
+                    <div class="mySlides2">
+                        <img src="{{ asset(Storage::url($tenaga->foto)) }}" alt="{{ $tenaga->nama }}">
+                        <div class="text">
+                            <h3>{{ $tenaga->nama }}</h3>
+                            <h5>{{ $tenaga->jabatan }}</h5>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <a class="next" onclick="plusSlides2(1)">❯</a>
+        </div>
+    </div>
+        <!-- <div class="Tenaga-Laboratorium">
             <h2>
             TENAGA LABORATORIUM
             </h2>
             <div class="detail">
                 <a class="prev" onclick="plusSlides2(-1)">❮</a>
                 <div class="slideshow-container2" id="slideshow-container2">
-                    <!-- Gambar akan ditambahkan di sini oleh JavaScript -->
+                    
                 </div>
                 <a class="next" onclick="plusSlides2(1)">❯</a>
             </div>
-        </div>
+        </div> -->
         <div class="Galeri-Laboratorium">
             <h2>
                 GALERI LABORATORIUM
@@ -231,7 +252,118 @@
                 </div>
             </div>
         </div>
+
         <div class="struktur-organisasi" id="struktur-organisasi">
+        <h2>STRUKTUR ORGANISASI</h2>
+
+        @foreach ($strukturOrganisasi as $key => $struktur)
+            @if($key === 0)
+            <div class="baris1">
+                <div class="box1">
+                    <img src="{{ asset(Storage::url($struktur->foto)) }}" alt="gambar-struktur">
+                    <p>{{ $struktur->jabatan }}</p>
+                    <div class="line"></div>
+                    <h5>{{ $struktur->nama }}</h5>
+                </div>
+                <div class="line1"></div>
+            </div>
+            @elseif($key === 1 || $key === 2)
+                @if($key === 1)
+                <div class="baris2">
+                <div class="box1">
+                    <img src="{{ asset(Storage::url($struktur->foto)) }}" alt="gambar-struktur">
+                    <p>{{ $struktur->jabatan }}</p>
+                    <div class="line"></div>
+                    <h5>{{ $struktur->nama }}</h5>
+                </div>
+                <div class="line3"></div>
+                <div class="line2">
+                    <div class="subline1"></div>
+                    <div class="subline2"></div>
+                </div>
+                <div class="line3"></div>
+                @elseif($key === 2)
+                <div class="box1">
+                    <img src="{{ asset(Storage::url($struktur->foto)) }}" alt="gambar-struktur">
+                    <p>{{ $struktur->jabatan }}</p>
+                    <div class="line"></div>
+                    <h5>{{ $struktur->nama }}</h5>
+                </div>
+                </div>
+                    <div class="baris3">
+                    <div class="line4"></div>
+                    <div class="arrow">
+                        <i class="fas fa-chevron-down"></i>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+                @endif
+            @elseif($key === 3 || $key === 4 || $key === 5)
+                @if($key === 3)
+                <div class="baris2">
+                    <div class="box1">
+                        <img src="{{ asset(Storage::url($struktur->foto)) }}" alt="gambar-struktur">
+                        <p>{{ $struktur->jabatan }}</p>
+                        <div class="line"></div>
+                        <h5>{{ $struktur->nama }}</h5>
+                    </div>
+                    <div class="line3"></div>
+                @elseif($key === 4)
+                    <div class="box1">
+                        <img src="{{ asset(Storage::url($struktur->foto)) }}" alt="gambar-struktur">
+                        <p>{{ $struktur->jabatan }}</p>
+                        <div class="line"></div>
+                        <h5>{{ $struktur->nama }}</h5>
+                    </div>
+                    <div class="line3"></div>
+                @elseif($key === 5)
+                    <div class="box1">
+                        <img src="{{ asset(Storage::url($struktur->foto)) }}" alt="gambar-struktur">
+                        <p>{{ $struktur->jabatan }}</p>
+                        <div class="line"></div>
+                        <h5>{{ $struktur->nama }}</h5>
+                    </div>
+                </div>
+                @endif
+            @endif
+        @endforeach
+
+        <div class="baris3">
+            <div class="line4"></div>
+            <div class="arrow">
+                <i class="fas fa-chevron-down"></i>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <div class="kontainer-struktur1">
+            <h2>Guru Mata Pelajaran</h2>
+        </div>
+        <div class="baris3">
+            <div class="line5"></div>
+            <div class="config">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+        <div class="kontainer-struktur2">
+            <h2>Siswa</h2>
+        </div>
+
+        <div class="ketorgChart">
+            <div class="satu">
+                <div class="garis1"></div>
+                <i class="fas fa-chevron-right"></i>
+                <p>Garis Koordinasi</p>
+            </div>
+            <div class="satu">
+                <div class="garis2"></div>
+                <i class="fas fa-chevron-right"></i>
+                <p>Garis Komando</p>
+            </div>
+        </div>
+    </div>
+
+        <!-- <div class="struktur-organisasi" id="struktur-organisasi">
             <h2>
                 STRUKTUR ORGANISASI
             </h2>
@@ -326,7 +458,7 @@
                     <p>Garis Komando</p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </main>
 @endsection
 @section('js')

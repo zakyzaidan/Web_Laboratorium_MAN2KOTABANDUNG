@@ -23,8 +23,10 @@ use App\Http\Controllers\BiologiJadwalPraktikumController;
 use App\Http\Controllers\BiologiInventarisasiController;
 use App\Http\Controllers\PilihLabolatoriumController;
 use App\Http\Controllers\PeminjamanPihakLuarController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\BiologiPeminjamanPihakLuarController;
 use App\Http\Controllers\FisikaPeminjamanPihakLuarController;
+use App\Http\Controllers\StrukturOrganisasiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Materi;
@@ -40,30 +42,25 @@ use App\Models\Materi;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-});
+Route::get('/', [LandingController::class, 'index']);
 
-Route::get('/home', function () {
-    $username = session('username');
-    $user_type = session('user_type');
-
-    // Sekarang Anda bisa menggunakan $username dan $user_type
-    // Misalnya, Anda bisa mengirimkannya ke view
-    return view('landing', compact('username', 'user_type'));
-})->name('home');
+Route::get('/home',[LandingController::class, 'index'])->name('home');
 
 Route::get('/login', function () {
     return view('login');
 });
 
 Route::get('/pilih-pembelajaran/{pelajaran}', [KelasController::class,'setpembelajaranSession'])->middleware('auth');
+Route::get('/pilih-dashboard/{pelajaran}', [PilihLabolatoriumController::class,'setpembelajaranSession'])->middleware('auth');
 
 Route::get('/pilih-kelas', function () {
 
     return view('kelaspage');
 })->middleware('auth');
 
+Route::get('/struktur-organisasi', [StrukturOrganisasiController::class, 'index'])->name('struktur-organisasi.index');
+Route::get('/struktur-organisasi/edit/{id}', [StrukturOrganisasiController::class, 'edit'])->name('struktur-organisasi.edit');
+Route::put('/struktur-organisasi/update/{id}', [StrukturOrganisasiController::class, 'update'])->name('struktur-organisasi.update');
 
 Route::get('/pilih-labolatorium', [PilihLabolatoriumController::class, 'index'])->middleware(['auth', 'checkUserType:guru'])->name('pilih-labolatorium');
 Route::get('/Dashboard-inventaris', [InventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:guru']);
@@ -294,6 +291,7 @@ Route::post('/login', [AuthController::class, 'login']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/pilih-kelas', function () {
+        
         $username = session('username');
         $user_type = session('user_type');
         return view('kelaspage', compact('username', 'user_type'));

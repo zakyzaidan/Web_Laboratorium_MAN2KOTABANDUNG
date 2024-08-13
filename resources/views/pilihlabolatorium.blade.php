@@ -12,7 +12,7 @@
 <ul>
     <li>
         @if (session()->has('username'))
-        <a href="/Dashboard-inventaris">
+        <a href="/pilih-dashboard/Kimia">
             <img src="image/Lab-Kimia.png" alt="Lab Kimia">
         </a>
         <h3>Kimia</h3>
@@ -23,7 +23,7 @@
     </li>
     <li>
         @if (session()->has('username'))
-        <a href="/Dashboard-inventaris-fisika">
+        <a href="/pilih-dashboard/Fisika">
             <img src="image/Lab-Fisika.png" alt="Lab Fisika">
         </a>
         <h3>Fisika</h3>
@@ -36,7 +36,7 @@
     </li>
     <li>
         @if (session()->has('username'))
-        <a href="/Dashboard-inventaris-biologi">
+        <a href="/pilih-dashboard/Biologi">
             <img src="image/Lab-Biologi.png" alt="Lab Biologi" >
         </a>
         <h3>Biologi</h3>
