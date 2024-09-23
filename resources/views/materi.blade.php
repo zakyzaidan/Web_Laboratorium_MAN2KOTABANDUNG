@@ -50,8 +50,8 @@
             </div>
 
             <div class="file">
-                <h5>Download file pendukung materi:</h5>
-                <a href="{{ asset(Storage::url($materi->file_materi)) }}" download>{{ basename(Storage::url($materi->file_materi)) }}</a>
+                <h5>Download file pendukung materi(LKPD):</h5>
+                <a href="{{ asset(Storage::url($materi->file_materi)) }}" download="LKPD-{{ $materi->judul_materi }}">LKPD-{{ $materi->judul_materi }}</a>
             </div>
             <!-- Tabel Alat -->
             
@@ -112,6 +112,7 @@
         <div class="tambahan">
             <div class="satu">
                 <div id="tujuan-dan-alat-materi">
+                    <h4>Tujuan</h4>
                     {!! $materi->tujuan_dan_alat_materi !!}
                 </div>
             </div>

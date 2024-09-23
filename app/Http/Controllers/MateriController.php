@@ -29,7 +29,7 @@ class MateriController extends Controller
         }else if(session('pembelajaran') == 'Kimia'){
             $alat = InventarisasiAlat::all(); // Ambil semua data alat
             $bahan = InventarisasiBahan::all(); // Ambil semua data alat
-
+            
             $materi = Materi::where('kelas', session('kelas'))->where('pelajaran',session('pembelajaran'))->paginate(6);
             $selectedAlatIds = [];
 
@@ -119,6 +119,8 @@ class MateriController extends Controller
             $materi->kimia_alat()->attach($request->input('alat'));
             $materi->kimia_bahan()->attach($request->input('bahan'));
         }
+
+        $materi->save();
 
         return redirect('/materi-kelas-page')->with('success', 'Data berhasil disimpan');
     }
@@ -240,6 +242,8 @@ class MateriController extends Controller
         }else if(session('pembelajaran') == "Kimia"){
             $materi->kimia_alat()->detach();
             $materi->kimia_alat()->attach($request->input('alat'));
+            $materi->kimia_bahan()->detach();
+            $materi->kimia_bahan()->attach($request->input('bahan'));
         }
 
         // Update hubungan antara materi dan alat yang dipilih

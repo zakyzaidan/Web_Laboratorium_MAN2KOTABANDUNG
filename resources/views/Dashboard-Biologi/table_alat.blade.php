@@ -125,6 +125,7 @@
                                 <select class="form-control" id="satuan" name="satuan" required>
                                     <option value="">Silahkan Pilih Satuan</option>
                                     <option value="buah">Buah</option>
+                                    <option value="set">Set</option>
                                     <option value="unit">Unit</option>
                                     <option value="meter">Meter</option>
                                     <option value="liter">Liter</option>

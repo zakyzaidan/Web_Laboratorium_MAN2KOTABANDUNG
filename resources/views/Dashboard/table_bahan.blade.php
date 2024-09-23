@@ -137,10 +137,12 @@
                                 <label for="satuan">Satuan</label>
                                 <select class="form-control" id="satuan" name="satuan" required>
                                     <option value="">Silahkan Pilih Satuan</option>
-                                    <option value="buah">Buah</option>
-                                    <option value="unit">Unit</option>
-                                    <option value="meter">Meter</option>
-                                    <option value="liter">Liter</option>
+                                    <option value="mL">mL</option>
+                                    <option value="Liter">Liter</option>
+                                    <option value="Buah">Buah</option>
+                                    <option value="Pak">Pak</option>
+                                    <option value="Gram">Gram</option>
+                                    <option value="Kg">Kg</option>
                                 </select>
                             </div>
                             <div class="form-group">
@@ -175,7 +177,7 @@ $(document).ready(function() {
 
     $('#addButton').click(function() {
         $('#modalLabel').text('Tambah Bahan');
-        $('#form').attr('action', '{{ route('bahan.store.kimia') }}');
+        $('#form').attr('action', '{{ route('bahan.storekimia') }}');
         document.querySelector('input[name="_method"]').value = "POST";
         $('#form').trigger('reset');
         $('#image-preview').attr('src', '{{ asset('image/image-default.png') }}');

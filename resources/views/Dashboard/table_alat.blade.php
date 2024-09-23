@@ -125,6 +125,7 @@
                                 <select class="form-control" id="satuan" name="satuan" required>
                                     <option value="">Silahkan Pilih Satuan</option>
                                     <option value="buah">Buah</option>
+                                    <option value="set">Set</option>
                                     <option value="unit">Unit</option>
                                     <option value="meter">Meter</option>
                                     <option value="liter">Liter</option>
@@ -212,7 +213,6 @@ $(document).ready(function() {
         }).then(response => {
             if (response.ok) {
                 location.reload();
-                console.log(response);
             } else {
                 return response.json().then(errorData => {
                     if (errorData.errors) {

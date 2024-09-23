@@ -94,22 +94,22 @@ document
 });
 
 // Memuat kembali data form dari localStorage saat halaman dimuat
-window.addEventListener("load", function () {
-    document
-        .querySelectorAll("input, textarea:not(#isi-materi, #tujuan-dan-alat, #tambahan)")
-        .forEach(function (element) {
-            if (element.type !== "file" && localStorage.getItem(element.name)) {
-                element.value = localStorage.getItem(element.name);
-            }
-        });
+// window.addEventListener("load", function () {
+//     document
+//         .querySelectorAll("input, textarea:not(#isi-materi, #tujuan-dan-alat, #tambahan)")
+//         .forEach(function (element) {
+//             if (element.type !== "file" && localStorage.getItem(element.name)) {
+//                 element.value = localStorage.getItem(element.name);
+//             }
+//         });
 
-    // Khusus untuk Summernote
-    ["isi-materi", "tujuan-dan-alat", "tambahan"].forEach(function (id) {
-        if (localStorage.getItem(id)) {
-            $("#" + id).summernote("code", localStorage.getItem(id));
-        }
-    });
-});
+//     // Khusus untuk Summernote
+//     ["isi-materi", "tujuan-dan-alat", "tambahan"].forEach(function (id) {
+//         if (localStorage.getItem(id)) {
+//             $("#" + id).summernote("code", localStorage.getItem(id));
+//         }
+//     });
+// });
 
 // Event listener untuk tombol "Batalkan"
 document
@@ -186,6 +186,24 @@ function editData(id) {
                 //     checkbox.checked = true;
                 // }
             });
+
+            // Reset all checkboxes
+            document.querySelectorAll('.bahan-checkbox').forEach((checkbox) => {
+                checkbox.checked = false;
+            });
+
+            // Centang checkbox alat yang dipilih
+            data.alat.forEach((bahanId) => {
+                // const checkbox = document.querySelector(`.alat-checkbox[data-id="${alatId}"]`);
+                // console.log(document.querySelector(`.alat-checkbox`));
+                console.log("check-"+bahanId.toString());
+                document.getElementById("check-"+bahanId.toString()).checked = true;
+                // if (checkbox) {
+                //     checkbox.checked = true;
+                // }
+            });
+
+            
         });
 }
 

@@ -108,7 +108,7 @@
 
                                     </div>
                                     <div class="form-group" >
-                                        <label for="tujuan-dan-alat">tujuan & alat</label>
+                                        <label for="tujuan-dan-alat">tujuan</label>
                                         <textarea id="tujuan-dan-alat" name="tujuan-dan-alat"></textarea>
 
                                     </div>
@@ -232,9 +232,7 @@
             height: 200
         });
 
-        // Initialize Select2
-        $('#alat').select2();
-        $('#bahan').select2();
+        
     });
     function searchTools() {
         const query = $('#search-tool').val().toLowerCase();

@@ -65,7 +65,7 @@ Route::put('/struktur-organisasi/update/{id}', [StrukturOrganisasiController::cl
 Route::get('/pilih-labolatorium', [PilihLabolatoriumController::class, 'index'])->middleware(['auth', 'checkUserType:guru'])->name('pilih-labolatorium');
 Route::get('/Dashboard-inventaris', [InventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:guru']);
 
-Route::prefix('inventarisasi-alat')->middleware(['auth', 'checkUserType:guru'])->group(function () {
+Route::prefix('/inventarisasi-alat')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [InventarisasiAlatController::class, 'index'])->name('alat.index'); // List of tools
     Route::get('/create', [InventarisasiAlatController::class, 'create'])->name('alat.create'); // Create tool form
     Route::post('/', [InventarisasiAlatController::class, 'store'])->name('alat.store.kimia'); // Store new tool
@@ -85,10 +85,10 @@ Route::prefix('inventarisasi-fasilitas')->middleware(['auth', 'checkUserType:gur
     Route::delete('/{id}', [InventarisasiFasilitasController::class, 'destroy'])->name('fasilitas.destroy'); // Delete tool
 });
 
-Route::prefix('inventarisasi-bahan')->middleware(['auth', 'checkUserType:guru'])->group(function () {
+Route::prefix('/inventarisasi-bahan')->middleware(['auth', 'checkUserType:guru'])->group(function () {
     Route::get('/', [InventarisasiBahanController::class, 'index'])->name('bahan.index'); // List of tools
     Route::get('/create', [InventarisasiBahanController::class, 'create'])->name('bahan.create'); // Create tool form
-    Route::post('/', [InventarisasiBahanController::class, 'store'])->name('bahan.store.kimia'); // Store new tool
+    Route::post('/', [InventarisasiBahanController::class, 'store'])->name('bahan.storekimia'); // Store new tool
     Route::get('/{id}', [InventarisasiBahanController::class, 'show'])->name('bahan.show.kimia'); // Show tool detail
     Route::get('/{id}/edit', [InventarisasiBahanController::class, 'edit'])->name('bahan.edit'); // Edit tool form
     Route::put('/{id}', [InventarisasiBahanController::class, 'update'])->name('bahan.update'); // Update tool
