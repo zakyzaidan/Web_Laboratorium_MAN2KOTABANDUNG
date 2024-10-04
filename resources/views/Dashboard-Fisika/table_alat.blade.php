@@ -9,7 +9,12 @@
 <div class="bagian_page">
     <div class="table_header">
         <h3>Daftar Inventarisasi Alat</h3>
-        <button type="button" class="btn btn-primary" id="addButton"><i class='fas fa-plus'></i> Tambah</button>
+        <div>
+            <button type="button" class="btn btn-success" id="exportButton">
+                        <i class="fas fa-file-excel"></i> Download file Excel
+                    </button>
+            <button type="button" class="btn btn-primary" id="addButton"><i class='fas fa-plus'></i> Tambah</button>
+        </div>
     </div>
     <table id="myTable" class="display">
         <thead>
@@ -254,6 +259,11 @@ $(document).ready(function() {
         window.location = $(this).data("href");
     });
 });
+
+document.getElementById('exportButton').addEventListener('click', function() {
+    window.location.href = '/export-alat';
+});
+
 
 function previewImage() {
     var file = document.getElementById("image-upload").files[0];

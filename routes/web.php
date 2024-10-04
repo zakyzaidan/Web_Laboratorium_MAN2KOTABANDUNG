@@ -30,6 +30,23 @@ use App\Http\Controllers\StrukturOrganisasiController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Materi;
+use App\Exports\EksporAlat;
+use App\Exports\EksporBahan;
+use App\Exports\EksporFasilitas;
+use App\Exports\EksporJadwalPraktikum;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Models\FisikaInventarisasiAlat;
+use App\Models\BiologiInventarisasiAlat;
+use App\Models\InventarisasiAlat;
+use App\Models\FisikaInventarisasiBahan;
+use App\Models\BiologiInventarisasiBahan;
+use App\Models\InventarisasiBahan;
+use App\Models\FisikaInventarisasiFasilitas;
+use App\Models\BiologiInventarisasiFasilitas;
+use App\Models\InventarisasiFasilitas;
+use App\Models\FisikaJadwalPraktikum;
+use App\Models\BiologiJadwalPraktikum;
+use App\Models\JadwalPraktikum;
 
 /*
 |--------------------------------------------------------------------------
@@ -302,6 +319,74 @@ Route::middleware(['auth'])->group(function () {
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
+Route::get('/export-alat', function () {
+    $pembelajaran = session('pembelajaran');
+    $model = null;
+    if(session('pembelajaran') == "Fisika"){
+        $model = FisikaInventarisasiAlat::class;
+    }else if(session('pembelajaran') == "Biologi"){
+        $model = BiologiInventarisasiAlat::class;
+    }else if(session('pembelajaran') == "Kimia"){
+        $model = InventarisasiAlat::class;
+    }else{
+        return redirect()->back()->with('error', 'Model tidak ditemukan.');
+    }
+
+    // Unduh file Excel berdasarkan model yang dipilih
+    return Excel::download(new EksporAlat($model), 'Inventarisasi-Alat-' . $pembelajaran . '.xlsx');
+});
+
+Route::get('/export-bahan', function () {
+    $pembelajaran = session('pembelajaran');
+    $model = null;
+    if(session('pembelajaran') == "Fisika"){
+        $model = FisikaInventarisasiBahan::class;
+    }else if(session('pembelajaran') == "Biologi"){
+        $model = BiologiInventarisasiBahan::class;
+    }else if(session('pembelajaran') == "Kimia"){
+        $model = InventarisasiBahan::class;
+    }else{
+        return redirect()->back()->with('error', 'Model tidak ditemukan.');
+    }
+
+    // Unduh file Excel berdasarkan model yang dipilih
+    return Excel::download(new EksporBahan($model), 'Inventarisasi-Bahan-' . $pembelajaran . '.xlsx');
+});
+
+Route::get('/export-fasilitas', function () {
+    $pembelajaran = session('pembelajaran');
+    $model = null;
+    if(session('pembelajaran') == "Fisika"){
+        $model = FisikaInventarisasiFasilitas::class;
+    }else if(session('pembelajaran') == "Biologi"){
+        $model = BiologiInventarisasiFasilitas::class;
+    }else if(session('pembelajaran') == "Kimia"){
+        $model = InventarisasiFasilitas::class;
+    }else{
+        return redirect()->back()->with('error', 'Model tidak ditemukan.');
+    }
+
+    // Unduh file Excel berdasarkan model yang dipilih
+    return Excel::download(new EksporFasilitas($model), 'Inventarisasi-Fasilitas-' . $pembelajaran . '.xlsx');
+});
+
+Route::get('/export-jadwal-praktikum', function () {
+    $pembelajaran = session('pembelajaran');
+    $model = null;
+    if(session('pembelajaran') == "Fisika"){
+        $model = FisikaJadwalPraktikum::class;
+    }else if(session('pembelajaran') == "Biologi"){
+        $model = BiologiJadwalPraktikum::class;
+    }else if(session('pembelajaran') == "Kimia"){
+        $model = JadwalPraktikum::class;
+    }else{
+        return redirect()->back()->with('error', 'Model tidak ditemukan.');
+    }
+
+    // Unduh file Excel berdasarkan model yang dipilih
+    return Excel::download(new EksporJadwalPraktikum($model, $pembelajaran), 'Kegiatan-Praktikum-' . $pembelajaran . '.xlsx');
+});
 
 Route::get('/foo', function () {
     Artisan::call('storage:link');
