@@ -68,13 +68,13 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/pilih-pembelajaran/{pelajaran}', [KelasController::class,'setpembelajaranSession'])->middleware('auth');
+Route::get('/pilih-pembelajaran/{pelajaran}', [KelasController::class,'setpembelajaranSession']);
 Route::get('/pilih-dashboard/{pelajaran}', [PilihLabolatoriumController::class,'setpembelajaranSession'])->middleware('auth');
 
 Route::get('/pilih-kelas', function () {
 
     return view('kelaspage');
-})->middleware('auth');
+});
 
 Route::get('/struktur-organisasi', [StrukturOrganisasiController::class, 'index'])->name('struktur-organisasi.index');
 Route::get('/struktur-organisasi/edit/{id}', [StrukturOrganisasiController::class, 'edit'])->name('struktur-organisasi.edit');
@@ -285,9 +285,9 @@ Route::prefix('jadwal-praktikum-biologi')->middleware(['auth', 'checkUserType:gu
 });
 
 
-Route::get('/pilih-kelas/{kelas}', [KelasController::class,'setKelasSession'])->middleware('auth');
+Route::get('/pilih-kelas/{kelas}', [KelasController::class,'setKelasSession']);
 Route::post('/materi-kelas-page/delete', [MateriController::class,'destroy'])->middleware('auth');
-Route::get('/mengambil-data/{id}', [MateriController::class,'show'])->middleware('auth');
+Route::get('/mengambil-data/{id}', [MateriController::class,'show']);
 Route::put('/materi-kelas-page/update/{id}', [MateriController::class,'update'])->middleware('auth');
 
 Route::get('/materi/{id}', function ($id) {
@@ -303,9 +303,9 @@ Route::get('/materi/{id}', function ($id) {
     }
     //dd($alat);
     return view('materi', compact('materi', 'alat'));
-})->middleware('auth');
+});
 Route::post('/materi-kelas-page/add', [MateriController::class,'store'])->middleware('auth');
-Route::get('/materi-kelas-page', [MateriController::class,'index'])->middleware('auth');
+Route::get('/materi-kelas-page', [MateriController::class,'index']);
 
 
 

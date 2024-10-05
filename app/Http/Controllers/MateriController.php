@@ -35,8 +35,8 @@ class MateriController extends Controller
 
             if ($user_type == 'guru') {
                 return view('materikelaspageguru',compact('username', 'user_type','materi', 'alat', 'bahan', 'selectedAlatIds'));
-            } else if ($user_type == 'siswa') {
-                return view('materikelaspagesiswa',compact('username', 'user_type','materi'));
+            } else {
+                return view('materikelaspagesiswa',compact('materi'));
             }
         }else{
             return redirect('/');
@@ -47,8 +47,8 @@ class MateriController extends Controller
 
         if ($user_type == 'guru') {
             return view('materikelaspageguru',compact('username', 'user_type','materi', 'alat', 'selectedAlatIds'));
-        } else if ($user_type == 'siswa') {
-            return view('materikelaspagesiswa',compact('username', 'user_type','materi'));
+        } else {
+            return view('materikelaspagesiswa',compact('materi'));
         }
 
         // Anda bisa menambahkan logika lainnya di sini, misalnya jika user_type tidak ada di session
