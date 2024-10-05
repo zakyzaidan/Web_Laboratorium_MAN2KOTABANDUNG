@@ -19,29 +19,21 @@ class AuthController extends Controller
         $username = $request->input('username');
         $password = $request->input('password');
 
-        // Cek di tabel t_admin dengan username utuh
+        // Cek login sebagai admin
         $admin = Admin::where('nip', $username)->first();
+        if ($admin && $password == $admin->nip . 'admin') {
+            $id_admin = $admin->id_admin;
+            Auth::login($admin);
+            session(['username' => $username, 'nama' => $admin->nama, 'role' => 'admin', 'user_type' => 'guru', 'id_admin' => $id_admin]);
+            return redirect()->intended('/home');
+        }
 
-        // // Jika admin tidak ditemukan, cek dengan username yang dikurangi satu karakter jika diakhiri dengan 'A'
-        // if (!$admin && substr($username, -1) === 'A') {
-        //     $shortenedUsername = substr($username, 0, -1);
-        //     $admin = Admin::where('username', $shortenedUsername)->first();
-        // }
-
+        // Cek login sebagai guru
         if ($admin && $password == $admin->nip) {
             $id_admin = $admin->id_admin;
             Auth::login($admin);
             session(['username' => $username, 'nama' => $admin->nama, 'user_type' => 'guru', 'id_admin' => $id_admin]);
             return redirect()->intended('/home');
-
-            // // Arahkan ke dashboard jika username diakhiri dengan 'A'
-            // if (substr($username, -1) === 'A') {
-            //     session(['username' => $username, 'user_type' => 'inventaris', 'id_admin' => $id_admin]);
-            //     return redirect()->intended('/pilih-labolatorium');
-            // } else {
-            //     session(['username' => $username, 'user_type' => 'admin', 'id_admin' => $id_admin]);
-            //     return redirect()->intended('/home');
-            // }
         }
 
         // Cek di tabel t_siswa

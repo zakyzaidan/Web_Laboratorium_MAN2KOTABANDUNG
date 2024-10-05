@@ -99,21 +99,21 @@
                                         <input type="text" class="form-control" id="penulis" name="penulis" value="{{ session('nama') }}" required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="file-materi">File Pendukung Materi</label>
+                                        <label for="file-materi">File Pendukung Materi (LKPD)</label>
                                         <input type="file" class="form-control" id="file-materi" name="file-materi" accept=".pdf, .doc, .docx" required>
                                     </div>
                                     <div class="form-group" >
-                                        <label for="isi-materi">isi materi</label>
+                                        <label for="isi-materi">Materi</label>
                                         <textarea id="isi-materi" name="isi-materi"></textarea>
 
                                     </div>
                                     <div class="form-group" >
-                                        <label for="tujuan-dan-alat">tujuan</label>
+                                        <label for="tujuan-dan-alat">CP dan ATP</label>
                                         <textarea id="tujuan-dan-alat" name="tujuan-dan-alat"></textarea>
 
                                     </div>
                                     <div class="form-group" >
-                                        <label for="tambahan">tambahan</label>
+                                        <label for="tambahan">Indikator</label>
                                         <textarea id="tambahan" name="tambahan"></textarea>
                                     </div>
 

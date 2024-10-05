@@ -84,6 +84,9 @@
             <div class="jadwal">
                 <p><a href="/struktur-organisasi">Struktur Organisasi</a> <i class="fas fa-chevron-right"></i></p>
             </div>
+            <div class="jadwal">
+                <p><a href="/data-guru">Data Guru</a> <i class="fas fa-chevron-right"></i></p>
+            </div>
         </aside>
         @yield('page')
     </main>

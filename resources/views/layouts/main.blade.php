@@ -37,11 +37,11 @@
                 <li><a href="/#profil">TENTANG</a></li>
                 @if (session()->has('username'))
                     <li class="login"><a>Hi {{ session('nama') }}</a></li>
-                    @if (session('user_type') == 'guru')
+                    @if (session('role') == 'admin')
                         <li>
                             <form action="{{ route('pilih-labolatorium') }}" method="GET" style="display: inline;">
                                 @csrf
-                                <button type="submit" class="btn btn-outline-primary" style="margin-top: 10px; margin-right: 5px">Dashboard</button>
+                                <button type="submit" class="btn btn-outline-primary" style="margin-top: 10px; margin-right: 5px">Dashboard Admin</button>
                             </form>
                         </li>
                     @endif

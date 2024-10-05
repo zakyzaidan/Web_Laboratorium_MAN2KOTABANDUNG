@@ -112,7 +112,6 @@
         <div class="tambahan">
             <div class="satu">
                 <div id="tujuan-dan-alat-materi">
-                    <h4>Tujuan</h4>
                     {!! $materi->tujuan_dan_alat_materi !!}
                 </div>
             </div>

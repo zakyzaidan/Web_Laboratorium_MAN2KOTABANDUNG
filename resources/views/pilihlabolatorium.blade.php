@@ -7,7 +7,7 @@
 <div class="pilihan-pelajaran" id="pilihan-pelajaran">
 
 <h2>
-    PILIH DASHBOARD LABOLATORIUM
+    Pilih Dashboard Admin Labolatorium
 </h2>
 <ul>
     <li>

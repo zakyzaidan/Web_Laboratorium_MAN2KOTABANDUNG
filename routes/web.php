@@ -27,6 +27,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\BiologiPeminjamanPihakLuarController;
 use App\Http\Controllers\FisikaPeminjamanPihakLuarController;
 use App\Http\Controllers\StrukturOrganisasiController;
+use App\Http\Controllers\DataGuruController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Models\Materi;
@@ -78,6 +79,12 @@ Route::get('/pilih-kelas', function () {
 Route::get('/struktur-organisasi', [StrukturOrganisasiController::class, 'index'])->name('struktur-organisasi.index');
 Route::get('/struktur-organisasi/edit/{id}', [StrukturOrganisasiController::class, 'edit'])->name('struktur-organisasi.edit');
 Route::put('/struktur-organisasi/update/{id}', [StrukturOrganisasiController::class, 'update'])->name('struktur-organisasi.update');
+
+Route::get('/data-guru', [DataGuruController::class, 'index'])->name('data-guru.index');
+Route::get('/data-guru/edit/{id}', [DataGuruController::class, 'edit'])->name('data-guru.edit');
+Route::put('/data-guru/update/{id}', [DataGuruController::class, 'update'])->name('data-guru.update');
+Route::post('/data-guru/add', [DataGuruController::class, 'add'])->name('data-guru.add');
+Route::delete('/data-guru/delete/{id}', [DataGuruController::class, 'delete'])->name('data-guru.delete');
 
 Route::get('/pilih-labolatorium', [PilihLabolatoriumController::class, 'index'])->middleware(['auth', 'checkUserType:guru'])->name('pilih-labolatorium');
 Route::get('/Dashboard-inventaris', [InventarisasiController::class, 'index'])->middleware(['auth', 'checkUserType:guru']);

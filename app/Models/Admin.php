@@ -16,7 +16,7 @@ class Admin extends Model implements AuthenticatableContract
     protected $primaryKey = 'id'; // Primary key tabel (default: 'id')
 
     public $timestamps = false;
-    protected $fillable = ['nip', 'nama']; // Kolom yang dapat diisi
+    protected $fillable = ['nip', 'nama', 'kelamin']; // Kolom yang dapat diisi
     public function getAuthPassword()
     {
         return $this->password;
